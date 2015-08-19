@@ -40,6 +40,12 @@ class Welcome extends CI_Controller {
 		$view_data['consumer_validate_url'] = $consumer_validate_url;
         $view_data['csrf'] = $csrf;
         $view_data['csrf_cookie_name'] = $csrf_cookie_name;
+        $this->load->model('Report_model', 'Report_model');
+        $view_data['action_logs'] = $this->Report_model->getLastActionBySubMember(10);
+        $query = $this->db->query("select name, address, tel, contact from ".DB_PREFIX."supplier_location where id = ? limit 1",
+            [$this->session->userdata('biz_id')]);
+        $auth_data = $query->result()[0];
+        $view_data['auth_data'] = $auth_data;
 		$this->load->view('layout/default_header');
 		$this->load->view('welcome/index', $view_data);
 		$this->load->view('layout/default_footer');

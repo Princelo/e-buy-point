@@ -132,6 +132,17 @@ class Member extends CI_Controller {
             redirect('member/index');
         }
     }
+    public function sub_member_list()
+    {
+        $query = $this->db->query("select user_name, create_time, byear,bday,bmonth, sex, mobile, email, score
+            from ".DB_PREFIX
+            ."user where p_biz_id = ?", [$this->session->userdata('biz_id')]);
+        $view_data = [];
+        $view_data['list'] = $query->result();
+        $this->load->view('layout/default_header');
+        $this->load->view('member/sub_member_list', $view_data);
+        $this->load->view('layout/default_footer');
+    }
 
     public function _check_user_name()
     {

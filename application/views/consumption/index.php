@@ -74,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     </div>
                     <input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
-                    <input type="hidden" name="render_url" value="welcome/index" />
+                    <input type="hidden" name="render_url" value="consumption/index" />
                     <button type="submit" class="btn btn-primary">提交</button>
                     <button type="reset" class="btn btn-danger">重新输入</button>
                 </form>

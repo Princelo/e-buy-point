@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?=isset($title)?$title:"乐时网积分平台"?></title>
+    <title><?=isset($title)?$title:"M平台商家管理系统"?></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?=ASSETS_BOWER?>bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -77,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">欢迎来到乐时网积分平台</a>
+            <a class="navbar-brand" href="index.html">欢迎来到M平台商家管理系统</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -88,9 +88,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> 用户信息</a>
+                    <li style="display: none;"><a href="#"><i class="fa fa-user fa-fw"></i> 用户信息</a>
                     </li>
-                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> 设置</a>
+                    <li><a href="<?=site_url('setting/index')?>"><i class="fa fa-gear fa-fw"></i> 设置</a>
                     </li>
                     <li class="divider"></li>
                     <li><a href="<?=site_url('auth/logout')?>"><i class="fa fa-sign-out fa-fw"></i> 退出登录</a>
@@ -105,7 +105,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
-                    <li class="sidebar-search">
+                    <li class="sidebar-search" style="display: none;">
                         <div class="input-group custom-search-form">
                             <input type="text" class="form-control" placeholder="Search...">
                                 <span class="input-group-btn">
@@ -117,16 +117,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="/"><i class="fa fa-dashboard fa-fw"></i> 控制台</a>
+                        <a href="/"><i class="fa fa-dashboard fa-fw"></i> 系统首页</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 报表统计<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="flot.html">Flot Charts</a>
+                                <a href="<?=site_url('report/sub_member_action')?>">下级会员消费纪录</a>
                             </li>
                             <li>
-                                <a href="morris.html">Morris.js Charts</a>
+                                <a href="<?=site_url('report/local_consume_log')?>">本店消费纪录</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
@@ -138,7 +138,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <a href="<?=site_url('member/index')?>">注册下级会员</a>
                             </li>
                             <li>
-                                <a href="morris.html">下級会员列表</a>
+                                <a href="<?=site_url('member/sub_member_list')?>">下級会员列表</a>
                             </li>
                         </ul>
                     </li>
@@ -149,12 +149,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a href="#"><i class="fa fa-wrench fa-fw"></i> 我的设置<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="panels-wells.html">修改密码</a>
+                                <a href="<?=site_url('setting/change_password')?>">修改密码</a>
                             </li>
                             <li>
-                                <a href="buttons.html">修改商家信息</a>
+                                <a href="<?=site_url('setting/index')?>">修改商家信息</a>
                             </li>
-                            <li>
+                            <li style="display: none">
                                 <a href="notifications.html">我的短讯息</a>
                             </li>
                         </ul>

@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">控制台</h1>
+                <h1 class="page-header">系统首页</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -44,12 +44,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <i class="fa fa-tasks fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">消费纪录</div>
+                                <div class="">消费录入</div>
                                 <div></div>
                             </div>
                         </div>
                     </div>
-                    <a href="#">
+                    <a href="<?=site_url('consumption/index')?>">
                         <div class="panel-footer">
                             <span class="pull-left">进入</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -59,6 +59,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
+                <div class="panel panel-yellow">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-tasks fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="">注册下级会员</div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="<?=site_url('member/index')?>">
+                        <div class="panel-footer">
+                            <span class="pull-left">进入</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6" style="display: none;">
                 <div class="panel panel-yellow">
                     <div class="panel-heading">
                         <div class="row">
@@ -88,14 +110,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <i class="fa fa-support fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">13</div>
-                                <div>Support Tickets!</div>
+                                <div class="">本店消费纪录</div>
+                                <div></div>
                             </div>
                         </div>
                     </div>
-                    <a href="#">
+                    <a href="<?=site_url('report/local_consume_log')?>">
                         <div class="panel-footer">
-                            <span class="pull-left">View Details</span>
+                            <span class="pull-left">进入</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                             <div class="clearfix"></div>
                         </div>
@@ -103,7 +125,85 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="display: block;">
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        我的信息
+                        <div class="pull-right" style="display: ;">
+                            <div class="btn-group">
+                                <a href="<?=site_url('setting/index')?>">修改信息</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <h4>
+                            <?=$auth_data->name?>
+                        </h4>
+                        <h4>联系信息</h4>
+                        <address>
+                            <?=$auth_data->address?>
+                            <br>
+                            <abbr title="Phone">电话:</abbr><?=$auth_data->tel?>
+                        </address>
+                        <address>
+                            <strong><?=$auth_data->contact?></strong>
+                        </address>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-edit fa-fw"></i> 下级最近消费纪录
+                        <div class="pull-right" style="display: ;">
+                            <div class="btn-group">
+                                <a href="#">查看更多</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <?if(count($action_logs)==0){?>
+                            <div class="alert alert-warning">
+                                当前您的下级会员没有消费纪录
+                            </div>
+                        <?}?>
+                        <table class="table table-striped table-bordered table-hover dataTable no-footer" <?if(count($action_logs)==0){?>style="display:none;"<?}?>>
+                            <thead>
+                            <tr>
+                                <th>消费录入日期</th>
+                                <th>消费事件</th>
+                                <th>备注</th>
+                                <th>会员</th>
+                                <th>金额</th>
+                                <th>所得积分</th>
+                                <th>消费店舖</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <? foreach ($action_logs as $l) { ?>
+                                <tr>
+                                    <td><?=$l->time?></td>
+                                    <td><?=$l->title?></td>
+                                    <td><?=$l->remark?></td>
+                                    <td><?=$l->consumer_name?></td>
+                                    <td>￥<?=$l->volume?>元</td>
+                                    <td><?=bcmul(bcmul($l->voluume, $l->ratio, 4), 0.2)?></td>
+                                    <td><?=$l->name?></td>
+                                </tr>
+                            <?}?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+                <!-- /.panel -->
+            </div>
+        <div class="row" style="display: none;">
             <div class="col-lg-8">
                 <div class="panel panel-default">
                     <div class="panel-heading">
