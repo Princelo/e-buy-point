@@ -86,6 +86,7 @@ define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 define('CSS_URL', '/assets/css/');
 define('JS_URL', '/assets/js/');
+define('IMAGES_URL', '/assets/images/');
 define('ASSETS_BOWER', '/assets/bower_components/');
 define('ASSETS_DIST', '/assets/dist/');
 define('DB_PREFIX', 'fanwe_');
