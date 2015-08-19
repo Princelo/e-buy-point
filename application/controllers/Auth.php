@@ -117,7 +117,7 @@ class Auth extends CI_Controller {
             where u.user_pwd = ? and s.id = ? and u.is_merchant = 1 and u.merchant_name = s.name
             and s.name is not null
             limit 1";
-        $binds = [md5($this->input->post('user_pwd'), $this->session->userdata('biz_id'))];
+        $binds = [md5($this->input->post('user_pwd')), $this->session->userdata('biz_id')];
         $query = $this->db->query($sql, $binds);
         if($query->num_rows() > 0) {
             return true;
