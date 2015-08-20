@@ -35,7 +35,7 @@ class Consumption extends CI_Controller {
 
         $this->load->library('form_validation');
         $config = array(
-            array(
+            /*array(
                 'field' => 'consumer_name',
                 'label' => '消费者会员名',
                 'rules' => 'required|callback__check_consumer_name',
@@ -43,6 +43,15 @@ class Consumption extends CI_Controller {
                                 'required' => '消费者会员名不能为空',
                                 'callback__check_consumer_name' => '找不到消费者会员'
                             ]
+            ),*/
+            array(
+                'field' => 'mobile',
+                'label' => '消费者会员手机号',
+                'rules' => 'required|callback__check_consumer_mobile',
+                'errors' => [
+                    'required' => '消费者会员手机号不能为空',
+                    'callback__check_consumer_name' => '找不到消费者会员手机号'
+                ]
             ),
             array(
                 'field' => 'volume',
@@ -67,7 +76,7 @@ class Consumption extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $this->load->helper('url');
             $consumption_form_url = site_url(['consumption', 'input']);
-            $consumer_validate_url = site_url(['validator', 'check_consumer_name']);
+            $consumer_validate_url = site_url(['validator', 'check_consumer_mobile']);
             $csrf = array(
                 'name' => $this->security->get_csrf_token_name(),
                 'hash' => $this->security->get_csrf_hash()
@@ -94,6 +103,17 @@ class Consumption extends CI_Controller {
         $this->load->database();
         $this->db->select('id');
         $query = $this->db->get_where('user', ['user_name' => $this->input->post('consumer_name')]);
+        if($query->num_rows() > 0)
+            return true;
+        else
+            return false;
+    }
+
+    public function _check_consumer_mobile()
+    {
+        $this->load->database();
+        $this->db->select('id');
+        $query = $this->db->get_where('user', ['mobile' => $this->input->post('mobile')]);
         if($query->num_rows() > 0)
             return true;
         else

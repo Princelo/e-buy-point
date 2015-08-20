@@ -18,25 +18,26 @@ class Consumption_model extends CI_Model {
         $sql_insert = "
                 insert into " . DB_PREFIX . "biz_consume_log (biz_id, title, remark, consumer_name, consumer_id, volume, ratio)
                 values (
-                    ?, ?, ?, ?, ( select id from ".DB_PREFIX."user where user_name = ? ), ?, ?
+                    ?, ?, ?, (select user_name from ".DB_PREFIX."user where mobile = ?),
+                     ( select id from ".DB_PREFIX."user where mobile = ? ), ?, ?
                 );
                 ";
-        $sql_insert_binds = [$this->session->userdata('biz_id'), $data['title'], $data['remark'], $data['consumer_name'],
-            $data['consumer_name'], $data['volume'], $ratio];
+        $sql_insert_binds = [$this->session->userdata('biz_id'), $data['title'], $data['remark'], $data['mobile'],
+            $data['mobile'], $data['volume'], $ratio];
         $sql_update_biz = "
                     update " . DB_PREFIX . "supplier_location set return_profit = return_profit
                         + ?
                     where id = (
-                        select case when p_biz_id is null then 1 else p_biz_id end from " . DB_PREFIX . "user where user_name = ?
+                        select case when p_biz_id is null then 1 else p_biz_id end from " . DB_PREFIX . "user where mobile = ?
                     );
                     ";
         $sql_update_user = "
                     update " . DB_PREFIX . "user set score = score
                         + ?
-                        where user_name = ?;
+                        where mobile = ?;
         ";
         $sql_update_binds = [
-            $delta, $data['consumer_name'],
+            $delta, $data['mobile'],
         ];
         $this->db->trans_start();
         $this->db->query($sql_insert, $sql_insert_binds);

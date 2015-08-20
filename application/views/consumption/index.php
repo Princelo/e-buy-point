@@ -49,12 +49,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <p class="help-block">例：100元烟酒零售</p>
                     </div>
                     <div class="form-group">
-                        <label>消费者会员名</label>
-                        <input class="form-control" name="consumer_name" data-remote="<?=$consumer_validate_url?>" data-error="无效会员名或不存在该会员" required>
+                        <label>消费者会员手机号</label>
+                        <input class="form-control" name="mobile" data-remote="<?=$consumer_validate_url?>" data-error="无效会员名或不存在该会员" required>
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         <span class="help-block with-errors"></span>
-                        <span><?=form_error('consumer_name')?></span>
-                        <p class="help-block">例：小魚魚要減肥</p>
+                        <span><?=form_error('mobile')?></span>
+                        <p class="help-block">例：13477776677</p>
                     </div>
                     <div class="form-group">
                         <label>消费金额</label>

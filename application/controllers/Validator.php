@@ -25,6 +25,17 @@ class Validator extends CI_Controller {
             $this->output->set_status_header('400');
     }
 
+    public function check_consumer_mobile()
+    {
+        check_access_right('user', $this->session);
+        $this->load->database();
+        $query = $this->db->query("select id from ".DB_PREFIX."user where mobile = ? limit 1", [$this->input->get('mobile')]);
+        if($query->num_rows() > 0)
+            $this->output->set_header('HTTP/1.1 200 OK');
+        else
+            $this->output->set_status_header('400');
+    }
+
     public function check_member_unique_username()
     {
         check_access_right('user', $this->session);
