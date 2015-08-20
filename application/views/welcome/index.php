@@ -179,7 +179,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <th>备注</th>
                                 <th>会员</th>
                                 <th>金额</th>
-                                <th>所得积分</th>
+                                <th>本店所得佣金</th>
                                 <th>消费店舖</th>
                             </tr>
                             </thead>
