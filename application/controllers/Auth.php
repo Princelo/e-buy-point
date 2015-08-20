@@ -67,6 +67,10 @@ class Auth extends CI_Controller {
                         (select supplier_id from ".DB_PREFIX."supplier_location where id = ?)
                     )
             ";
+            $sql = "
+                update ".DB_PREFIX."supplier_account a set account_password = ?
+                    where supplier_id = (select supplier_id from ".DB_PREFIX."supplier_location where id = ? limit 1)
+            ";
             $this->db->query($sql, [
                 md5($this->input->post('new_pwd')),
                 $this->session->userdata('biz_id')
@@ -101,6 +105,11 @@ class Auth extends CI_Controller {
             select id from ".DB_PREFIX."supplier_location where name = (
                 select merchant_name from ".DB_PREFIX."user where is_merchant = 1 and user_pwd = ? and user_name = ?
                 ) and name is not null limit 1";
+        $sql = "
+            select l.location_id id from ".DB_PREFIX."supplier_account a,".DB_PREFIX."supplier_account_location_link l
+              where a.account_password = ? and a.account_name = ? and a.id = l.account_id
+              limit 1
+        ";
         $binds = [ md5($password), $user ];
         $query = $this->db->query($sql, $binds);
         if($query->num_rows() > 0) {
@@ -117,6 +126,8 @@ class Auth extends CI_Controller {
             where u.user_pwd = ? and s.id = ? and u.is_merchant = 1 and u.merchant_name = s.name
             and s.name is not null
             limit 1";
+        $sql = "select a.id from ".DB_PREFIX."supplier_account a, ".DB_PREFIX."supplier_account_location_link l
+        where l.account_id = a.id and a.account_password = ? and l.location_id = ? limit 1";
         $binds = [md5($this->input->post('user_pwd')), $this->session->userdata('biz_id')];
         $query = $this->db->query($sql, $binds);
         if($query->num_rows() > 0) {
