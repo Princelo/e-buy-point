@@ -191,7 +191,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <td><?=$l->remark?></td>
                                     <td><?=$l->consumer_name?></td>
                                     <td>￥<?=$l->volume?>元</td>
-                                    <td><?=bcmul(bcmul($l->voluume, $l->ratio, 4), 0.2)?></td>
+                                    <td><?=bcmul(bcmul($l->volume, $l->ratio, 4), 0.2)?></td>
                                     <td><?=$l->name?></td>
                                 </tr>
                             <?}?>
