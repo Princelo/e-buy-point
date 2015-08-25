@@ -160,7 +160,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <i class="fa fa-edit fa-fw"></i> 下级最近消费纪录
                         <div class="pull-right" style="display: ;">
                             <div class="btn-group">
-                                <a href="#">查看更多</a>
+                                <a href="<?=site_url('report/sub_member_action')?>">查看更多</a>
                             </div>
                         </div>
                     </div>

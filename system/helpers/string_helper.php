@@ -303,3 +303,28 @@ if ( ! function_exists('repeater'))
 		return ($num > 0) ? str_repeat($data, $num) : '';
 	}
 }
+
+function utf8_to_unicode($char)
+{
+	switch(strlen($char))
+	{
+		case 1:
+			return ord($char);
+		case 2:
+			$n = (ord($char[0]) & 0x3f) << 6;
+			$n += ord($char[1]) & 0x3f;
+			return $n;
+		case 3:
+			$n = (ord($char[0]) & 0x1f) << 12;
+			$n += (ord($char[1]) & 0x3f) << 6;
+			$n += ord($char[2]) & 0x3f;
+			return $n;
+		case 4:
+			$n = (ord($char[0]) & 0x0f) << 18;
+			$n += (ord($char[1]) & 0x3f) << 12;
+			$n += (ord($char[2]) & 0x3f) << 6;
+			$n += ord($char[3]) & 0x3f;
+			return $n;
+	}
+}
+

@@ -59,7 +59,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return "";
         }
         <?php if (!empty($this->session->flashdata('flash_data')['message'])) : ?>
-            alert('<?=$this->session->flashdata('flash_data')['message'];?>')
+        alert('<?=$this->session->flashdata('flash_data')['message'];?>')
         <?php endif ?>
 
     </script>
@@ -90,7 +90,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <ul class="dropdown-menu dropdown-user">
                     <li style="display: none;"><a href="#"><i class="fa fa-user fa-fw"></i> 用户信息</a>
                     </li>
-                    <li><a href="<?=site_url('setting/index')?>"><i class="fa fa-gear fa-fw"></i> 设置</a>
+                    <li style="display: none;"><a href="<?=site_url('setting/change_password')?>"><i class="fa fa-gear fa-fw"></i> 设置</a>
                     </li>
                     <li class="divider"></li>
                     <li><a href="<?=site_url('auth/logout')?>"><i class="fa fa-sign-out fa-fw"></i> 退出登录</a>
@@ -120,45 +120,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a href="/"><i class="fa fa-dashboard fa-fw"></i> 系统首页</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 报表统计<span class="fa arrow"></span></a>
+                        <a href="<?=site_url('admin/store_index')?>"><i class="fa fa-bar-chart-o fa-fw"></i> 报表统计<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="<?=site_url('report/sub_member_action')?>">本月下级会员消费纪录</a>
+                                <a href="<?=site_url('report/admin')?>">本月消费纪录</a>
                             </li>
                             <li>
-                                <a href="<?=site_url('report/local_consume_log')?>">本月本店消费纪录</a>
+                                <a href="<?=site_url('report/admin')?>">本月门店新增走势</a>
                             </li>
                             <li>
-                                <a href="<?=site_url('report/biz')?>">详细报表</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-table fa-fw"></i> 我的下级会员<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="<?=site_url('member/index')?>">注册下级会员</a>
+                                <a href="<?=site_url('report/admin')?>">本月会员新增走势</a>
                             </li>
                             <li>
-                                <a href="<?=site_url('member/sub_member_list')?>">下級会员列表</a>
+                                <a href="<?=site_url('report/admin')?>">本月M平台收入走势</a>
+                            </li>
+                            <li>
+                                <a href="<?=site_url('report/admin')?>">详细报表</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="<?=site_url('consumption/index')?>"><i class="fa fa-edit fa-fw"></i> 消费录入</a>
+                        <a href="<?=site_url('admin/store_index')?>"><i class="fa fa-table fa-fw"></i> 商家管理</a>
+                    </li>
+                    <li>
+                        <a href="<?=site_url('admin/member_index')?>"><i class="fa fa-table fa-fw"></i> 会员管理</a>
+                    </li>
+                    <li>
+                        <a href="<?=site_url('consumption/index')?>"><i class="fa fa-edit fa-fw"></i> 结算<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">结算操作</a>
+                            </li>
+                            <li>
+                                <a href="#">结算纪录</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-wrench fa-fw"></i> 我的设置<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="<?=site_url('setting/change_password')?>">修改密码</a>
-                            </li>
-                            <li>
-                                <a href="<?=site_url('setting/index')?>">修改商家信息</a>
-                            </li>
-                            <li style="display: none">
-                                <a href="notifications.html">我的短讯息</a>
+                                <a href="<?=site_url('auth/logout')?>">退出登录</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->

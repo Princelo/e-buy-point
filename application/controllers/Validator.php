@@ -69,4 +69,52 @@ class Validator extends CI_Controller {
             $this->output->set_header('HTTP/1.1 200 OK');
     }
 
+    public function check_biz_unique_username()
+    {
+        check_access_right('seller', $this->session);
+        $this->load->database();
+        $query = $this->db->query("select id from ".DB_PREFIX."supplier_account where account_name = ? limit 1", [$this->input->get('user_name')]);
+        if($query->num_rows() > 0)
+            $this->output->set_status_header('400');
+        else
+            $this->output->set_header('HTTP/1.1 200 OK');
+    }
+
+    public function check_biz_unique_email()
+    {
+        check_access_right('seller', $this->session);
+        $this->load->database();
+        $query = $this->db->query("select id from ".DB_PREFIX."supplier_account where email = ? limit 1", [$this->input->get('email')]);
+        if($query->num_rows() > 0)
+            $this->output->set_status_header('400');
+        else
+            $this->output->set_header('HTTP/1.1 200 OK');
+    }
+
+    public function check_biz_unique_mobile()
+    {
+        check_access_right('seller', $this->session);
+        $this->load->database();
+        $query = $this->db->query("select id from ".DB_PREFIX."supplier_account where mobile = ? limit 1", [$this->input->get('mobile')]);
+        if($query->num_rows() > 0)
+            $this->output->set_status_header('400');
+        else
+            $this->output->set_header('HTTP/1.1 200 OK');
+    }
+
+    public function check_biz_unique_name()
+    {
+        check_access_right('seller', $this->session);
+        $this->load->database();
+        $query = $this->db->query("select id from ".DB_PREFIX."supplier_location where name = ? limit 1", [$this->input->get('name')]);
+        if($query->num_rows() > 0)
+            $this->output->set_status_header('400');
+        else {
+            $query = $this->db->query("select id from " . DB_PREFIX . "supplier where name = ? limit 1", [$this->input->get('name')]);
+            if ($query->num_rows() > 0)
+                $this->output->set_status_header('400');
+            else
+                $this->output->set_header('HTTP/1.1 200 OK');
+        }
+    }
 }

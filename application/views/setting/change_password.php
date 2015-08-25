@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <form role="form" method="post" action="<?=$form_url?>" data-toggle="validator" id="form">
                         <div class="form-group">
                             <label>原密码</label>
-                            <input class="form-control" id="" type="password" data-minlength="8" name="user_pwd" data-error="密码格式错误" required>
+                            <input class="form-control" id="" type="password" name="user_pwd" data-error="密码格式错误" required>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             <span class="help-block with-errors"></span>
                             <span><?=form_error('user_pwd')?></span>

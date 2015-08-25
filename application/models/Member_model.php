@@ -62,4 +62,15 @@ class Member_model extends CI_Model {
             return false;
     }
 
+    public function getMembers($where = '', $limit = '', $order = '', $field = ' id, user_name, email, mobile, score, p_biz_id ')
+    {
+        $sql = "";
+        $sql .= "
+            select {$field} from ".DB_PREFIX."user where 1 = 1 {$where} {$order} {$limit};
+        ";
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
+
+
 }

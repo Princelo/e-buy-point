@@ -21,11 +21,14 @@ class Welcome extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        check_access_right('user', $this->session);
+        check_access_right('login', $this->session);
+        if($this->session->userdata('is_admin') == 1)
+            redirect('admin/index');
     }
 
 	public function index()
 	{
+        check_access_right('user', $this->session);
 		$this->load->helper('url');
         $this->load->helper('form');
 		$consumption_form_url = site_url(['consumption', 'input']);
