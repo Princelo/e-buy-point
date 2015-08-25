@@ -23,9 +23,9 @@ class Seller extends CI_Controller {
         $view_data['csrf_cookie_name'] = $csrf_cookie_name;
         $this->load->model('Report_model', 'Report_model');
         $view_data['action_logs'] = $this->Report_model->getLastActionByMember(10);
-        $this->load->view('layout/admin_header');
+        $this->load->view('layout/seller_header');
         $this->load->view('admin/index', $view_data);
-        $this->load->view('layout/admin_footer');
+        $this->load->view('layout/seller_footer');
     }
 
     public function store_index()
