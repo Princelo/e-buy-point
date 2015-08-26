@@ -87,5 +87,62 @@ class Report extends CI_Controller {
         $this->load->view('layout/default_footer');
     }
 
+    public function biz_consumption_simple()
+    {
+        check_access_right('admin', $this->session);
+        $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
+        $datetime = new \DateTime(date('Y-m-1'));
+        $start = $datetime->getTimestamp();
+        $datetime->modify('next month');
+        $end = $datetime->getTimestamp();
+        $where = " and l.biz_id = {$id} ";
+        $where .= " and unix_timestamp(l.create_time) between {$start} and {$end} ";
+        $this->load->model('Consumption_model', 'Consumption_model');
+        $list = $this->Consumption_model->getConsumptions($where);
+        $view_data = [];
+        $view_data['list'] = $list;
+        $this->load->view('layout/simple_header');
+        $this->load->view('report/biz_consumption_simple', $view_data);
+        $this->load->view('layout/simple_footer');
+    }
+
+    public function biz_sub_consumption_simple()
+    {
+        check_access_right('admin', $this->session);
+        $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
+        $datetime = new \DateTime(date('Y-m-1'));
+        $start = $datetime->getTimestamp();
+        $datetime->modify('next month');
+        $end = $datetime->getTimestamp();
+        $where = " and u.p_biz_id = {$id} ";
+        $where .= " and unix_timestamp(l.create_time) between {$start} and {$end} ";
+        $this->load->model('Consumption_model', 'Consumption_model');
+        $list = $this->Consumption_model->getSubConsumptions($where);
+        $view_data = [];
+        $view_data['list'] = $list;
+        $this->load->view('layout/simple_header');
+        $this->load->view('report/biz_sub_consumption_simple', $view_data);
+        $this->load->view('layout/simple_footer');
+    }
+
+    public function member_consumption_simple()
+    {
+        check_access_right('admin', $this->session);
+        $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
+        $datetime = new \DateTime(date('Y-m-1'));
+        $start = $datetime->getTimestamp();
+        $datetime->modify('next month');
+        $end = $datetime->getTimestamp();
+        $where = " and u.id = {$id} ";
+        $where .= " and unix_timestamp(l.create_time) between {$start} and {$end} ";
+        $this->load->model('Consumption_model', 'Consumption_model');
+        $list = $this->Consumption_model->getSubConsumptions($where);
+        $view_data = [];
+        $view_data['list'] = $list;
+        $this->load->view('layout/simple_header');
+        $this->load->view('report/member_consumption_simple', $view_data);
+        $this->load->view('layout/simple_footer');
+    }
+
 
 }

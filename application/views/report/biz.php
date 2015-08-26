@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">业务报表查询</h1>
+            <h1 class="page-header">商家报表查询</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="col-lg-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-edit fa-fw"></i> 业务报表查询
+                    <i class="fa fa-edit fa-fw"></i> 商家报表查询
                     <div class="pull-right" style="display: none;">
                         <div class="btn-group">
                             <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">

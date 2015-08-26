@@ -171,7 +171,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 当前您的下级会员没有消费纪录
                             </div>
                         <?}?>
-                        <table class="table table-striped table-bordered table-hover dataTable no-footer" <?if(count($action_logs)==0){?>style="display:none;"<?}?>>
+                        <table class="table table-striped table-bordered table-hover no-footer" <?if(count($action_logs)==0){?>style="display:none;"<?}?>>
                             <thead>
                             <tr>
                                 <th>消费录入日期</th>
@@ -191,8 +191,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <td><?=$l->remark?></td>
                                     <td><?=$l->consumer_name?></td>
                                     <td>￥<?=$l->volume?>元</td>
-                                    <td>￥<?=bcmul(bcmul($l->volume, $l->ratio, 4), 0.002, 2)?>元</td>
+                                    <td><?=intval($l->score)>0?"-".$score:bcmul($l->volume, 1)?></td>
                                     <td><?=$l->name?></td>
+                                    <td>￥<?=intval($l->ratio) > 0?bcdiv($l->volume, 100, 2):"0";?>元</td>
                                 </tr>
                             <?}?>
                             </tbody>

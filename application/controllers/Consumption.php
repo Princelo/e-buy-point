@@ -13,13 +13,14 @@ class Consumption extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('form');
         $consumption_form_url = site_url(['consumption', 'input']);
-        $consumer_validate_url = site_url(['validator', 'check_consumer_name']);
+        $consumer_validate_url = site_url(['validator', 'check_consumer_mobile']);
         $csrf = array(
             'name' => $this->security->get_csrf_token_name(),
             'hash' => $this->security->get_csrf_hash()
         );
         $csrf_cookie_name = $this->security->get_csrf_cookie_name();
         $view_data = [];
+        $view_data['sms_url'] = site_url('sms/sent_sms_for_consumption');
         $view_data['consumption_form_url'] = $consumption_form_url;
         $view_data['consumer_validate_url'] = $consumer_validate_url;
         $view_data['csrf'] = $csrf;
@@ -53,7 +54,16 @@ class Consumption extends CI_Controller {
                     'callback__check_consumer_name' => '找不到消费者会员手机号'
                 ]
             ),
-            array(
+            /*array(
+                'field' => 'verify_code',
+                'label' => '手机验证码',
+                'rules' => 'required|callback__check_vcode|trim',
+                'errors' => [
+                    'required' => '%s 必填',
+                    'callback__check_vcode' => '%s 无效',
+                ],
+            ),*/
+            /*array(
                 'field' => 'volume',
                 'label' => '消费金额',
                 'rules' => 'required|callback__is_money',
@@ -61,7 +71,12 @@ class Consumption extends CI_Controller {
                     'required' => '%s必填',
                     'callback__is_money' => '%s无效',
                 ),
-            ),
+            ),*/
+            [
+                'field' => 'exchange_type',
+                'label' => '交易媒介',
+                'rules' => 'required|trim|is_natural|less_than[2]',
+            ],
             array(
                 'field' => 'title',
                 'label' => '消费名称',
@@ -73,6 +88,10 @@ class Consumption extends CI_Controller {
         );
 
         $this->form_validation->set_rules($config);
+        if($this->input->post('exchange_type') === '1')
+            $this->form_validation->set_rules('score', '消费积分', 'required|trim|is_natural_no_zero|callback__is_score_enough');
+        else
+            $this->form_validation->set_rules('volume', '消费金额', 'required|trim|callback__is_money');
         if ($this->form_validation->run() == FALSE) {
             $this->load->helper('url');
             $consumption_form_url = site_url(['consumption', 'input']);
@@ -83,6 +102,7 @@ class Consumption extends CI_Controller {
             );
             $csrf_cookie_name = $this->security->get_csrf_cookie_name();
             $view_data = [];
+            $view_data['sms_url'] = site_url('sms/sent_sms_for_consumption');
             $view_data['consumption_form_url'] = $consumption_form_url;
             $view_data['consumer_validate_url'] = $consumer_validate_url;
             $view_data['csrf'] = $csrf;
@@ -92,8 +112,14 @@ class Consumption extends CI_Controller {
             $this->load->view('layout/default_footer');
         } else {
             $this->load->model('consumption_model', 'Consumption_model');
-            $this->Consumption_model->addConsumptionLog($this->input->post());
-            $this->session->set_flashdata('flash_data', [ 'message' => '消费纪录录入成功', 'type' => 'success' ]);
+            if($this->input->post('exchange_type') === '1')
+                $result = $this->Consumption_model->addScoreConsumptionLog($this->input->post());
+            else
+                $result = $this->Consumption_model->addConsumptionLog($this->input->post());
+            if($result === true)
+                $this->session->set_flashdata('flash_data', [ 'message' => '消费纪录录入成功', 'type' => 'success' ]);
+            if($result === false)
+                $this->session->set_flashdata('flash_data', [ 'message' => '消费纪录录入失败，请资讯平台管理员', 'type' => 'error' ]);
             redirect($this->input->post('render_url'));
         }
     }
@@ -123,5 +149,28 @@ class Consumption extends CI_Controller {
     public function _is_money()
     {
         return (bool) preg_match('/(?=.)^\$?(([1-9][0-9]{0,2}(,[0-9]{3})*)|[0-9]+)?(\.[0-9]{1,2})?$/', $this->input->post('volume'));
+    }
+
+    public function _check_vcode()
+    {
+        $this->db->query("delete from ".DB_PREFIX."sms_verification where create_time < ? ", [date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME'] - 3600)]);
+        $query = $this->db->query("select id from ".DB_PREFIX."sms_verification where code = ? and mobile = ? order by create_time desc limit 1",
+            [$this->input->post('verify_code'), $this->input->post('mobile')]);
+        if($query->num_rows() > 0)
+            return true;
+        else
+            return false;
+    }
+
+    public function _is_score_enough()
+    {
+        $is_enough = (bool) intval($this->db->query("select score from ".DB_PREFIX."user where mobile = ? limit 1",
+            [$this->input->post('mobile')])->result()[0]->score) >= intval($this->input->post('score'));
+        if(!$is_enough) {
+            $this->session->set_flashdata('flash_data', [ 'message' => '该会员积分不足，消费录入失败', 'type' => 'error' ]);
+            return false;
+        } else {
+            return $is_enough;
+        }
     }
 }

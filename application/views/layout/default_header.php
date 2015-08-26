@@ -43,6 +43,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="http://apps.bdimg.com/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="http://apps.bdimg.com/libs/jqueryui/1.9.2/themes/vader/jquery-ui.css">
     <script src="<?=JS_URL?>validator.js"></script>
+    <script src="<?=JS_URL?>jquery.dataTables.min.js"></script>
+    <link href="<?=CSS_URL?>jquery.dataTables.min.css" rel="stylesheet">
+    <script src="<?=JS_URL?>jquery.browser.js"></script>
+    <script src="<?=JS_URL?>jquery.fancybox.js"></script>
+    <link href="<?=CSS_URL?>jquery.fancybox.css" rel="stylesheet">
     <script>
         function getCookie(c_name) {
             if (document.cookie.length > 0) {
@@ -62,6 +67,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             alert('<?=$this->session->flashdata('flash_data')['message'];?>')
         <?php endif ?>
 
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.dataTable').DataTable( {
+                "language": {
+                    "lengthMenu": "每页显示 _MENU_ 条纪录",
+                    "zeroRecords": "没有数据",
+                    "info": "当前 第 _PAGE_ 页，共 _PAGES_ 页",
+                    "infoEmpty": "没有数据",
+                    "infoFiltered": "(过滤总数为 _MAX_ 纪录)",
+                    "paginate": {
+                        "first":      "首页",
+                        "last":       "尾页",
+                        "next":       "下一页",
+                        "previous":   "上一页"
+                    },
+                    "search": "搜索："
+                }
+            } );
+            $(".fancybox").fancybox({
+                'width': '75%',
+                'height'	: '75%',
+                'autoScale'  : false,
+                'transitionIn'  : 'none',
+                'transitionOut'  : 'none',
+                'type'  : 'iframe'
+            });
+        } );
     </script>
 </head>
 
@@ -141,7 +174,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <a href="<?=site_url('member/index')?>">注册下级会员</a>
                             </li>
                             <li>
-                                <a href="<?=site_url('member/sub_member_list')?>">下級会员列表</a>
+                                <a href="<?=site_url('member/sub_member_list')?>">下级会员列表</a>
                             </li>
                         </ul>
                     </li>

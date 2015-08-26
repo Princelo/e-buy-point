@@ -16,7 +16,7 @@ class Validator extends CI_Controller {
 
     public function check_consumer_name()
     {
-        check_access_right('user', $this->session);
+        check_access_right('login', $this->session);
         $this->load->database();
         $query = $this->db->query("select id from ".DB_PREFIX."user where user_name = ? ", [$this->input->get('consumer_name')]);
         if($query->num_rows() > 0)
@@ -27,7 +27,7 @@ class Validator extends CI_Controller {
 
     public function check_consumer_mobile()
     {
-        check_access_right('user', $this->session);
+        check_access_right('login', $this->session);
         $this->load->database();
         $query = $this->db->query("select id from ".DB_PREFIX."user where mobile = ? limit 1", [$this->input->get('mobile')]);
         if($query->num_rows() > 0)
@@ -38,7 +38,7 @@ class Validator extends CI_Controller {
 
     public function check_member_unique_username()
     {
-        check_access_right('user', $this->session);
+        check_access_right('login', $this->session);
         $this->load->database();
         $query = $this->db->query("select id from ".DB_PREFIX."user where user_name = ? limit 1", [$this->input->get('user_name')]);
         if($query->num_rows() > 0)
@@ -49,7 +49,7 @@ class Validator extends CI_Controller {
 
     public function check_member_unique_email()
     {
-        check_access_right('user', $this->session);
+        check_access_right('login', $this->session);
         $this->load->database();
         $query = $this->db->query("select id from ".DB_PREFIX."user where email = ? limit 1", [$this->input->get('email')]);
         if($query->num_rows() > 0)
@@ -60,7 +60,7 @@ class Validator extends CI_Controller {
 
     public function check_member_unique_mobile()
     {
-        check_access_right('user', $this->session);
+        check_access_right('login', $this->session);
         $this->load->database();
         $query = $this->db->query("select id from ".DB_PREFIX."user where mobile = ? limit 1", [$this->input->get('mobile')]);
         if($query->num_rows() > 0)
@@ -71,7 +71,7 @@ class Validator extends CI_Controller {
 
     public function check_biz_unique_username()
     {
-        check_access_right('seller', $this->session);
+        check_access_right('login', $this->session);
         $this->load->database();
         $query = $this->db->query("select id from ".DB_PREFIX."supplier_account where account_name = ? limit 1", [$this->input->get('user_name')]);
         if($query->num_rows() > 0)
@@ -82,7 +82,7 @@ class Validator extends CI_Controller {
 
     public function check_biz_unique_email()
     {
-        check_access_right('seller', $this->session);
+        check_access_right('login', $this->session);
         $this->load->database();
         $query = $this->db->query("select id from ".DB_PREFIX."supplier_account where email = ? limit 1", [$this->input->get('email')]);
         if($query->num_rows() > 0)
@@ -93,7 +93,7 @@ class Validator extends CI_Controller {
 
     public function check_biz_unique_mobile()
     {
-        check_access_right('seller', $this->session);
+        check_access_right('login', $this->session);
         $this->load->database();
         $query = $this->db->query("select id from ".DB_PREFIX."supplier_account where mobile = ? limit 1", [$this->input->get('mobile')]);
         if($query->num_rows() > 0)
@@ -104,7 +104,7 @@ class Validator extends CI_Controller {
 
     public function check_biz_unique_name()
     {
-        check_access_right('seller', $this->session);
+        check_access_right('login', $this->session);
         $this->load->database();
         $query = $this->db->query("select id from ".DB_PREFIX."supplier_location where name = ? limit 1", [$this->input->get('name')]);
         if($query->num_rows() > 0)

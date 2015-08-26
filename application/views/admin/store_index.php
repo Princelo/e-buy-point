@@ -47,8 +47,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>管理帐号</th>
                             <th>佣金</th>
                             <th>下级数</th>
-                            <th>消费纪录</th>
-                            <th>下级消费纪录</th>
+                            <th>消费纪录(当月)</th>
+                            <th>下级消费纪录(当月)</th>
                             <th>佣金比</th>
                             <th>结算</th>
                             <th>结算日志</th>
@@ -59,10 +59,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <tr>
                                 <td><?=$l->name?></td>
                                 <td><?=$l->account?></td>
-                                <td><?=bcdiv($l->return_profit, 100, 0)?></td>
+                                <td><?=$l->return_profit?>分</td>
                                 <td><?=$l->sub_count?></td>
-                                <td><a href="#">查看</a></td>
-                                <td><a href="#">查看</a></td>
+                                <td><a href="<?=site_url('report/biz_consumption_simple')?>?id=<?=$l->id?>" class="fancybox">查看</a></td>
+                                <td><a href="<?=site_url('report/biz_sub_consumption_simple')?>?id=<?=$l->id?>" class="fancybox">查看</a></td>
                                 <td><?=$l->consumption_ratio?>%</td>
                                 <td><a href="#">结算</a></td>
                                 <td><a href="#">查看</a></td>

@@ -87,7 +87,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="panel-heading">
                     <i class="fa fa-edit fa-fw"></i> 最近消费纪录
                     <div class="pull-right" style="display: ;">
-                        <div class="btn-group">
+                        <div class="btn-group" style="display: none;">
                             <a href="<?=site_url('report/member_action')?>">查看更多</a>
                         </div>
                     </div>
@@ -99,7 +99,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             没有消费纪录
                         </div>
                     <?}?>
-                    <table class="table table-striped table-bordered table-hover dataTable no-footer" <?if(count($action_logs)==0){?>style="display:none;"<?}?>>
+                    <table class="table table-striped table-bordered table-hover no-footer" <?if(count($action_logs)==0){?>style="display:none;"<?}?>>
                         <thead>
                         <tr>
                             <th>消费录入日期</th>
@@ -107,7 +107,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>备注</th>
                             <th>会员</th>
                             <th>金额</th>
-                            <th>本店所得佣金</th>
+                            <th>平台所得佣金</th>
+                            <th>业务所得佣金</th>
+                            <th>会员所得佣金</th>
+                            <th>上级所得佣金</th>
                             <th>消费店舖</th>
                         </tr>
                         </thead>
@@ -119,7 +122,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?=$l->remark?></td>
                                 <td><?=$l->consumer_name?></td>
                                 <td>￥<?=$l->volume?>元</td>
-                                <td>￥<?=bcmul(bcmul($l->volume, $l->ratio, 4), 0.002, 2)?>元</td>
+                                <td>￥<?=$l->ratio>0?bcmul(bcmul($l->volume, bcsub($l->ratio, 2.5, 1), 2), 0.01, 2):0?>元</td>
+                                <td>￥<?=$l->ratio>0?bcmul(bcmul($l->volume, 0.5, 2), 0.01, 2):0?>元</td>
+                                <td>￥<?=$l->ratio>0?bcmul(bcmul($l->volume, 1, 2), 0.01, 2):0?>元</td>
+                                <td>￥<?=$l->ratio>0?bcmul(bcmul($l->volume, 1, 2), 0.01, 2):0?>元</td>
                                 <td><?=$l->name?></td>
                             </tr>
                         <?}?>

@@ -1,18 +1,21 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<div id="page-wrapper">
+<script>
+    if("<?=$csrf['hash']?>" != getCookie('<?=$csrf_cookie_name?>'))
+        location.reload();
+</script>
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">本月会员消费纪录</h1>
+            <h1 class="page-header">本月本店消费录入纪录</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-edit fa-fw"></i> 本月会员消费纪录
+                    <i class="fa fa-edit fa-fw"></i> 本月本店消费录入纪录
                     <div class="pull-right" style="display: none;">
                         <div class="btn-group">
                             <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -48,10 +51,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>备注</th>
                             <th>会员</th>
                             <th>金额</th>
-                            <th>会员所得积分</th>
+                            <th>平台所得佣金</th>
+                            <th>业务所得佣金</th>
+                            <th>会员所得佣金</th>
+                            <th>上级所得佣金</th>
                             <th>消费店舖</th>
-                            <th>上级商家</th>
-                            <th>上级佣金</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -62,10 +66,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?=$l->remark?></td>
                                 <td><?=$l->consumer_name?></td>
                                 <td>￥<?=$l->volume?>元</td>
-                                <td><?=bcmul(bcmul($l->volume, $l->ratio, 4), 0.2, 1)?></td>
+                                <td>￥<?=$l->ratio>0?bcmul(bcmul($l->volume, bcsub($l->ratio, 2.5, 1), 2), 0.01, 2):0?>元</td>
+                                <td>￥<?=$l->ratio>0?bcmul(bcmul($l->volume, 0.5, 2), 0.01, 2):0?>元</td>
+                                <td>￥<?=$l->ratio>0?bcmul(bcmul($l->volume, 1, 2), 0.01, 2):0?>元</td>
+                                <td>￥<?=$l->ratio>0?bcmul(bcmul($l->volume, 1, 2), 0.01, 2):0?>元</td>
                                 <td><?=$l->name?></td>
-                                <td><?=$l->pname?></td>
-                                <td>￥<?=bcmul(bcmul($l->volume, $l->ratio, 4), 0.002, 2)?>元</td>
                             </tr>
                         <?}?>
                         </tbody>
@@ -77,4 +82,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- /.panel -->
         </div>
     </div>
-</div>
