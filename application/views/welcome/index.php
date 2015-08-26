@@ -191,9 +191,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <td><?=$l->remark?></td>
                                     <td><?=$l->consumer_name?></td>
                                     <td>￥<?=$l->volume?>元</td>
-                                    <td><?=intval($l->score)>0?"-".$l->score:bcmul($l->volume, 1)?></td>
+                                    <td><?=intval($l->score)>0?"0":bcmul($l->volume, 1)?>分</td>
                                     <td><?=$l->name?></td>
-                                    <td>￥<?=intval($l->ratio) > 0?bcdiv($l->volume, 100, 2):"0";?>元</td>
                                 </tr>
                             <?}?>
                             </tbody>
