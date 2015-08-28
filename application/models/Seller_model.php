@@ -18,7 +18,7 @@ class Seller_model extends CI_Model {
         $this->db->query($sql
             , [
                $data['user_name'],
-                $data['user_pwd'],
+                md5($data['user_pwd']),
                 $data['mobile'],
                 $data['email'],
                 $data['citizen_id'],
