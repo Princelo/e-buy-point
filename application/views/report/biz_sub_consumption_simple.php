@@ -46,8 +46,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>消费事件</th>
                             <th>备注</th>
                             <th>会员</th>
-                            <th>金额</th>
-                            <th>会员所得积分</th>
+                            <th>消费金额</th>
+                            <th>会员积分</th>
                             <th>消费店舖</th>
                             <th>本店积分</th>
                             <th>业务积分</th>
