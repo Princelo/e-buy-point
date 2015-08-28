@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="panel-body">
                 <form role="form" method="post" action="<?=$consumption_form_url?>" data-toggle="validator" id="consumption_form">
                     <div class="form-group">
-                        <label>消费名称</label>
+                        <label>消费项目</label>
                         <input class="form-control" name="title" data-error="无效名称" required>
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         <span class="help-block with-errors"></span>
@@ -101,10 +101,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         }
                     </script>
                     <div class="form-group">
-                        <label>交易媒介</label>
+                        <label>交易类型</label>
                         <select name="exchange_type" class="form-control">
-                            <option value="0" selected>人民币</option>
-                            <option value="1">积分</option>
+                            <option value="0" selected>现金交易</option>
+                            <option value="1">扣除积分</option>
                         </select>
                         <div class="alert alert-warning" id="exchange_type_tip" style="display: none;">
                             注意：100积分等价于1元人民币
