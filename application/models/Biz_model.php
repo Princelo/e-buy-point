@@ -22,11 +22,11 @@ class Biz_model extends CI_Model {
 
         $sql_insert_supplier = "
             insert into ".DB_PREFIX."supplier
-            (name, tel, contact, preview, content, sort, is_effect, city_id, name_match, name_match_row)
-            values (?, ?, ?, '', '', 0, 1, 0, ?, ?);
+            (name, preview, content, sort, is_effect, city_id, name_match, name_match_row)
+            values (?, '', '', 0, 1, 0, ?, ?);
         ";
         $sql_insert_supplier_binds = [
-            $data['name'], $data['tel'], $data['contact'], $name_match, $data['name']
+            $data['name'], $name_match, $data['name']
         ];
         $sql_insert_location = "
             insert into ".DB_PREFIX."supplier_location
