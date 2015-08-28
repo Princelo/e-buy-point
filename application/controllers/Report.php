@@ -295,7 +295,7 @@ class Report extends CI_Controller {
             case "consumption":
                 $where =
                     " and unix_timestamp(l.create_time) between ".$start_time." and ".$end_time
-                    ." and l.type = 0 ";
+                    ." and l.type = 0 and s.p_seller_id = ".$this->session->userdata('seller_id');
                 $this->load->Model('Consumption_model', 'Consumption_model');
                 $view_data['list'] = $this->Consumption_model->getConsumptions($where);
                 $this->load->view('report/seller_report_consumption', $view_data);
