@@ -58,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <? foreach ($list as $l) { ?>
                             <tr>
                                 <td><?=$l->time?></td>
-                                <td><?=$l->type=='0'?bcmul($l->volume, 1, 0):0?>分</td>
+                                <td><?=$l->type=='0'?bcmul($l->volume, 0.5, 0):0?>分</td>
                                 <td><?=$l->title?></td>
                                 <td><?=$l->remark?></td>
                                 <td><?=$l->consumer_name?></td>
