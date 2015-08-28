@@ -76,7 +76,7 @@ class Biz extends CI_Controller {
                     'callback__mobile_no' => '%s 已被占用',
                 ),
             ),
-            array(
+            /*array(
                 'field' => 'verify_code',
                 'label' => '手机验证码',
                 'rules' => 'required|callback__check_vcode|trim',
@@ -84,7 +84,7 @@ class Biz extends CI_Controller {
                     'required' => '%s 必填',
                     'callback__check_vcode' => '%s 无效',
                 ],
-            ),
+            ),*/
             array(
                 'field' => 'user_pwd',
                 'label' => '密码',
@@ -139,6 +139,21 @@ class Biz extends CI_Controller {
         $this->load->view('layout/seller_header');
         $this->load->view('biz/sub_biz_list', $view_data);
         $this->load->view('layout/seller_footer');
+    }
+
+    public function _check_name()
+    {
+        $this->db->select('id');
+        $query = $this->db->query("select id from ".DB_PREFIX."supplier_location where name = ? limit 1", [$this->input->post('name')]);
+        if($query->num_rows() > 0)
+            return false;
+        else {
+            $query = $this->db->query("select id from ".DB_PREFIX."supplier where name = ? limit 1", [$this->input->post('name')]);
+            if($query->num_rows() > 0)
+                return false;
+            else
+                return true;
+        }
     }
 
     public function _check_user_name()

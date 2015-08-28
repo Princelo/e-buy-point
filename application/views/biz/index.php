@@ -111,7 +111,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <span><?=form_error('mobile')?></span>
                             <p class="help-block">例：13926262626</p>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="display: none;">
                             <label>手机验证码</label>
                             <input class="form-control" name="verify_code" data-error="请填写手机验证码" required/>
                             <input class="btn btn-default" value="发送验证码" id="sms_sent_btn" onclick="sms_sent();" />
