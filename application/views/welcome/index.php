@@ -137,6 +137,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                     </div>
                     <div class="panel-body">
+                        <h2>
+                            当前积分：<label style="color: #aa3e05;"><?=$auth_data->return_profit?></label>
+                        </h2>
                         <h4>
                             <?=$auth_data->name?>
                         </h4>
