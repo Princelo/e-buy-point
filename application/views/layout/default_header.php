@@ -103,7 +103,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <body>
 <div id="wrapper">
-
+    <meta name="renderer" content="webkit">
+    <!-- Force latest IE rendering engine or ChromeFrame if installed -->
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" charset="utf-8"><![endif]-->
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
