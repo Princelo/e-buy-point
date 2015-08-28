@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">本月下级会员消费纪录</h1>
+        <h1 class="page-header">本月会员跨界消费纪录</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-edit fa-fw"></i> 本月下级会员消费纪录
+                <i class="fa fa-edit fa-fw"></i> 本月会员跨界消费纪录
                 <div class="pull-right" style="display: none;">
                     <div class="btn-group">
                         <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">

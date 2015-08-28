@@ -48,6 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="<?=JS_URL?>jquery.browser.js"></script>
     <script src="<?=JS_URL?>jquery.fancybox.js"></script>
     <link href="<?=CSS_URL?>jquery.fancybox.css" rel="stylesheet">
+    <script src="<?=JS_URL?>jquery-birthday-picker.js"></script>
     <script>
         function getCookie(c_name) {
             if (document.cookie.length > 0) {
@@ -94,6 +95,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 'transitionOut'  : 'none',
                 'type'  : 'iframe'
             });
+            $("#birthdayPicker").birthdayPicker();
+            $("input[name=bdate]").keydown(false);
         } );
     </script>
 </head>

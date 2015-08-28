@@ -55,7 +55,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>业务所得佣金</th>
                             <th>会员所得佣金</th>
                             <th>邀请门店所得佣金</th>
-                            <th>消费店舖</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -70,7 +69,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?=$l->type=='0'?bcmul($l->volume, 0.5, 2):0?>分</td>
                                 <td><?=$l->type=='0'?bcmul($l->volume, 1, 2):0?>分</td>
                                 <td><?=$l->type=='0'?bcmul($l->volume, 1, 2):0?>分</td>
-                                <td><?=$l->name?></td>
                             </tr>
                         <?}?>
                         </tbody>
