@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <form role="form" method="post" action="<?=$form_url?>" data-toggle="validator" id="form">
                         <div class="form-group">
                             <label>商家店舖名称</label>
-                            <input class="form-control" name="" data-error="无效名称" value="<?=$data->name?>" required>
+                            <input class="form-control" name="" data-error="无效名称" value="<?=$data->name?>" disabled>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             <span class="help-block with-errors"></span>
                         </div>

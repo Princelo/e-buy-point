@@ -53,7 +53,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>会员</th>
                             <th>消费金额</th>
                             <th>消费积分</th>
-                            <th>消费店舖</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -65,7 +64,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?=$l->consumer_name?></td>
                                 <td>￥<?=$l->volume?>元</td>
                                 <td><?=$l->score?>分</td>
-                                <td><?=$l->name?></td>
                             </tr>
                         <?}?>
                         </tbody>

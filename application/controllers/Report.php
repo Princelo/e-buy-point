@@ -200,6 +200,12 @@ class Report extends CI_Controller {
                 $view_data['list'] = $this->Report_model->getBizIncomes($where);
                 $this->load->view('report/biz_self_report_simple_income', $view_data);
                 break;
+            case 'settle_report':
+                $where = " and unix_timestamp(l.create_time) between ".$start_time." and ".$end_time;
+                $this->load->Model('Settle_model', 'Settle_model');
+                $view_data['list'] = $this->Settle_model->getSettleLogs($where);
+                $this->load->view('report/settle_view_simple', $view_data);
+                break;
         }
         $this->load->view('layout/simple_footer');
     }

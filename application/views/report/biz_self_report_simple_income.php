@@ -48,7 +48,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <th>会员</th>
                         <th>金额</th>
                         <th>会员所得积分</th>
-                        <th>消费店舖</th>
                         <th>本店佣金</th>
                         <th>业务佣金</th>
                     </tr>
@@ -62,7 +61,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <td><?=$l->consumer_name?></td>
                             <td>￥<?=$l->volume?>元</td>
                             <td><?=intval($l->type)>0?"-".$l->score:bcmul($l->volume, 1)?></td>
-                            <td><?=$l->name?></td>
                             <!--<td>￥<?=intval($l->type) == '0'?bcdiv($l->volume, 100, 2):"0";?>元</td>-->
                             <td><?=bcmul($l->volume, 1, 0)?>分</td>
                             <td><?=bcmul($l->volume, 0.5, 0)?>分</td>

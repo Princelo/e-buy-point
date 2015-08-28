@@ -5,6 +5,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     if("<?=$csrf['hash']?>" != getCookie('<?=$csrf_cookie_name?>'))
         location.reload();
 </script>
+<style>
+    select{
+        display: inline-block;
+        height: 20px;
+        padding: 4px 6px;
+        margin-bottom: 10px;
+        font-size: 12px;
+        line-height: 20px;
+        color: #555555;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+        vertical-align: middle;
+    }
+    select, input[type="file"] {
+        height: 30px;
+        line-height: 30px;
+    }
+</style>
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
@@ -135,7 +154,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         <div class="form-group">
                             <label>出生日期</label>
-                            <input class="form-control" name="bdate" data-date="出生日期不正确" data-error="出生日期不正确" required>
+                            <div id="birthdayPicker"></div>
+                            <!--<input class="form-control" name="bdate" data-date="出生日期不正确" data-error="出生日期不正确" required>-->
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             <span class="help-block with-errors"></span>
                             <span><?=form_error('bdate')?></span>

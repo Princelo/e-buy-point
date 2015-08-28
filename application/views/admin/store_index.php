@@ -46,9 +46,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>商家</th>
                             <th>管理帐号</th>
                             <th>佣金</th>
-                            <th>下级数</th>
+                            <th>会员数</th>
                             <th>消费纪录(当月)</th>
-                            <th>下级消费纪录(当月)</th>
+                            <th>会员消费纪录(当月)</th>
                             <th>佣金比</th>
                             <th>结算</th>
                             <th>结算日志</th>

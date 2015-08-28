@@ -173,7 +173,7 @@ class Auth extends CI_Controller {
                 $this->session->set_flashdata('flash_data', [ 'type' => 'success', 'message' => '修改密码成功' ]);
             else
                 $this->session->set_flashdata('flash_data', [ 'type' => 'error', 'message' => '修改密码失败，请资询平台管理员' ]);
-            redirect('setting/change_password');
+            redirect('setting/seller_change_password');
         } else {
             $this->load->helper('url');
             $this->load->helper('form');
