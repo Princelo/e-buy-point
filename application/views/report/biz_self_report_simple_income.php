@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">本月会员消费纪录</h1>
+        <h1 class="page-header">会员消费(本店收入)纪录</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-edit fa-fw"></i> 本月会员消费纪录
+                <i class="fa fa-edit fa-fw"></i> 会员消费(本店收入)纪录
                 <div class="pull-right" style="display: none;">
                     <div class="btn-group">
                         <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <th>金额</th>
                         <th>会员所得积分</th>
                         <th>消费店舖</th>
-                        <th>上级佣金</th>
+                        <th>本店佣金</th>
                         <th>业务佣金</th>
                     </tr>
                     </thead>
@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <td>￥<?=$l->volume?>元</td>
                             <td><?=intval($l->type)>0?"-".$l->score:bcmul($l->volume, 1)?></td>
                             <td><?=$l->name?></td>
-                            <!--<td>￥<?=intval($l->type) == 0?bcdiv($l->volume, 100, 2):"0";?>元</td>-->
+                            <!--<td>￥<?=intval($l->type) == '0'?bcdiv($l->volume, 100, 2):"0";?>元</td>-->
                             <td><?=bcmul($l->volume, 1, 0)?>分</td>
                             <td><?=bcmul($l->volume, 0.5, 0)?>分</td>
                         </tr>

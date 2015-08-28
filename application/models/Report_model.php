@@ -129,4 +129,23 @@ class Report_model extends CI_Model {
         $query = $this->db->query($sql, $binds);
         return $query->result();
     }
+
+    public function getBizIncomes($where = '')
+    {
+        $sql = "";
+        $sql .= "
+            select
+                l.create_time time,
+                l.title, l.remark, l.consumer_name, l.consumer_id, l.volume, l.ratio
+                ,s.name, u.user_name, l.score
+            from ".DB_PREFIX."biz_consume_log l,".DB_PREFIX."user u,".DB_PREFIX."supplier_location s
+            where 1 = 1
+            and s.id = u.p_biz_id
+            and l.consumer_id = u.id
+            {$where}
+            order by l.id desc
+        ";
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
 }

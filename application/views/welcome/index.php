@@ -157,7 +157,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-lg-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <i class="fa fa-edit fa-fw"></i> 下级最近消费纪录
+                        <i class="fa fa-edit fa-fw"></i> 会员最近消费纪录
                         <div class="pull-right" style="display: ;">
                             <div class="btn-group">
                                 <a href="<?=site_url('report/sub_member_action')?>">查看更多</a>
@@ -168,7 +168,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="panel-body">
                         <?if(count($action_logs)==0){?>
                             <div class="alert alert-warning">
-                                当前您的下级会员没有消费纪录
+                                当前您的会员没有消费纪录
                             </div>
                         <?}?>
                         <table class="table table-striped table-bordered table-hover no-footer" <?if(count($action_logs)==0){?>style="display:none;"<?}?>>

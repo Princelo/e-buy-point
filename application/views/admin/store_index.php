@@ -64,8 +64,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><a href="<?=site_url('report/biz_consumption_simple')?>?id=<?=$l->id?>" class="fancybox">查看</a></td>
                                 <td><a href="<?=site_url('report/biz_sub_consumption_simple')?>?id=<?=$l->id?>" class="fancybox">查看</a></td>
                                 <td><?=$l->consumption_ratio?>%</td>
-                                <td><a href="#">结算</a></td>
-                                <td><a href="#">查看</a></td>
+                                <td><a href="<?=site_url('admin/settle_simple')?>?id=<?=$l->id?>" class="fancybox">结算</a></td>
+                                <td><a href="<?=site_url('admin/settle_biz_log_simple')?>?id=<?=$l->id?>" class="fancybox">查看</a></td>
                             </tr>
                         <?}?>
                         </tbody>
