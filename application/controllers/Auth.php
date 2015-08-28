@@ -41,8 +41,10 @@ class Auth extends CI_Controller {
             } else {
                 if($this->session->userdata('is_admin') == 1)
                     redirect('admin/index', 'refresh');
-                else
+                else if (intval($this->session->userdata('biz_id')) > 0)
                     redirect('welcome/index', 'refresh');
+                else
+                    redirect('seller/index', 'refresh');
             }
             $csrf = array(
                 'name' => $this->security->get_csrf_token_name(),

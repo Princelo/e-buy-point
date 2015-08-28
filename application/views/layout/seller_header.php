@@ -115,7 +115,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">欢迎来到M平台商家管理系统</a>
+            <a class="navbar-brand" href="/">欢迎来到M平台商家管理系统</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -158,7 +158,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a href="/"><i class="fa fa-dashboard fa-fw"></i> 系统首页</a>
                     </li>
                     <li>
-                        <a href="<?=site_url('report/seller')?>"><i class="fa fa-bar-chart-o fa-fw"></i> 报表查询</a>
+                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 报表统计<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="<?=site_url('report/seller_report/consumption')?>">本月消费纪录</a>
+                            </li>
+                            <li>
+                                <a href="<?=site_url('report/annual_settle_seller')?>">结算纪录</a>
+                            </li>
+                            <li>
+                                <a href="<?=site_url('report/seller')?>">详细报表</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="<?=site_url('biz/sub_biz_list')?>"><i class="fa fa-table fa-fw"></i> 我邀请的商家</a>

@@ -201,7 +201,8 @@ class Report extends CI_Controller {
                 $this->load->view('report/biz_self_report_simple_income', $view_data);
                 break;
             case 'settle_report':
-                $where = " and unix_timestamp(l.create_time) between ".$start_time." and ".$end_time;
+                $where = " and unix_timestamp(l.create_time) between ".$start_time." and ".$end_time
+                    ." and s.id = ".$this->session->userdata('biz_id');
                 $this->load->Model('Settle_model', 'Settle_model');
                 $view_data['list'] = $this->Settle_model->getSettleLogs($where);
                 $this->load->view('report/settle_view_simple', $view_data);
@@ -254,6 +255,7 @@ class Report extends CI_Controller {
 
     public function admin_report($type = '')
     {
+        check_access_right('admin', $this->session);
         $datetime = new \DateTime(date('Y-m-1'));
         $start_time = $datetime->getTimestamp();
         $datetime->modify('next month');
@@ -276,10 +278,84 @@ class Report extends CI_Controller {
         check_access_right('user', $this->session);
         $this->load->view('layout/default_header');
         $this->load->Model('Settle_model', 'Settle_model');
-        $view_data['list'] = $this->Settle_model->getSettleLogs('');
+        $view_data['list'] = $this->Settle_model->getSettleLogs(' and s.id = '.$this->session->userdata('biz_id'));
         $this->load->view('report/annual_settle_biz', $view_data);
         $this->load->view('layout/default_footer');
     }
 
+    public function seller_report($type = '')
+    {
+        check_access_right('seller', $this->session);
+        $datetime = new \DateTime(date('Y-m-1'));
+        $start_time = $datetime->getTimestamp();
+        $datetime->modify('next month');
+        $end_time = $datetime->getTimestamp();
+        $this->load->view('layout/seller_header');
+        switch(strval($type)) {
+            case "consumption":
+                $where =
+                    " and unix_timestamp(l.create_time) between ".$start_time." and ".$end_time
+                    ." and l.type = 0 ";
+                $this->load->Model('Consumption_model', 'Consumption_model');
+                $view_data['list'] = $this->Consumption_model->getConsumptions($where);
+                $this->load->view('report/seller_report_consumption', $view_data);
+                break;
+        }
+        $this->load->view('layout/seller_footer');
+    }
+
+    public function annual_settle_seller()
+    {
+        check_access_right('seller', $this->session);
+        $this->load->view('layout/seller_header');
+        $this->load->Model('Settle_model', 'Settle_model');
+        $view_data['list'] = $this->Settle_model->getSettleLogsSeller(' and s.id = '.$this->session->userdata('seller_id'));
+        $this->load->view('report/annual_settle_seller', $view_data);
+        $this->load->view('layout/seller_footer');
+    }
+
+    public function seller_self_report_simple()
+    {
+        check_access_right('seller', $this->session);
+        $type = $this->input->post('type');
+        $start_year = filter_var($this->input->post('start_year'), FILTER_VALIDATE_INT);
+        $end_year = filter_var($this->input->post('end_year'), FILTER_VALIDATE_INT);
+        $star_month = filter_var($this->input->post('start_month'), FILTER_VALIDATE_INT);
+        $end_month = filter_var($this->input->post('end_month'), FILTER_VALIDATE_INT);
+        $start_date = new \DateTime();
+        $start_date->setDate($start_year, $star_month, 1);
+        $start_time = $start_date->getTimestamp();
+        $end_date = new \DateTime();
+        $end_date->setDate($end_year, $end_month, 1);
+        $end_date->modify('next month');
+        $end_time = $end_date->getTimestamp();
+        $csrf = array(
+            'name' => $this->security->get_csrf_token_name(),
+            'hash' => $this->security->get_csrf_hash()
+        );
+        $csrf_cookie_name = $this->security->get_csrf_cookie_name();
+        $view_data = [];
+        $view_data['csrf'] = $csrf;
+        $view_data['csrf_cookie_name'] = $csrf_cookie_name;
+        $this->load->view('layout/simple_header');
+        switch(strval($type)) {
+            case 'income_report':
+                $where = " and ps.p_seller_id = ".$this->session->userdata('seller_id')
+                        ." and l.type = 0 "
+                    ." and unix_timestamp(l.create_time) between ".$start_time." and ".$end_time;
+                $this->load->Model('Consumption_model', 'Consumption_model');
+                $view_data['list'] = $this->Consumption_model->getConsumptions($where);
+                $this->load->view('report/biz_self_report_simple_consumption', $view_data);
+                break;
+            case 'settle_report':
+                $where = " and unix_timestamp(l.create_time) between ".$start_time." and ".$end_time
+                    ." and s.id = ".$this->session->userdata('seller_id');
+                $this->load->Model('Settle_model', 'Settle_model');
+                $view_data['list'] = $this->Settle_model->getSettleLogsSeller($where);
+                $this->load->view('report/settle_view_simple', $view_data);
+                break;
+        }
+        $this->load->view('layout/simple_footer');
+    }
 
 }

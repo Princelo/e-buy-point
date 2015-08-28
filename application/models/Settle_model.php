@@ -21,4 +21,17 @@ class Settle_model extends CI_Model {
         $query = $this->db->query($sql);
         return $query->result();
     }
+
+    public function getSettleLogsSeller($where)
+    {
+        $sql = "
+            select l.volume, l.id, l.create_time, s.user_name
+            from ".DB_PREFIX."settle_seller_log l, ".DB_PREFIX."seller s
+            where s.id = l.seller_id
+            {$where}
+            order by l.id desc
+        ";
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
 }
