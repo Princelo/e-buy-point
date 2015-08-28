@@ -45,6 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <tr>
                             <th>商家</th>
                             <th>管理帐号</th>
+                            <th>邀请业务员</th>
                             <th>当前积分</th>
                             <th>会员数</th>
                             <th>消费录入纪录(当月)</th>
@@ -59,6 +60,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <tr>
                                 <td><?=$l->name?></td>
                                 <td><?=$l->account?></td>
+                                <td><?=$l->seller_name?></td>
                                 <td><?=$l->return_profit?>分</td>
                                 <td><?=$l->sub_count?></td>
                                 <td><a href="<?=site_url('report/biz_consumption_simple')?>?id=<?=$l->id?>" class="fancybox">查看</a></td>
