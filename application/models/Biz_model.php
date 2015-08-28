@@ -11,7 +11,9 @@ class Biz_model extends CI_Model {
 
     public function addSubBiz($data)
     {
-        $bdate = explode('-', $data['bdate']);
+        //$bdate = explode('-', $data['bdate']);
+        $bdate = [0, 0, 0];
+        $this->load->helper('string');
         $name = $data['name'];
         $name_arr = str_split($name, 3);
         $name_match = '';
