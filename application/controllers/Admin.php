@@ -99,11 +99,25 @@ class Admin extends CI_Controller {
                    u.mobile,
                    u.email,
                    u.return_profit,
-                   (select count(1) from ".DB_PREFIX."seller where id = u.id) as count
+                   (select count(1) from ".DB_PREFIX."supplier_location where p_seller_id = u.id) as count
             from ".DB_PREFIX."seller u
         ");
         $view_data = [];
         $view_data['seller_list'] = $query->result();
+        $this->load->helper('url');
+        $this->load->helper('form');
+        $form_url = site_url(['seller', 'add']);
+        $csrf = array(
+            'name' => $this->security->get_csrf_token_name(),
+            'hash' => $this->security->get_csrf_hash()
+        );
+        $csrf_cookie_name = $this->security->get_csrf_cookie_name();
+        $view_data['csrf'] = $csrf;
+        $view_data['csrf_cookie_name'] = $csrf_cookie_name;
+        $view_data['form_url'] = $form_url;
+        $view_data['username_validate_url'] = site_url('validator/check_seller_unique_username');
+        $view_data['email_validate_url'] = site_url('validator/check_seller_unique_email');
+        $view_data['mobile_validate_url'] = site_url('validator/check_seller_unique_mobile');
         $this->load->view('layout/admin_header');
         $this->load->view('admin/seller_index', $view_data);
         $this->load->view('layout/admin_footer');
