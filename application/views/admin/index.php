@@ -107,10 +107,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>备注</th>
                             <th>会员</th>
                             <th>金额</th>
-                            <th>平台所得佣金</th>
-                            <th>业务所得佣金</th>
-                            <th>会员所得佣金</th>
-                            <th>上级所得佣金</th>
+                            <th>平台所得积分</th>
+                            <th>业务所得积分</th>
+                            <th>会员所得积分</th>
+                            <th>上级所得积分</th>
                             <th>消费店舖</th>
                         </tr>
                         </thead>
@@ -122,10 +122,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?=$l->remark?></td>
                                 <td><?=$l->consumer_name?></td>
                                 <td>￥<?=$l->volume?>元</td>
-                                <td>￥<?=$l->ratio>0?bcmul(bcmul($l->volume, bcsub($l->ratio, 2.5, 1), 2), 0.01, 2):0?>元</td>
-                                <td>￥<?=$l->ratio>0?bcmul(bcmul($l->volume, 0.5, 2), 0.01, 2):0?>元</td>
-                                <td>￥<?=$l->ratio>0?bcmul(bcmul($l->volume, 1, 2), 0.01, 2):0?>元</td>
-                                <td>￥<?=$l->ratio>0?bcmul(bcmul($l->volume, 1, 2), 0.01, 2):0?>元</td>
+                                <td><?=$l->type=='0'?bcmul($l->volume, bcsub($l->ratio, 2.5, 1), 2):0?>分</td>
+                                <td><?=$l->type=='0'?bcmul($l->volume, 0.5, 2):0?>分</td>
+                                <td><?=$l->type=='0'?bcmul($l->volume, 1, 2):0?>分</td>
+                                <td><?=$l->type=='0'?bcmul($l->volume, 1, 2):0?>分</td>
                                 <td><?=$l->name?></td>
                             </tr>
                         <?}?>
