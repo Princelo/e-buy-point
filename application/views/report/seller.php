@@ -39,13 +39,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
-                    <form role="form" method="post" action="" data-toggle="validator" id="report_form">
+                    <form role="form" method="post" action="<?=site_url('report/seller_self_report_simple')?>" data-toggle="validator" id="report_form">
                         <div class="form-group">
                             <label>报表类型</label>
                             <select class="form-control" name="type" id="type">
-                                <option value="income_report">业务收入报表</option>
+                                <!--<option value="income_report">业务收入报表</option>
                                 <option value="biz_report">邀请商家收入报表</option>
-                                <option value="invite_report">邀请量走势</option>
+                                <option value="invite_report">邀请量走势</option>-->
+                                <option value="income_report">业务收入(相关消费)纪录</option>
+                                <option value="settle_report">结算纪录</option>
                             </select>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             <span class="help-block with-errors"></span>
@@ -118,7 +120,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <span class="help-block with-errors"></span>
                         </div>
                         <input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
-                        <button type="button" class="btn btn-primary">提交</button>
+                        <button type="submit" class="btn btn-primary">提交</button>
                         <button type="reset" class="btn btn-danger">重新输入</button>
                     </form>
                     <script>

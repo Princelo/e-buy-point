@@ -19,7 +19,7 @@ class Report_model extends CI_Model {
                 ,s.name, u.user_name, l.score, l.type
             from ".DB_PREFIX."biz_consume_log l,".DB_PREFIX."user u,".DB_PREFIX."supplier_location s
             where u.p_biz_id = ?
-            and s.id = u.p_biz_id
+            and s.id = l.biz_id
             and l.consumer_id = u.id
             order by l.id desc limit ?
         ";
@@ -41,10 +41,35 @@ class Report_model extends CI_Model {
                 ,s.name, u.user_name, l.score, l.type
             from ".DB_PREFIX."biz_consume_log l,".DB_PREFIX."user u,".DB_PREFIX."supplier_location s
             where 1 = 1
-            and s.id = u.p_biz_id
+            and s.id = l.biz_id
             and l.consumer_id = u.id order by l.id desc limit ?
         ";
         $binds = [
+            $limit
+        ];
+        $query = $this->db->query($sql, $binds);
+        return $query->result();
+    }
+
+    public function getLastActionForSeller($limit = 10)
+    {
+        $sql = "";
+        $sql .= "
+            select
+                l.create_time time,
+                l.title, l.remark, l.consumer_name, l.consumer_id, l.volume, l.ratio
+                ,s.name, u.user_name, l.score, l.type,
+                (select name from ".DB_PREFIX."supplier_location where id = u.p_biz_id) as invited
+            from ".DB_PREFIX."biz_consume_log l,".DB_PREFIX."user u,".DB_PREFIX."supplier_location s
+            where 1 = 1
+            and s.id = l.biz_id
+            and u.id = l.consumer_id
+            and l.type = 0
+            and s.p_seller_id = ?
+            and l.consumer_id = u.id order by l.id desc limit ?
+        ";
+        $binds = [
+            $this->session->userdata('seller_id'),
             $limit
         ];
         $query = $this->db->query($sql, $binds);

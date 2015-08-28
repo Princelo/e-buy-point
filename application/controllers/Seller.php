@@ -22,9 +22,9 @@ class Seller extends CI_Controller {
         $view_data['csrf'] = $csrf;
         $view_data['csrf_cookie_name'] = $csrf_cookie_name;
         $this->load->model('Report_model', 'Report_model');
-        $view_data['action_logs'] = $this->Report_model->getLastActionByMember(10);
+        $view_data['action_logs'] = $this->Report_model->getLastActionForSeller(10);
         $this->load->view('layout/seller_header');
-        $this->load->view('admin/index', $view_data);
+        $this->load->view('seller/index', $view_data);
         $this->load->view('layout/seller_footer');
     }
 
