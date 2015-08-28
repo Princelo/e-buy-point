@@ -84,11 +84,15 @@ class Auth extends CI_Controller {
     // log the user out
     function logout()
     {
+        if(intval($this->session->userdata('seller_id')) > 0)
+            $redirect = 'auth/seller_login';
+        else
+            $redirect = 'auth/login';
         $this->session->unset_userdata('is_login');
         $this->session->unset_userdata('biz_id');
         $this->session->unset_userdata('seller_id');
         $this->session->unset_userdata('is_admin');
-        redirect('auth/login', 'refresh');
+        redirect($redirect, 'refresh');
     }
 
     // log the user out
