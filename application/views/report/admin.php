@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">商家报表查询</h1>
+            <h1 class="page-header">报表查询</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="col-lg-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-edit fa-fw"></i> 商家报表查询
+                    <i class="fa fa-edit fa-fw"></i> 报表查询
                     <div class="pull-right" style="display: none;">
                         <div class="btn-group">
                             <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -40,42 +40,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
-                    <form role="form" method="post" action="<?=site_url('report/biz_self_report_simple')?>" data-toggle="validator" id="report_form" target="_blank">
+                    <form role="form" method="post" action="<?=site_url('report/report_simple')?>" data-toggle="validator" id="report_form" target="_blank">
                         <div class="form-group">
                             <label>报表类型</label>
                             <select class="form-control" name="type" id="type">
-                                <option value="income_report">会员消费(本店收入)报表</option>
-                                <option value="consumption_report">本店消费报表</option>
+                                <option value="consumption_report">会员消费报表</option>
                             </select>
-                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                            <span class="help-block with-errors"></span>
-                            <span><?=form_error('type')?></span>
-                        </div>
-                        <script>
-                            $("#type").change(function(){
-                                if($(this).val() == 'member_report')
-                                    $('#member_filter').show();
-                                else
-                                    $('#member_filter').hide();
-                                if($(this).val() == 'member_report' && 0 == <?=count($member_list)?>)
-                                    $('#submit').attr('disabled', 'disabled');
-                                else
-                                    $('#submit').removeAttr('disabled');
-
-                            });
-                        </script>
-                        <div class="form-group" style="display: none;" id="member_filter">
-                            <label>选择会员</label>
-                            <select class="form-control" name="member" id="member" <? if(count($member_list) == 0){echo "style=\"display:none;\"";} ?>>
-                                <? foreach($member_list as $v) {?>
-                                    <option value="<?=$v->id?>"><?=$v->user_name?></option>
-                                <? } ?>
-                            </select>
-                            <? if(count($member_list) == 0){?>
-                                <div class="alert alert-warning">
-                                    目前您没有邀请会员
-                                </div>
-                            <? } ?>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             <span class="help-block with-errors"></span>
                             <span><?=form_error('type')?></span>
@@ -124,13 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         <input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
                         <button type="submit" class="btn btn-primary" id="submit" class="">提交</button>
-                        <button type="reset" class="btn btn-danger" onclick="reset_event();">重新输入</button>
-                        <script>
-                            var reset_event = function() {
-                                $('#submit').removeAttr('disabled');
-                                $('#member_filter').hide();
-                            }
-                        </script>
+                        <button type="reset" class="btn btn-danger">重新输入</button>
                     </form>
                     <script>
                         $('#report_form').validator({

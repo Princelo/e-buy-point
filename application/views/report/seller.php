@@ -78,7 +78,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="form-group">
                             <label>起始年月</label>
                             <div class="form-group input-group">
-                                <select class="form-control">
+                                <select class="form-control" name="start_year">
                                     <? for($i = 2015; $i <= intval(date('Y')); $i ++) { ?>
                                         <option value="<?=$i?>"><?=$i?></option>
                                     <? } ?>
@@ -86,7 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <span class="input-group-addon">年</span>
                             </div>
                             <div class="form-group input-group">
-                                <select class="form-control">
+                                <select class="form-control" name="start_month">
                                     <? for($i = 1; $i <= 12; $i ++) { ?>
                                         <option value="<?=$i?>"><?=$i?></option>
                                     <? } ?>
@@ -99,7 +99,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="form-group">
                             <label>终止年月</label>
                             <div class="form-group input-group">
-                                <select class="form-control">
+                                <select class="form-control" name="end_year">
                                     <? for($i = 2015; $i <= intval(date('Y')); $i ++) { ?>
                                         <option value="<?=$i?>"><?=$i?></option>
                                     <? } ?>
@@ -107,7 +107,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <span class="input-group-addon">年</span>
                             </div>
                             <div class="form-group input-group">
-                                <select class="form-control">
+                                <select class="form-control" name="end_month">
                                     <? for($i = 1; $i <= 12; $i ++) { ?>
                                         <option value="<?=$i?>"><?=$i?></option>
                                     <? } ?>

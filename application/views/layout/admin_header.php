@@ -156,9 +156,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a href="<?=site_url('admin/store_index')?>"><i class="fa fa-bar-chart-o fa-fw"></i> 报表统计<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="<?=site_url('report/admin')?>">本月消费纪录</a>
+                                <a href="<?=site_url('report/admin_report/consumption')?>">本月消费纪录</a>
                             </li>
-                            <li>
+                            <!--<li>
                                 <a href="<?=site_url('report/admin')?>">本月门店新增走势</a>
                             </li>
                             <li>
@@ -166,7 +166,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </li>
                             <li>
                                 <a href="<?=site_url('report/admin')?>">本月M平台收入走势</a>
-                            </li>
+                            </li>-->
                             <li>
                                 <a href="<?=site_url('report/admin')?>">详细报表</a>
                             </li>
@@ -178,7 +178,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <li>
                         <a href="<?=site_url('admin/member_index')?>"><i class="fa fa-table fa-fw"></i> 会员管理</a>
                     </li>
-                    <li>
+                    <li style="display: none;">
                         <a href="<?=site_url('consumption/index')?>"><i class="fa fa-edit fa-fw"></i> 结算<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>

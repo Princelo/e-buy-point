@@ -88,4 +88,63 @@ class Admin extends CI_Controller {
         $this->load->view('admin/member_index', $view_data);
         $this->load->view('layout/admin_footer');
     }
+
+    public function settle_simple()
+    {
+        $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
+        $this->load->database();
+        $view_data['info'] = $this->db->query("
+            select
+                s.id,
+                s.return_profit,
+                s.name
+            from
+                ".DB_PREFIX."supplier_location s
+            where s.id = ?
+            ", [$id])->result()[0];
+        $this->load->view('layout/simple_header');
+        $this->load->view('admin/settle_simple', $view_data);
+        $this->load->view('layout/simple_footer');
+    }
+
+    public function settle_biz()
+    {
+        $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
+        $this->load->database();
+        $this->db->trans_start();
+        $this->db->query("
+            insert into ".DB_PREFIX."settle_biz_log (biz_id, volume)
+            select id, return_profit from ".DB_PREFIX."supplier_location
+            where id = ? and return_profit <> 0
+        ", [$id]);
+        $this->db->query("update ".DB_PREFIX."supplier_location set return_profit = 0 where id = ?
+            and return_profit <> 0",[$id]);
+        $this->db->trans_complete();
+        $result = $this->db->trans_status();
+        if($result === true){
+            $this->load->view('layout/simple_header');
+            showSuccess("结算成功！");
+            $this->load->view('layout/simple_footer');
+        } else {
+            $this->load->view('layout/simple_header');
+            showError("结算失败！");
+            $this->load->view('layout/simple_footer');
+        }
+
+    }
+
+    public function settle_biz_log_simple()
+    {
+        $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
+        $this->load->database();
+        $view_data['list'] = $this->db->query("
+            select sl.id, sl.biz_id, sl.volume, l.name, sl.create_time
+            from ".DB_PREFIX."settle_biz_log sl, ".DB_PREFIX."supplier_location l
+            where sl.biz_id = l.id
+            and sl.biz_id  = ?
+        ", [$id])->result();
+        $this->load->view('layout/simple_header');
+        $this->load->view('admin/settle_biz_log_simple', $view_data);
+        $this->load->view('layout/simple_footer');
+    }
 }

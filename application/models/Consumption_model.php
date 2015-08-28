@@ -111,7 +111,7 @@ class Consumption_model extends CI_Model {
             select
                 l.create_time time,
                 l.title, l.remark, l.consumer_name, l.consumer_id, l.volume, l.ratio
-                ,s.name, u.user_name, l.score
+                ,s.name, u.user_name, l.score, l.type, (select name from ".DB_PREFIX."supplier_location where id = u.p_biz_id) as pname
             from ".DB_PREFIX."biz_consume_log l,".DB_PREFIX."user u,".DB_PREFIX."supplier_location s
             where 1 = 1
             and l.biz_id = s.id
@@ -130,7 +130,7 @@ class Consumption_model extends CI_Model {
             select
                 l.create_time time,
                 l.title, l.remark, l.consumer_name, l.consumer_id, l.volume, l.ratio
-                ,s.name, u.user_name, l.score
+                ,s.name, u.user_name, l.score, l.type, (select name from ".DB_PREFIX."supplier_location where id = u.p_biz_id) as pname
             from ".DB_PREFIX."biz_consume_log l,".DB_PREFIX."user u,".DB_PREFIX."supplier_location s
             where 1 = 1
             and s.id = l.biz_id

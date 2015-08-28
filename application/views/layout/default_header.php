@@ -156,7 +156,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 报表统计<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="<?=site_url('report/sub_member_action')?>">本月下级会员消费纪录</a>
+                                <a href="<?=site_url('report/sub_member_action')?>">本月会员跨界消费纪录</a>
                             </li>
                             <li>
                                 <a href="<?=site_url('report/local_consume_log')?>">本月本店消费纪录</a>
@@ -168,13 +168,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-table fa-fw"></i> 我的下级会员<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-table fa-fw"></i> 我的会员<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="<?=site_url('member/index')?>">注册下级会员</a>
+                                <a href="<?=site_url('member/index')?>">注册会员</a>
                             </li>
                             <li>
-                                <a href="<?=site_url('member/sub_member_list')?>">下级会员列表</a>
+                                <a href="<?=site_url('member/sub_member_list')?>">会员列表</a>
                             </li>
                         </ul>
                     </li>
