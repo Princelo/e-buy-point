@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         <div class="form-group">
                             <label>固定电话</label>
-                            <input class="form-control" name="tel" data-error="" maxlength="20" value="<?=$data->address?>">
+                            <input class="form-control" name="tel" data-error="" maxlength="20" value="<?=$data->tel?>">
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             <span class="help-block with-errors"></span>
                             <span><?=form_error('tel')?></span>
