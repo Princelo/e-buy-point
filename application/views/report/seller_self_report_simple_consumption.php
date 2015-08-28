@@ -1,9 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
+<script>
+    if("<?=$csrf['hash']?>" != getCookie('<?=$csrf_cookie_name?>'))
+        location.reload();
+</script>
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">会员消费纪录</h1>
+        <h1 class="page-header">本店消费录入纪录</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -11,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-edit fa-fw"></i> 会员消费纪录
+                <i class="fa fa-edit fa-fw"></i> 本店消费录入纪录
                 <div class="pull-right" style="display: none;">
                     <div class="btn-group">
                         <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -43,29 +47,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <thead>
                     <tr>
                         <th>消费录入日期</th>
+                        <th>业务积分</th>
                         <th>消费事件</th>
                         <th>备注</th>
                         <th>会员</th>
                         <th>消费金额</th>
                         <th>会员积分</th>
-                        <th>消费店舖</th>
-                        <th>邀请店舖积分</th>
-                        <th>业务积分</th>
+                        <th>邀请门店积分</th>
                     </tr>
                     </thead>
                     <tbody>
                     <? foreach ($list as $l) { ?>
                         <tr>
                             <td><?=$l->time?></td>
+                            <td><?=$l->type=='0'?bcmul($l->volume, 0.5, 2):0?>分</td>
                             <td><?=$l->title?></td>
                             <td><?=$l->remark?></td>
                             <td><?=$l->consumer_name?></td>
                             <td>￥<?=$l->volume?>元</td>
-                            <td><?=intval($l->type)>0?"-".$l->score:bcmul($l->volume, 1)?></td>
-                            <td><?=$l->name?></td>
-                            <!--<td>￥<?=intval($l->type) == '0'?bcdiv($l->volume, 100, 2):"0";?>元</td>-->
-                            <td><?=bcmul($l->volume, 1, 0)?>分</td>
-                            <td><?=bcmul($l->volume, 0.5, 0)?>分</td>
+                            <td><?=$l->type=='0'?bcmul($l->volume, 1, 2):0?>分</td>
+                            <td><?=$l->type=='0'?bcmul($l->volume, 1, 2):0?>分</td>
                         </tr>
                     <?}?>
                     </tbody>

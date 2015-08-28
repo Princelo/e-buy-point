@@ -345,7 +345,7 @@ class Report extends CI_Controller {
                     ." and unix_timestamp(l.create_time) between ".$start_time." and ".$end_time;
                 $this->load->Model('Consumption_model', 'Consumption_model');
                 $view_data['list'] = $this->Consumption_model->getConsumptions($where);
-                $this->load->view('report/biz_self_report_simple_consumption', $view_data);
+                $this->load->view('report/seller_self_report_simple_consumption', $view_data);
                 break;
             case 'settle_report':
                 $where = " and unix_timestamp(l.create_time) between ".$start_time." and ".$end_time
