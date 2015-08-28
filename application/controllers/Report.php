@@ -271,5 +271,15 @@ class Report extends CI_Controller {
         $this->load->view('layout/admin_footer');
     }
 
+    public function annual_settle_biz()
+    {
+        check_access_right('user', $this->session);
+        $this->load->view('layout/default_header');
+        $this->load->Model('Settle_model', 'Settle_model');
+        $view_data['list'] = $this->Settle_model->getSettleLogs('');
+        $this->load->view('report/annual_settle_biz', $view_data);
+        $this->load->view('layout/default_footer');
+    }
+
 
 }

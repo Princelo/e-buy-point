@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>会员所得积分</th>
                             <th>消费店舖</th>
                             <th>邀请商家</th>
-                            <th>商家佣金</th>
+                            <th>商家积分</th>
                         </tr>
                         </thead>
                         <tbody>

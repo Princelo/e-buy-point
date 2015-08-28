@@ -110,7 +110,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <i class="fa fa-support fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="">本店消费纪录</div>
+                                <div class="">本店消费录入纪录</div>
                                 <div></div>
                             </div>
                         </div>
@@ -182,7 +182,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <th>备注</th>
                                 <th>会员</th>
                                 <th>金额</th>
-                                <th>本店所得佣金</th>
+                                <th>本店所得积分</th>
                             </tr>
                             </thead>
                             <tbody>

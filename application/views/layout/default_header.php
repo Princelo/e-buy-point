@@ -167,6 +167,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <a href="<?=site_url('report/local_consume_log')?>">本月本店消费纪录</a>
                             </li>
                             <li>
+                                <a href="<?=site_url('report/annual_settle_biz')?>">结算纪录</a>
+                            </li>
+                            <li>
                                 <a href="<?=site_url('report/biz')?>">详细报表</a>
                             </li>
                         </ul>

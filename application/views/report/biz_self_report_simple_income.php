@@ -48,8 +48,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <th>会员</th>
                         <th>金额</th>
                         <th>会员所得积分</th>
-                        <th>本店佣金</th>
-                        <th>业务佣金</th>
+                        <th>本店积分</th>
+                        <th>业务积分</th>
                     </tr>
                     </thead>
                     <tbody>
