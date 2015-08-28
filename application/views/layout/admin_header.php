@@ -181,6 +181,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <li>
                         <a href="<?=site_url('admin/member_index')?>"><i class="fa fa-table fa-fw"></i> 会员管理</a>
                     </li>
+                    <li>
+                        <a href="<?=site_url('admin/seller_index')?>"><i class="fa fa-table fa-fw"></i> 业务管理</a>
+                    </li>
                     <li style="display: none;">
                         <a href="<?=site_url('consumption/index')?>"><i class="fa fa-edit fa-fw"></i> 结算<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">

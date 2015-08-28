@@ -36,8 +36,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="panel-body">
                 <form role="form" method="post" action="#" data-toggle="validator" id="member_form">
                     <div class="form-group">
-                        <label>商家</label>
-                        <input class="form-control" value="<?=$info->name?>" type="text" required disabled>
+                        <label>业务</label>
+                        <input class="form-control" value="<?=$info->user_name?>" type="text" required disabled>
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         <span class="help-block with-errors"></span>
                     </div>
@@ -47,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         <span class="help-block with-errors"></span>
                     </div>
-                    <a href="<?=site_url('admin/settle_biz')?>?id=<?=$info->id?>" type="submit" class="btn btn-primary">确认结算</a>
+                    <a href="<?=site_url('admin/settle_seller')?>?id=<?=$info->id?>" type="submit" class="btn btn-primary">确认结算</a>
             </div>
             <!-- /.panel-body -->
         </div>
