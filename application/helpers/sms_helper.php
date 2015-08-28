@@ -22,7 +22,7 @@ function sms_send($template = 1, $mobile, $content_arr)
         $content = str_replace('{code}', $content_arr['code'], $content);
     if (isset($content_arr['time']))
         $content = str_replace('{time}', $content_arr['time'], $content);
-    $api_url = "http://api.smsbao.com/sms?u=chezone&p=PASSWORD&m=".$mobile."&c=".$content;
+    $api_url = "http://api.smsbao.com/sms?u=chezone&p=24bf814339ddc0e2066186d8856b5304&m=".$mobile."&c=".$content;
     $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_URL,$api_url);
