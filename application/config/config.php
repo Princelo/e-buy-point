@@ -17,6 +17,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
+if($_SERVER['HTTP_HOST']=='yw.m-ebuy.com')
+$config['base_url'] = 'http://yw.m-ebuy.com/';
+else if($_SERVER['HTTP_HOST']=='sj.m-ebuy.com')
+$config['base_url'] = 'http://sj.m-ebuy.com/';
+else
 $config['base_url'] = 'http://m.m-ebuy.com/';
 
 /*
