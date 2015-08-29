@@ -22,8 +22,6 @@ class Auth extends CI_Controller {
     // log the user in
     function login()
     {
-        if($_SERVER['HTTP_HOST'] == 'yw.m-ebuy.com')
-            redirect('auth/seller_login');
         $this->load->library('form_validation');
         $this->form_validation->set_rules('user_name', '登录名', 'required');
         $this->form_validation->set_rules('user_pwd', '密码', 'required');
