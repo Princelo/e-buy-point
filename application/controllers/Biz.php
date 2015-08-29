@@ -41,7 +41,7 @@ class Biz extends CI_Controller {
         $config = array(
             array(
                 'field' => 'name',
-                'label' => '门店名称',
+                'label' => '商家名称',
                 'rules' => 'required|callback__check_name|trim',
                 'errors' => [
                     'required' => '%s 不能为空',
@@ -123,9 +123,9 @@ class Biz extends CI_Controller {
             $this->load->model('Biz_model', 'Biz_model');
             $result = $this->Biz_model->addSubBiz($this->input->post());
             if($result === true)
-                $this->session->set_flashdata('flash_data', [ 'message' => '添加门店成功', 'type' => 'success' ]);
+                $this->session->set_flashdata('flash_data', [ 'message' => '添加商家成功', 'type' => 'success' ]);
             else
-                $this->session->set_flashdata('flash_data', [ 'message' => '添加门店出现问题，请资讯平台管理员', 'type' => 'error' ]);
+                $this->session->set_flashdata('flash_data', [ 'message' => '添加商家出现问题，请资讯平台管理员', 'type' => 'error' ]);
             redirect('biz/index');
         }
     }

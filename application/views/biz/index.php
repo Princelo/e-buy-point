@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">新增门店</h1>
+            <h1 class="page-header">新增商家</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-edit fa-fw"></i> 新增门店
+                    <i class="fa fa-edit fa-fw"></i> 新增商家
                     <div class="pull-right" style="display: none;">
                         <div class="btn-group">
                             <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -41,15 +41,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="panel-body">
                     <form role="form" method="post" action="<?=$form_url?>" data-toggle="validator" id="biz_form">
                         <div class="form-group">
-                            <label>门店名称</label>
-                            <input class="form-control" name="name"  data-remote="<?=$bizname_validate_url?>" data-error="门店名称不正确或已存在" type="text" required>
+                            <label>商家名称</label>
+                            <input class="form-control" name="name"  data-remote="<?=$bizname_validate_url?>" data-error="商家名称不正确或已存在" type="text" required>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             <span class="help-block with-errors"></span>
                             <span><?=form_error('name')?></span>
                             <p class="help-block">例：金城广场苹果销售</p>
                         </div>
                         <div class="form-group">
-                            <label>门店固话</label>
+                            <label>商家固话</label>
                             <input class="form-control" name="tel"  data-error="" type="text" data-maxlength="20" maxlength="20" required>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             <span class="help-block with-errors"></span>
