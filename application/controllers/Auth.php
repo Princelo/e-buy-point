@@ -22,6 +22,8 @@ class Auth extends CI_Controller {
     // log the user in
     function login()
     {
+        if($_SERVER['HTTP_HOST'] == 'yw.m-ebuy.com')
+            redirect('auth/seller_login');
         $this->load->library('form_validation');
         $this->form_validation->set_rules('user_name', '登录名', 'required');
         $this->form_validation->set_rules('user_pwd', '密码', 'required');
@@ -59,6 +61,8 @@ class Auth extends CI_Controller {
 
     function seller_login()
     {
+        if($_SERVER['HTTP_HOST'] != 'yw.m-ebuy.com')
+            redirect('auth/login');
         $this->load->library('form_validation');
         $this->form_validation->set_rules('user_name', '登录名', 'required');
         $this->form_validation->set_rules('user_pwd', '密码', 'required');
@@ -84,6 +88,8 @@ class Auth extends CI_Controller {
     // log the user out
     function logout()
     {
+        if($_SERVER['HTTP_HOST'] == 'yw.m-ebuy.com')
+            redirect('auth/seller_logout');
         if(intval($this->session->userdata('seller_id')) > 0)
             $redirect = 'auth/seller_login';
         else
@@ -98,6 +104,8 @@ class Auth extends CI_Controller {
     // log the user out
     function seller_logout()
     {
+        if($_SERVER['HTTP_HOST'] != 'yw.m-ebuy.com')
+            redirect('auth/seller_logout');
         $this->session->unset_userdata('is_login');
         $this->session->unset_userdata('biz_id');
         $this->session->unset_userdata('seller_id');
