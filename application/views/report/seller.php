@@ -70,7 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </select>
                             <? if(count($biz_list) == 0){?>
                                 <div class="alert alert-warning">
-                                    目前您没有邀请任何商家
+                                    目前您没有任何商家
                                 </div>
                             <? } ?>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>

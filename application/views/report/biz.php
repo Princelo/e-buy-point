@@ -74,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </select>
                             <? if(count($member_list) == 0){?>
                                 <div class="alert alert-warning">
-                                    目前您没有邀请会员
+                                    目前您没有会员
                                 </div>
                             <? } ?>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>

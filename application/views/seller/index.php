@@ -66,7 +66,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <i class="fa fa-tasks fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="">我邀请的商家</div>
+                            <div class="">我的商家</div>
                             <div></div>
                         </div>
                     </div>
