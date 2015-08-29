@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- /.col-lg-12 -->
     </div>
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <i class="fa fa-edit fa-fw"></i> 结算纪录
@@ -43,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <table class="table table-striped table-bordered table-hover dataTable no-footer" <?if(count($list)==0){?>style="display:none;"<?}?>>
                         <thead>
                         <tr>
-                            <th>业务</th>
+                            <th>业务员</th>
                             <th>结算积分</th>
                             <th>结算日期</th>
                         </tr>

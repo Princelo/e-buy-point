@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- /.col-lg-12 -->
     </div>
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <i class="fa fa-edit fa-fw"></i> 我邀请的商家

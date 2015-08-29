@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- /.col-lg-12 -->
     </div>
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <i class="fa fa-edit fa-fw"></i> 本月本店消费录入纪录
@@ -48,9 +48,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <thead>
                         <tr>
                             <th>消费录入日期</th>
-                            <th>消费事件</th>
+                            <th>消费项目</th>
                             <th>备注</th>
-                            <th>会员</th>
+                            <th>会员名称</th>
                             <th>消费金额</th>
                             <th>消费积分</th>
                         </tr>

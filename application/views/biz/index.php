@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- /.col-lg-12 -->
     </div>
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <i class="fa fa-edit fa-fw"></i> 新增门店
@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         <div class="form-group">
                             <label>门店固话</label>
-                            <input class="form-control" name="tel"  data-error="" type="text" data-maxlength="20" maxlength="20">
+                            <input class="form-control" name="tel"  data-error="" type="text" data-maxlength="20" maxlength="20" required>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             <span class="help-block with-errors"></span>
                             <span><?=form_error('tel')?></span>
@@ -58,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         <div class="form-group">
                             <label>门店地址</label>
-                            <input class="form-control" name="address"  data-error="" type="text" data-maxlength="100" maxlength="100">
+                            <input class="form-control" name="address"  data-error="" type="text" data-maxlength="100" maxlength="100" required>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             <span class="help-block with-errors"></span>
                             <span><?=form_error('address')?></span>
@@ -66,7 +66,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         <div class="form-group">
                             <label>联系人</label>
-                            <input class="form-control" name="contact"  data-error="" type="text" maxlength="10" data-maxlength="10">
+                            <input class="form-control" name="contact"  data-error="" type="text" maxlength="10" data-maxlength="10" required>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             <span class="help-block with-errors"></span>
                             <span><?=form_error('contact')?></span>

@@ -33,13 +33,13 @@ class Biz_model extends CI_Model {
             (name, address, tel, contact, supplier_id, name_match, name_match_row, p_seller_id,
             route, xpoint, ypoint, open_time, brief, is_main, api_address, city_id, deal_cate_match, deal_cate_match_row,
             locate_match, locate_match_row, deal_cate_id, preview, is_verify, tags, tags_match, tags_match_row, avg_point,
-            good_dp_count, bad_cp_count, common_dp_count, total_point, dp_count, images_count, ref_avg_price, good_rate,
+            good_dp_count, bad_dp_count, common_dp_count, total_point, dp_count, image_count, ref_avg_price, good_rate,
             common_rate, sms_content, index_img, tuan_count, event_count, youhui_count, daijin_count, seo_title,
             seo_keyword, seo_description, is_effect, biz_license, biz_other_license, new_dp_count, new_dp_count_time,
             shop_count, mobile_brief, sort, dp_group_point, tuan_youhui_cache, is_recommend)
             values
             (?, ?, ?, ?, last_insert_id(), ?, ?, ?,
-            '', '', '', '', '', '', 1, '', 1, '', '',
+            '', '', '', '', '', 1, '', 1, '', '',
             '', '', 0, '', 0, '', '', '', '0.0000',
             0, 0, 0, 0, 0, 0, '0.0000', '0.0000', '0.0000', '', '', 0, 0, 0, 0, '',
             '', '', 0, '', '', 0, 0, 0, '', 0, '', '', 0);
@@ -52,7 +52,7 @@ class Biz_model extends CI_Model {
             insert into ".DB_PREFIX."supplier_account ( account_name, account_password, supplier_id, is_effect,is_delete
             ,description, login_ip, login_time, update_time, allow_delivery, mobile, email)
             values(?, ?, (select supplier_id from ".DB_PREFIX."supplier_location where id = last_insert_id()), 1, 0,'',
-            '', '', '', 1, ?, ?);
+            '', 0, 0, 1, ?, ?);
             ";
         $sql_insert_account_binds = [
             $data['user_name'], md5($data['user_pwd']), $data['mobile'], $data['email']
@@ -62,17 +62,19 @@ class Biz_model extends CI_Model {
             values (last_insert_id(),
                     (select id from ".DB_PREFIX."supplier_location where name = ? order by id desc limit 1)
                     )";
-        $this->db->trans_start();
+        $this->db->trans_begin();
         $this->db->query($sql_insert_supplier, $sql_insert_supplier_binds);
         $this->db->query($sql_insert_location, $sql_insert_location_binds);
         $this->db->query($sql_insert_account, $sql_insert_account_binds);
         $this->db->query($sql_insert_link, [$data['name']]);
-        $this->db->trans_complete();
         $result = $this->db->trans_status();
-        if($result === true)
+        if($result === true) {
+            $this->db->trans_commit();
             return true;
-        else
+        } else {
+            $this->db->trans_rollback();
             return false;
+        }
     }
 
     public function getBizs($where = '')

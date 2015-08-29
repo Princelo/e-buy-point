@@ -163,7 +163,7 @@ class Admin extends CI_Controller {
     {
         $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
         $this->load->database();
-        $this->db->trans_start();
+        $this->db->trans_begin();
         $this->db->query("
             insert into ".DB_PREFIX."settle_biz_log (biz_id, volume)
             select id, return_profit from ".DB_PREFIX."supplier_location
@@ -171,13 +171,14 @@ class Admin extends CI_Controller {
         ", [$id]);
         $this->db->query("update ".DB_PREFIX."supplier_location set return_profit = 0 where id = ?
             and return_profit <> 0",[$id]);
-        $this->db->trans_complete();
         $result = $this->db->trans_status();
         if($result === true){
+            $this->db->trans_commit();
             $this->load->view('layout/simple_header');
             showSuccess("结算成功！");
             $this->load->view('layout/simple_footer');
         } else {
+            $this->db->trans_rollback();
             $this->load->view('layout/simple_header');
             showError("结算失败！");
             $this->load->view('layout/simple_footer');
@@ -189,7 +190,7 @@ class Admin extends CI_Controller {
     {
         $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
         $this->load->database();
-        $this->db->trans_start();
+        $this->db->trans_begin();
         $this->db->query("
             insert into ".DB_PREFIX."settle_seller_log (seller_id, volume)
             select id, return_profit from ".DB_PREFIX."seller
@@ -197,13 +198,14 @@ class Admin extends CI_Controller {
         ", [$id]);
         $this->db->query("update ".DB_PREFIX."seller set return_profit = 0 where id = ?
             and return_profit <> 0",[$id]);
-        $this->db->trans_complete();
         $result = $this->db->trans_status();
         if($result === true){
+            $this->db->trans_commit();
             $this->load->view('layout/simple_header');
             showSuccess("结算成功！");
             $this->load->view('layout/simple_footer');
         } else {
+            $this->db->trans_rollback();
             $this->load->view('layout/simple_header');
             showError("结算失败！");
             $this->load->view('layout/simple_footer');

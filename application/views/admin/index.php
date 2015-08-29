@@ -82,7 +82,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
     <div class="row" style="display: block;">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <i class="fa fa-edit fa-fw"></i> 最近消费纪录
@@ -103,14 +103,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <thead>
                         <tr>
                             <th>消费录入日期</th>
-                            <th>消费事件</th>
+                            <th>消费项目</th>
                             <th>备注</th>
-                            <th>会员</th>
+                            <th>会员名称</th>
                             <th>消费金额</th>
                             <th>平台积分</th>
-                            <th>业务积分</th>
+                            <th>业务员积分</th>
                             <th>会员积分</th>
-                            <th>邀请商家积分</th>
+                            <th>所属商家积分</th>
                             <th>消费店舖</th>
                         </tr>
                         </thead>
@@ -138,7 +138,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- /.panel -->
         </div>
         <div class="row" style="display: none;">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <i class="fa fa-edit fa-fw"></i> 消费录入 - 快捷功能
