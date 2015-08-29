@@ -65,7 +65,7 @@ class Report_model extends CI_Model {
             and s.id = l.biz_id
             and u.id = l.consumer_id
             and l.type = 0
-            and s.p_seller_id = ?
+            and (select p_seller_id from ".DB_PREFIX."supplier_location where id = u.p_biz_id) = ?
             and l.consumer_id = u.id order by l.id desc limit ?
         ";
         $binds = [

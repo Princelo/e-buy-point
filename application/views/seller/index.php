@@ -80,6 +80,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </a>
             </div>
         </div>
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    我的信息
+                    <div class="pull-right" style="display: none;">
+                        <div class="btn-group">
+                            <a href="<?=site_url('setting/index')?>">修改信息</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <h2>
+                        当前积分：<label style="color: #aa3e05;"><?=$auth_data->return_profit?></label>
+                    </h2>
+                    <h4>
+                        <?=$auth_data->name?>
+                    </h4>
+                    <h4>帐号信息</h4>
+                    <address>
+                        <?=$auth_data->email?>
+                        <br>
+                        <abbr title="Phone">电话:</abbr><?=$auth_data->mobile?>
+                    </address>
+                    <label>注册日期: <?=$auth_data->create_time?></label>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
     </div>
     <div class="row" style="display: block;">
         <div class="col-lg-12">

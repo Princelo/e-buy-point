@@ -2,6 +2,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <div id="page-wrapper">
+    <? if(!empty($this->session->flashdata('flash_data')['message'])):?>
+        <div class="row">
+        </div>
+        <div class="row" style="margin-top: 20px;">
+            <div class="alert <?=$this->session->flashdata('flash_data')['type']=='error'?"alert-danger":""?><?=$this->session->flashdata('flash_data')['type']=='success'?"alert-success":""?>">
+                <?=$this->session->flashdata('flash_data')['message'];?>
+            </div>
+        </div>
+    <? endif ?>
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">会员列表</h1>

@@ -58,6 +58,14 @@ class Biz extends CI_Controller {
                 ]
             ),
             array(
+                'field' => 'consumption_ratio',
+                'label' => '返点率',
+                'rules' => 'required|is_natural|trim|greater_than[4]|less_than[101]',
+                'errors' => [
+                    'required' => '返点率不能为空',
+                ]
+            ),
+            array(
                 'field' => 'user_name',
                 'label' => '管理员用户名',
                 'rules' => 'required|callback__check_user_name|trim',

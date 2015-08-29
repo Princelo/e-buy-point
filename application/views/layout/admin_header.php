@@ -120,6 +120,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- /.navbar-header -->
 
         <ul class="nav navbar-top-links navbar-right">
+            <a href="javascript:void(0);">您好！<?=$this->session->userdata('display_name')?></a>
             <!-- /.dropdown -->
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
