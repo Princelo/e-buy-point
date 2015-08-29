@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?=isset($title)?$title:"M平台商家管理系统"?></title>
+    <title><?=isset($title)?$title:"M平台业务员管理系统"?></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?=ASSETS_BOWER?>bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
