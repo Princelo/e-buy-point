@@ -6,6 +6,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         location.reload();
 </script>
 <div id="page-wrapper">
+    <? if(!empty($this->session->flashdata('flash_data')['message'])):?>
+    <div class="row">
+    </div>
+    <div class="row" style="margin-top: 20px;">
+        <div class="alert <?=$this->session->flashdata('flash_data')['type']=='error'?"alert-danger":""?><?=$this->session->flashdata('flash_data')['type']=='success'?"alert-success":""?>">
+            <?=$this->session->flashdata('flash_data')['message'];?>
+        </div>
+    </div>
+    <? endif ?>
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">新增商家</h1>
@@ -63,6 +72,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <span class="help-block with-errors"></span>
                             <span><?=form_error('address')?></span>
                             <p class="help-block">例：新华街建设北路与秀全路交汇处</p>
+                        </div>
+                        <div class="form-group">
+                            <label>返点率</label>
+                            <div class="input-group">
+                                <input class="form-control" name="consumption_ratio" data-error="无效返点率，取值为5%到100%，且为半角数字" type="number" min="5" max="100" required>
+                                <span class="input-group-addon">%</span>
+                            </div>
+                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                            <span class="help-block with-errors"></span>
+                            <span><?=form_error('consumption_ratio')?></span>
+                            <p class="help-block">例：10</p>
                         </div>
                         <div class="form-group">
                             <label>联系人</label>

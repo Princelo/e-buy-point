@@ -118,8 +118,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <a class="navbar-brand" href="/">欢迎来到M平台商家管理系统</a>
         </div>
         <!-- /.navbar-header -->
-
         <ul class="nav navbar-top-links navbar-right">
+            <a href="javascript:void(0);">您好！<?=$this->session->userdata('display_name')?></a>
             <!-- /.dropdown -->
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">

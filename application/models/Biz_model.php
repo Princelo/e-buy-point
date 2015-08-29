@@ -30,7 +30,7 @@ class Biz_model extends CI_Model {
         ];
         $sql_insert_location = "
             insert into ".DB_PREFIX."supplier_location
-            (name, address, tel, contact, supplier_id, name_match, name_match_row, p_seller_id,
+            (name, address, tel, contact, supplier_id, name_match, name_match_row, p_seller_id, consumption_ratio,
             route, xpoint, ypoint, open_time, brief, is_main, api_address, city_id, deal_cate_match, deal_cate_match_row,
             locate_match, locate_match_row, deal_cate_id, preview, is_verify, tags, tags_match, tags_match_row, avg_point,
             good_dp_count, bad_dp_count, common_dp_count, total_point, dp_count, image_count, ref_avg_price, good_rate,
@@ -38,7 +38,7 @@ class Biz_model extends CI_Model {
             seo_keyword, seo_description, is_effect, biz_license, biz_other_license, new_dp_count, new_dp_count_time,
             shop_count, mobile_brief, sort, dp_group_point, tuan_youhui_cache, is_recommend)
             values
-            (?, ?, ?, ?, last_insert_id(), ?, ?, ?,
+            (?, ?, ?, ?, last_insert_id(), ?, ?, ?, ?,
             '', '', '', '', '', 1, '', 1, '', '',
             '', '', 0, '', 0, '', '', '', '0.0000',
             0, 0, 0, 0, 0, 0, '0.0000', '0.0000', '0.0000', '', '', 0, 0, 0, 0, '',
@@ -46,7 +46,7 @@ class Biz_model extends CI_Model {
             ";
         $sql_insert_location_binds = [
             $name, $data['address'], $data['tel'], $data['address'], $name_match, $name,
-            $this->session->userdata('seller_id')
+            $this->session->userdata('seller_id'), $data['consumption_ratio']
         ];
         $sql_insert_account = "
             insert into ".DB_PREFIX."supplier_account ( account_name, account_password, supplier_id, is_effect,is_delete

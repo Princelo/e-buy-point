@@ -202,11 +202,12 @@ class Auth extends CI_Controller {
     function check_login($user, $password)
     {
         $sql = "
-            select id from ".DB_PREFIX."supplier_location where name = (
+            select id, name from ".DB_PREFIX."supplier_location where name = (
                 select merchant_name from ".DB_PREFIX."user where is_merchant = 1 and user_pwd = ? and user_name = ?
                 ) and name is not null limit 1";
         $sql = "
-            select l.location_id id from ".DB_PREFIX."supplier_account a,".DB_PREFIX."supplier_account_location_link l
+            select l.location_id id, (select name from ".DB_PREFIX."supplier_location where id = l.location_id) as name
+             from ".DB_PREFIX."supplier_account a,".DB_PREFIX."supplier_account_location_link l
               where a.account_password = ? and a.account_name = ? and a.id = l.account_id
               limit 1
         ";
@@ -215,6 +216,7 @@ class Auth extends CI_Controller {
         if($query->num_rows() > 0) {
             $this->session->set_userdata('is_login', 1);
             $this->session->set_userdata('biz_id', $query->result()[0]->id);
+            $this->session->set_userdata('display_name', $query->result()[0]->name);
             return true;
         } else {
             $sql = "select id from ".DB_PREFIX."admin where adm_name = ? and adm_password = ? limit 1";
@@ -222,6 +224,7 @@ class Auth extends CI_Controller {
             if($query->num_rows() > 0) {
                 $this->session->set_userdata('is_login', 1);
                 $this->session->set_userdata('is_admin', 1);
+                $this->session->set_userdata('display_name', '管理员');
                 return true;
             } else {
                 return false;
@@ -231,12 +234,13 @@ class Auth extends CI_Controller {
 
     function seller_check_login($user, $password)
     {
-        $sql = "select id from ".DB_PREFIX."seller where user_name = ? and user_pwd = ? limit 1";
+        $sql = "select id,name from ".DB_PREFIX."seller where user_name = ? and user_pwd = ? limit 1";
         $binds = [ $user, md5($password) ];
         $query = $this->db->query($sql, $binds);
         if($query->num_rows() > 0) {
             $this->session->set_userdata('is_login', 1);
             $this->session->set_userdata('seller_id', $query->result()[0]->id);
+            $this->session->set_userdata('display_name', $query->result()[0]->name);
             return true;
         } else {
             return false;

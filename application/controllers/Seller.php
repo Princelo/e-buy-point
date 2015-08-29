@@ -24,6 +24,9 @@ class Seller extends CI_Controller {
         $view_data['csrf_cookie_name'] = $csrf_cookie_name;
         $this->load->model('Report_model', 'Report_model');
         $view_data['action_logs'] = $this->Report_model->getLastActionForSeller(10);
+        $this->load->database();
+        $view_data['auth_data'] = $this->db->query("select * from ".DB_PREFIX."seller where id = ".
+            $this->session->userdata('seller_id'))->result()[0];
         $this->load->view('layout/seller_header');
         $this->load->view('seller/index', $view_data);
         $this->load->view('layout/seller_footer');

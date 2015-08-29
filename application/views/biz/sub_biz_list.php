@@ -2,6 +2,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <div id="page-wrapper">
+    <? if(!empty($this->session->flashdata('flash_data')['message'])):?>
+        <div class="row">
+        </div>
+        <div class="row" style="margin-top: 20px;">
+            <div class="alert <?=$this->session->flashdata('flash_data')['type']=='error'?"alert-danger":""?><?=$this->session->flashdata('flash_data')['type']=='success'?"alert-success":""?>">
+                <?=$this->session->flashdata('flash_data')['message'];?>
+            </div>
+        </div>
+    <? endif ?>
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">我的商家</h1>
@@ -45,6 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <tr>
                             <th>商家名称</th>
                             <th>门店地址</th>
+                            <th>返点率</th>
                             <th>商家电话</th>
                             <th>商家联系人</th>
                             <th>管理员用户名</th>
@@ -55,6 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <tr>
                                 <td><?=$l->name?></td>
                                 <td><?=$l->address?></td>
+                                <td><?=$l->ratio?>%</td>
                                 <td><?=$l->tel?></td>
                                 <td><?=$l->contact?></td>
                                 <td><?=$l->account?></td>
