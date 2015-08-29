@@ -54,5 +54,7 @@ if($_SERVER['HTTP_HOST'] == 'sj.m-ebuy.com')
     $route['default_controller'] = 'welcome';
 else if($_SERVER['HTTP_HOST'] == 'yw.m-ebuy.com')
     $route['default_controller'] = 'seller';
+else
+    $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
