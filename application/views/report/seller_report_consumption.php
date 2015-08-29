@@ -41,6 +41,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </ul>
                         </div>
                     </div>
+                    <div class="pull-right">
+                        <?php $total_score = 0;?>
+                        <?php foreach($list as $v) {?>
+                            <?$total_score += intval(bcmul($v->volume, 0.5, 0));?>
+                        <?php } ?>
+                        我收益积分汇总: <a><?=count($list)>0?$total_score:"";?>分&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    </div>
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">

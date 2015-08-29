@@ -45,6 +45,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </ul>
                         </div>
                     </div>
+                    <div class="pull-right">
+                        <?php $total_volume = 0;?>
+                        <?php foreach($list as $v) {?>
+                            <?$total_volume += $v->volume;?>
+                        <?php } ?>
+                        本店消费现金汇总: <a><?=count($list)>0?$total_volume:"0";?>元&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    </div>
+                    <div class="pull-right">
+                        <?php $total_score = 0;?>
+                        <?php foreach($list as $v) {?>
+                            <?$total_score += $v->score;?>
+                        <?php } ?>
+                        本店消费积分汇总: <a><?=count($list)>0?$total_score:"";?>分&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    </div>
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">

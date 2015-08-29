@@ -41,6 +41,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </ul>
                         </div>
                     </div>
+                    <div class="pull-right">
+                        <?php $total_volume = 0;?>
+                        <?php foreach($list as $v) {?>
+                            <?$total_volume += $v->volume;?>
+                        <?php } ?>
+                        本店收益积分汇总: <a><?=count($list)>0?$total_volume:"0";?>分</a>
+                    </div>
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
