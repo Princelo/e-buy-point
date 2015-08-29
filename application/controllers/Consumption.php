@@ -47,11 +47,11 @@ class Consumption extends CI_Controller {
             ),*/
             array(
                 'field' => 'mobile',
-                'label' => '消费者会员手机号',
+                'label' => '消费会员手机号码',
                 'rules' => 'required|callback__check_consumer_mobile',
                 'errors' => [
-                    'required' => '消费者会员手机号不能为空',
-                    'callback__check_consumer_name' => '找不到消费者会员手机号'
+                    'required' => '消费会员手机号码不能为空',
+                    'callback__check_consumer_name' => '找不到消费会员手机号吗'
                 ]
             ),
             /*array(
