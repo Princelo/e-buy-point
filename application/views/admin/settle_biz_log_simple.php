@@ -43,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <table class="table table-striped table-bordered table-hover dataTable no-footer" <?if(count($list)==0){?>style="display:none;"<?}?>>
                         <thead>
                         <tr>
-                            <th>商家</th>
+                            <th>商家名称</th>
                             <th>结算积分</th>
                             <th>结算日期</th>
                         </tr>

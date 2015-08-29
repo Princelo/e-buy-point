@@ -82,7 +82,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         <div class="form-group">
                             <label>管理员用户名</label>
-                            <input class="form-control" name="user_name" data-remote="<?=$username_validate_url?>" data-error="无效会员名或已存在该会员" required>
+                            <input class="form-control" name="user_name" data-remote="<?=$username_validate_url?>" data-error="无效帐号名或已存在该帐号" required>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             <span class="help-block with-errors"></span>
                             <span><?=form_error('user_name')?></span>

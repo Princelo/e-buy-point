@@ -36,7 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="panel-body">
                 <form role="form" method="post" action="#" data-toggle="validator" id="member_form">
                     <div class="form-group">
-                        <label>商家</label>
+                        <label>商家名称</label>
                         <input class="form-control" value="<?=$info->name?>" type="text" required disabled>
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         <span class="help-block with-errors"></span>

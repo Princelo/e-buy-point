@@ -47,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <table class="table table-striped table-bordered table-hover dataTable no-footer" <?if(count($list)==0){?>style="display:none;"<?}?>>
                         <thead>
                         <tr>
-                            <th>会员名</th>
+                            <th>会员帐号</th>
                             <th>注册时间</th>
                             <th>电子邮箱</th>
                             <th>手机号码</th>
