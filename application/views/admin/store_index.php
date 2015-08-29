@@ -43,9 +43,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <table class="table table-striped table-bordered table-hover dataTable no-footer" <?if(count($store_list)==0){?>style="display:none;"<?}?>>
                         <thead>
                         <tr>
-                            <th>商家</th>
+                            <th>商家名称</th>
                             <th>管理帐号</th>
-                            <th>邀请业务员</th>
+                            <th>所属业务员</th>
                             <th>当前积分</th>
                             <th>会员数</th>
                             <th>消费录入纪录(当月)</th>

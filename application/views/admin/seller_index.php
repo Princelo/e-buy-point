@@ -43,7 +43,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <table class="table table-striped table-bordered table-hover dataTable no-footer" <?if(count($seller_list)==0){?>style="display:none;"<?}?>>
                         <thead>
                         <tr>
-                            <th>业务员</th>
+                            <th>业务员姓名</th>
+                            <th>业务员帐号</th>
                             <th>积分</th>
                             <th>商家数</th>
                             <th>结算</th>
@@ -53,6 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <tbody>
                         <? foreach ($seller_list as $l) { ?>
                             <tr>
+                                <td><?=$l->name?></td>
                                 <td><?=$l->user_name?></td>
                                 <td><?=$l->return_profit?>分</td>
                                 <td><?=$l->count?></td>

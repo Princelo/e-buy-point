@@ -68,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <p class="help-block">例：foo@bar.com</p>
                         </div>
                         <div class="form-group">
-                            <label>会员名</label>
+                            <label>会员帐号</label>
                             <input class="form-control" name="user_name" data-remote="<?=$member_username_validate_url?>" data-error="无效会员名或已存在该会员" required>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             <span class="help-block with-errors"></span>

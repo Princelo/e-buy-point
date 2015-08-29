@@ -49,11 +49,11 @@ class Member extends CI_Controller {
             ),
             array(
                 'field' => 'user_name',
-                'label' => '会员名',
+                'label' => '会员帐号',
                 'rules' => 'required|callback__check_user_name|trim',
                 'errors' => [
-                    'required' => '会员名不能为空',
-                    'callback__check_user_name' => '会员名已存在'
+                    'required' => '会员帐号不能为空',
+                    'callback__check_user_name' => '会员帐号已存在'
                 ]
             ),
             array(
