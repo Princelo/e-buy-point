@@ -8,15 +8,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">业务报表查询</h1>
+            <h1 class="page-header">业务员报表查询</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-edit fa-fw"></i> 业务报表查询
+                    <i class="fa fa-edit fa-fw"></i> 业务员报表查询
                     <div class="pull-right" style="display: none;">
                         <div class="btn-group">
                             <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <!--<option value="income_report">业务收入报表</option>
                                 <option value="biz_report">邀请商家收入报表</option>
                                 <option value="invite_report">邀请量走势</option>-->
-                                <option value="income_report">业务收入(相关消费)纪录</option>
+                                <option value="income_report">业务员收入(相关消费)纪录</option>
                                 <option value="settle_report">结算纪录</option>
                             </select>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>

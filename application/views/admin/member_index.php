@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- /.col-lg-12 -->
     </div>
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <i class="fa fa-edit fa-fw"></i> 会员列表
@@ -43,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <table class="table table-striped table-bordered table-hover dataTable no-footer" <?if(count($member_list)==0){?>style="display:none;"<?}?>>
                         <thead>
                         <tr>
-                            <th>会员</th>
+                            <th>会员名称</th>
                             <th>积分</th>
                             <th>上级</th>
                             <th>消费纪录</th>

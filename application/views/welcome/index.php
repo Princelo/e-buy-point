@@ -178,9 +178,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <thead>
                             <tr>
                                 <th>消费录入日期</th>
-                                <th>消费事件</th>
+                                <th>消费项目</th>
                                 <th>备注</th>
-                                <th>会员</th>
+                                <th>会员名称</th>
                                 <th>消费金额</th>
                                 <th>本店积分</th>
                             </tr>
@@ -205,7 +205,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <!-- /.panel -->
             </div>
         <div class="row" style="display: none;">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <i class="fa fa-edit fa-fw"></i> 消费录入 - 快捷功能

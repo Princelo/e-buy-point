@@ -52,18 +52,20 @@ class Consumption_model extends CI_Model {
             update ".DB_PREFIX."supplier_location set return_profit = return_profit - ? where id = ?
         ";
         $sql_update_local_biz_binds = [$delta, $this->session->userdata('biz_id')];
-        $this->db->trans_start();
+        $this->db->trans_begin();
         $this->db->query($sql_insert, $sql_insert_binds);
         $this->db->query($sql_update_biz, $sql_update_binds);
         $this->db->query($sql_update_user, $sql_update_binds);
         $this->db->query($sql_update_seller, $sql_update_binds);
         $this->db->query($sql_update_local_biz, $sql_update_local_biz_binds);
-        $this->db->trans_complete();
         $result = $this->db->trans_status();
-        if($result === true)
+        if($result === true){
+            $this->db->trans_commit();
             return true;
-        else
+        } else {
+            $this->db->trans_rollback();
             return false;
+        }
     }
 
     public function addScoreConsumptionLog($data)
