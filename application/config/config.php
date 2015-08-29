@@ -427,7 +427,7 @@ $config['global_xss_filtering'] = true;
 | 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks
 */
 if (stripos($_SERVER["REQUEST_URI"],'report') === FALSE) {
-    $config['csrf_protection'] 	= TRUE;
+    $config['csrf_protection'] 	= FALSE;
 }else{
     $config['csrf_protection'] 	= FALSE;
 }
