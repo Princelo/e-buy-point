@@ -47,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>积分</th>
                             <th>上级</th>
                             <th>消费纪录</th>
-                            <th>修改密码</th>
+                            <!--<th>修改密码</th>-->
                             <!--<th>添加积分</th>-->
                         </tr>
                         </thead>
@@ -58,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?=$l->score?></td>
                                 <td><?=$l->name?></td>
                                 <td><a href="<?=site_url('report/member_consumption_simple')?>?id=<?=$l->id?>" class="fancybox">查看</a></td>
-                                <td><a href="#" class="fancybox">修改</a></td>
+                                <!--<td><a href="#" class="fancybox">修改</a></td>-->
                                 <!--<td><div class="form-group"><input class="form-control" style="width:50%; margin-right: 6px;display:inline-block"/><a href="#" class="btn btn-default">添加</a></div></td>-->
                             </tr>
                         <?}?>
