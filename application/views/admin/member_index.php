@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <tr>
                             <th>会员帐号</th>
                             <th>积分</th>
-                            <th>上级</th>
+                            <th>所属商家</th>
                             <th>消费纪录</th>
                             <!--<th>修改密码</th>-->
                             <!--<th>添加积分</th>-->
