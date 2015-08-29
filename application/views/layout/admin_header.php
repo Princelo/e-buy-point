@@ -115,7 +115,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">欢迎来到M平台商家管理系统</a>
+            <a class="navbar-brand" href="/">欢迎来到M平台管理系统</a>
         </div>
         <!-- /.navbar-header -->
 
