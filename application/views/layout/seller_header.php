@@ -172,10 +172,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </ul>
                     </li>
                     <li>
-                        <a href="<?=site_url('biz/sub_biz_list')?>"><i class="fa fa-table fa-fw"></i> 我邀请的商家</a>
+                        <a href="<?=site_url('biz/sub_biz_list')?>"><i class="fa fa-table fa-fw"></i> 我的商家</a>
                     </li>
                     <li>
-                        <a href="<?=site_url('biz/index')?>"><i class="fa fa-edit fa-fw"></i> 新增邀请商家</a>
+                        <a href="<?=site_url('biz/index')?>"><i class="fa fa-edit fa-fw"></i> 新增商家</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-wrench fa-fw"></i> 我的设置<span class="fa arrow"></span></a>

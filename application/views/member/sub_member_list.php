@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="panel-body">
                     <?if(count($list)==0){?>
                         <div class="alert alert-warning">
-                            当前您没有邀请会员
+                            当前您没有会员
                         </div>
                     <?}?>
                     <table class="table table-striped table-bordered table-hover dataTable no-footer" <?if(count($list)==0){?>style="display:none;"<?}?>>

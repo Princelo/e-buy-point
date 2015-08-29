@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">我邀请的商家</h1>
+            <h1 class="page-header">我的商家</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-edit fa-fw"></i> 我邀请的商家
+                    <i class="fa fa-edit fa-fw"></i> 我的商家
                     <div class="pull-right" style="display: none;">
                         <div class="btn-group">
                             <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -37,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="panel-body">
                     <?if(count($list)==0){?>
                         <div class="alert alert-warning">
-                            当前您没有邀请任何商家
+                            当前您没有任何商家
                         </div>
                     <?}?>
                     <table class="table table-striped table-bordered table-hover dataTable no-footer" <?if(count($list)==0){?>style="display:none;"<?}?>>
