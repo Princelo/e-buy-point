@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 if($_SERVER['HTTP_HOST'] == 'sj.m-ebuy.com')
     $route['default_controller'] = 'welcome';
-else
+else if($_SERVER['HTTP_HOST'] == 'yw.m-ebuy.com')
     $route['default_controller'] = 'seller';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
