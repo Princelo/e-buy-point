@@ -18,7 +18,7 @@ class Sms extends CI_Controller {
         $this->load->helper('string');
         $this->load->database();
         $code = random_string('numeric', 6);
-        $this->db->query('delete from '.DB_PREFIX."sms_verification where date(create_time) < ".(time() - 3600));
+        $this->db->query('delete from '.DB_PREFIX."sms_verification where unix_timestamp(create_time) < ".(time() - 3600));
         $query = $this->db->query(
             "insert into ".DB_PREFIX."sms_verification (code, mobile) value (?, ?)",
             [
@@ -59,7 +59,7 @@ class Sms extends CI_Controller {
         $this->load->helper('string');
         $this->load->database();
         $code = random_string('numeric', 6);
-        $this->db->query('delete from '.DB_PREFIX."sms_verification where date(create_time) < ".(time() - 3600));
+        $this->db->query('delete from '.DB_PREFIX."sms_verification where unix_timestamp(create_time) < ".(time() - 3600));
         $query = $this->db->query(
             "insert into ".DB_PREFIX."sms_verification (code, mobile) value (?, ?)",
             [
@@ -100,7 +100,7 @@ class Sms extends CI_Controller {
         $this->load->helper('string');
         $this->load->database();
         $code = random_string('numeric', 6);
-        $this->db->query('delete from '.DB_PREFIX."sms_verification where date(create_time) < ".(time() - 3600));
+        $this->db->query('delete from '.DB_PREFIX."sms_verification where unix_timestamp(create_time) < ".(time() - 3600));
         $query = $this->db->query(
             "insert into ".DB_PREFIX."sms_verification (code, mobile) value (?, ?)",
             [
