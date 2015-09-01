@@ -140,7 +140,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             }
                             var countdown = function () {
                                 var timer = 60;
-                                setInterval(function () {
+                                var interval = setInterval(function () {
                                     if (timer > 0) {
                                         $('#sms_sent_btn').val(timer+"秒后再次发送");
                                         timer --;
@@ -149,6 +149,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         $('#sms_sent_btn').removeAttr('disabled');
                                     }
                                 }, 1000);
+                                if (timer <= 0) {
+                                    clearInterval(interval);
+                                    $('#sms_sent_btn').val("发送验证码");
+                                    $('#sms_sent_btn').removeAttr('disabled');
+                                }
                             }
                         </script>
                         <div class="form-group">
