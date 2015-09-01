@@ -95,7 +95,7 @@ function sms_quick_send($template = 1, $mobile, $content_arr)
 
     curl_setopt($ch, CURLOPT_URL,$api_url);
     curl_setopt($ch, CURLOPT_NOSIGNAL, 1);
-    curl_setopt($ch, CURLOPT_TIMEOUT_MS, 1);
+    curl_setopt($ch, CURLOPT_TIMEOUT_MS, 100);
     /*curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS,
         "postvar1=value1&postvar2=value2&postvar3=value3");*/
