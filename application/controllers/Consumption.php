@@ -134,6 +134,7 @@ class Consumption extends CI_Controller {
                         ")->result()[0]->score."分",
                 ];
             }
+            $this->load->helper('sms');
             if($result === true) {
                 $this->session->set_flashdata('flash_data', [ 'message' => '消费纪录录入成功', 'type' => 'success' ]);
                 if($this->input->post('exchange_type') === '1')
