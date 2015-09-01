@@ -181,8 +181,9 @@ class Consumption extends CI_Controller {
             [$this->input->post('verify_code'), $this->input->post('mobile')]);
         if($query->num_rows() > 0)
             return true;
-        else
+        else {
             return false;
+        }
     }
 
     public function _is_score_enough()
