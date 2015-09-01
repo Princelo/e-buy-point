@@ -194,7 +194,9 @@ class Member extends CI_Controller {
             [$this->input->post('verify_code'), $this->input->post('mobile')]);
         if($query->num_rows() > 0)
             return true;
-        else
+        else {
+            showErr('手机验证码错误！', site_url('member/index'));
             return false;
+        }
     }
 }
