@@ -28,6 +28,12 @@ function sms_send($template = 1, $mobile, $content_arr)
         $content = str_replace('{code}', $content_arr['code'], $content);
     if (isset($content_arr['time']))
         $content = str_replace('{time}', $content_arr['time'], $content);
+    if (isset($content_arr['volume']))
+        $content = str_replace('{volume}', $content_arr['volume'], $content);
+    if (isset($content_arr['store']))
+        $content = str_replace('{store}', $content_arr['store'], $content);
+    if (isset($content_arr['reward']))
+        $content = str_replace('{reward}', $content_arr['reward'], $content);
     $api_url = "http://api.smsbao.com/sms?u=chezone&p=PASSWORD&m=".$mobile."&c=".$content;
     $ch = curl_init();
 
@@ -78,6 +84,12 @@ function sms_quick_send($template = 1, $mobile, $content_arr)
         $content = str_replace('{code}', $content_arr['code'], $content);
     if (isset($content_arr['time']))
         $content = str_replace('{time}', $content_arr['time'], $content);
+    if (isset($content_arr['volume']))
+        $content = str_replace('{volume}', $content_arr['volume'], $content);
+    if (isset($content_arr['store']))
+        $content = str_replace('{store}', $content_arr['store'], $content);
+    if (isset($content_arr['reward']))
+        $content = str_replace('{reward}', $content_arr['reward'], $content);
     $api_url = "http://api.smsbao.com/sms?u=chezone&p=PASSWORD&m=".$mobile."&c=".$content;
     $ch = curl_init();
 
