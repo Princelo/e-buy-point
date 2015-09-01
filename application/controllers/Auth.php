@@ -28,11 +28,15 @@ class Auth extends CI_Controller {
         $this->form_validation->set_rules('user_name', '登录名', 'required');
         $this->form_validation->set_rules('user_pwd', '密码', 'required');
         if ($this->form_validation->run() == true) {
-            if ($this->check_login($this->input->post('user_name'), $this->input->post('user_pwd'))) {
+            $check_login = $this->check_login($this->input->post('user_name'), $this->input->post('user_pwd'));
+            if ($check_login === true) {
                 if($this->session->userdata('is_admin') == 1)
                     redirect('admin/index', 'refresh');
                 else
                     redirect('welcome/index', 'refresh');
+            } else if ($check_login == 'not_access') {
+                $this->session->set_flashdata('flash_data', [ 'type' => 'error', 'message' => '你目前还未通过审核' ]);
+                redirect('auth/login', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
             } else {
                 $this->session->set_flashdata('flash_data', [ 'type' => 'error', 'message' => '登录名或密码错误' ]);
                 redirect('auth/login', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
@@ -214,7 +218,8 @@ class Auth extends CI_Controller {
                 select merchant_name from ".DB_PREFIX."user where is_merchant = 1 and user_pwd = ? and user_name = ?
                 ) and name is not null limit 1";
         $sql = "
-            select l.location_id id, (select name from ".DB_PREFIX."supplier_location where id = l.location_id) as name
+            select l.location_id id, (select name from ".DB_PREFIX."supplier_location where id = l.location_id) as name,
+            (select is_m_access from ".DB_PREFIX."supplier_location where id = l.location_id ) as is_m_access
              from ".DB_PREFIX."supplier_account a,".DB_PREFIX."supplier_account_location_link l
               where a.account_password = ? and a.account_name = ? and a.id = l.account_id
               limit 1
@@ -222,10 +227,14 @@ class Auth extends CI_Controller {
         $binds = [ md5($password), $user ];
         $query = $this->db->query($sql, $binds);
         if($query->num_rows() > 0) {
-            $this->session->set_userdata('is_login', 1);
-            $this->session->set_userdata('biz_id', $query->result()[0]->id);
-            $this->session->set_userdata('display_name', $query->result()[0]->name);
-            return true;
+            if ($query->result()[0]->is_m_access == '1') {
+                $this->session->set_userdata('is_login', 1);
+                $this->session->set_userdata('biz_id', $query->result()[0]->id);
+                $this->session->set_userdata('display_name', $query->result()[0]->name);
+                return true;
+            } else {
+                return 'not_access';
+            }
         } else {
             $sql = "select id from ".DB_PREFIX."admin where adm_name = ? and adm_password = ? limit 1";
             $query = $this->db->query($sql, [$user, md5($password)]);

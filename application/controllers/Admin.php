@@ -243,4 +243,22 @@ class Admin extends CI_Controller {
         $this->load->view('admin/settle_seller_log_simple', $view_data);
         $this->load->view('layout/simple_footer');
     }
+
+    public function toggle_biz_access()
+    {
+        $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
+        $this->db->query( "
+                update ".DB_PREFIX."supplier_location set is_m_access =
+                case when is_m_access = 0 then 1 else 0
+                where id = ?
+
+            " , [$id]);
+        if($this->db->affected_rows() > 0) {
+            $is_m_access = $this->db->query("select is_m_access from ".DB_PREFIX."supplier_location where id = ?", [$id])
+                ->result()[0]->is_m_access;
+            exit('{"state":"success", "type":"success", "message": "修改成功", "is_m_access": "'.$is_m_access.'"}');
+        } else {
+            exit('{"state":"error", "type":"error", "message": "修改失败"}');
+        }
+    }
 }
