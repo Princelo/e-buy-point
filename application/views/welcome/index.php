@@ -147,7 +147,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <div class="panel-body">
                         <h2>
-                            当前积分：<label style="color: #aa3e05;"><?=$auth_data->return_profit?></label>
+                            当前积分：<label style="color: #aa3e05;"><?=$auth_data->return_profit?> (<?=bcmul($auth_data->return_profit, 0.01, 2)?>元)</label>
                         </h2>
                         <h4>
                             <?=$auth_data->name?>

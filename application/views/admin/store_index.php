@@ -62,6 +62,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>返点比率</th>
                             <th>结算</th>
                             <th>结算日志</th>
+                            <th>审核</th>
+                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -77,10 +79,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?=$l->consumption_ratio?>%</td>
                                 <td><a href="<?=site_url('admin/settle_simple')?>?id=<?=$l->id?>" class="fancybox">结算</a></td>
                                 <td><a href="<?=site_url('admin/settle_biz_log_simple')?>?id=<?=$l->id?>" class="fancybox">查看</a></td>
+                                <td id="state<?=$l->id?>" style="color:#<?=$l->is_m_access == '1'?'41cc4a':'cc2a24'?>"><?=$l->is_m_access == '1'?'通过':'未通过'?></td>
+                                <td><a href="javascript:void(0);" onclick="toggle_biz_access(<?=$l->id?>)" id="link<?=$l->id?>"><?=$l->is_m_access == '1'?'生效':'禁用'?></a></td>
                             </tr>
                         <?}?>
                         </tbody>
                     </table>
+                    <script>
+                        var toggle_biz_access = function (id) {
+                            $.ajax({
+                                url: "<?=site_url('admin/toggle_biz_access')?>?id="+id,
+                                success: function ( text ) {
+                                    json = eval("(" + text + ")");
+                                    if (json.state != 'success') {
+                                        alert(json.message);
+                                    } else {
+                                        if (json.is_m_access = '1') {
+                                            $('#link'+id).html('禁用');
+                                            $('#state'+id).html('通过');
+                                            $('#state'+id).css('color', '#41cc4a');
+                                        } else {
+                                            $('#link'+id).html('生效');
+                                            $('#state'+id).html('未通过');
+                                            $('#state'+id).css('color', '#cc2a24');
+                                        }
+                                    }
+
+                                }
+                            });
+                        }
+                    </script>
                 </div>
                 <!-- /.panel-body -->
             </div>
