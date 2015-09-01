@@ -80,7 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><a href="<?=site_url('admin/settle_simple')?>?id=<?=$l->id?>" class="fancybox">结算</a></td>
                                 <td><a href="<?=site_url('admin/settle_biz_log_simple')?>?id=<?=$l->id?>" class="fancybox">查看</a></td>
                                 <td id="state<?=$l->id?>" style="color:#<?=$l->is_m_access == '1'?'41cc4a':'cc2a24'?>"><?=$l->is_m_access == '1'?'通过':'未通过'?></td>
-                                <td><a href="javascript:void(0);" onclick="toggle_biz_access(<?=$l->id?>)" id="link<?=$l->id?>"><?=$l->is_m_access == '1'?'生效':'禁用'?></a></td>
+                                <td><a href="javascript:void(0);" onclick="toggle_biz_access(<?=$l->id?>)" id="link<?=$l->id?>"><?=$l->is_m_access == '0'?'生效':'禁用'?></a></td>
                             </tr>
                         <?}?>
                         </tbody>
