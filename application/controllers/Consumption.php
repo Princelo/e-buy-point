@@ -112,12 +112,35 @@ class Consumption extends CI_Controller {
             $this->load->view('layout/default_footer');
         } else {
             $this->load->model('consumption_model', 'Consumption_model');
-            if($this->input->post('exchange_type') === '1')
+            if($this->input->post('exchange_type') === '1'){
                 $result = $this->Consumption_model->addScoreConsumptionLog($this->input->post());
-            else
+                $arr = [
+                    "title" => 'M网',
+                    "volume" => $this->input->post('score')."分",
+                    "store" => $this->session->userdata('display_name'),
+                    "total" => $this->db->query("
+                        select score from ".DB_PREFIX."user where mobile = '".$this->input->post('mobile') ."' limit 1
+                        ")->result()[0]->score."分",
+                ];
+            } else {
                 $result = $this->Consumption_model->addConsumptionLog($this->input->post());
-            if($result === true)
+                $arr = [
+                    "title" => 'M网',
+                    "volume" => $this->input->post('volume')."元",
+                    "reward" => $this->input->post('volume')."分",
+                    "store" => $this->session->userdata('display_name'),
+                    "total" => $this->db->query("
+                        select score from ".DB_PREFIX."user where mobile = '".$this->input->post('mobile') ."' limit 1
+                        ")->result()[0]->score."分",
+                ];
+            }
+            if($result === true) {
                 $this->session->set_flashdata('flash_data', [ 'message' => '消费纪录录入成功', 'type' => 'success' ]);
+                if($this->input->post('exchange_type') === '1')
+                    sms_quick_send(2, $this->input->post('mobile'), $arr);
+                else
+                    sms_quick_send(3, $this->input->post('mobile'), $arr);
+            }
             if($result === false)
                 $this->session->set_flashdata('flash_data', [ 'message' => '消费纪录录入失败，请资讯平台管理员', 'type' => 'error' ]);
             redirect($this->input->post('render_url'));

@@ -28,7 +28,7 @@ class Sms extends CI_Controller {
         );
         if ($query === true) {
             $param_arr = [
-                'title' => 'M平台',
+                'title' => 'M网',
                 'code'  => $code,
                 'time'  => '60',
             ];
@@ -69,7 +69,7 @@ class Sms extends CI_Controller {
         );
         if ($query === true) {
             $param_arr = [
-                'title' => 'M平台',
+                'title' => 'M网',
                 'code'  => $code,
                 'time'  => '60',
             ];
@@ -110,7 +110,7 @@ class Sms extends CI_Controller {
         );
         if ($query === true) {
             $param_arr = [
-                'title' => 'M平台',
+                'title' => 'M网',
                 'code'  => $code,
                 'time'  => '60',
             ];
