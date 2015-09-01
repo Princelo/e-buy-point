@@ -145,6 +145,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         $('#sms_sent_btn').val(timer+"秒后再次发送");
                                         timer --;
                                     } else {
+                                        myclear();
                                         $('#sms_sent_btn').val("发送验证码");
                                         $('#sms_sent_btn').removeAttr('disabled');
                                     }
@@ -154,6 +155,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     $('#sms_sent_btn').val("发送验证码");
                                     $('#sms_sent_btn').removeAttr('disabled');
                                 }
+                            }
+                            var myclear = function () {
+                                var interval_id = window.setInterval("", 9999); // Get a reference to the last
+                                // interval +1
+                                for (var i = 1; i < interval_id; i++)
+                                    window.clearInterval(i);
+                                $('#sms_sent_btn').val("发送验证码");
+                                $('#sms_sent_btn').removeAttr('disabled');
                             }
                         </script>
                         <div class="form-group">
