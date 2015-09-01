@@ -248,6 +248,7 @@ class Admin extends CI_Controller {
     public function toggle_biz_access()
     {
         $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
+        $this->load->database();
         $this->db->query( "
                 update ".DB_PREFIX."supplier_location set is_m_access =
                 case when is_m_access = 0 then 1 else 0 end
