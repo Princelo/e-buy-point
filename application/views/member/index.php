@@ -157,10 +157,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 }
                             }
                             var myclear = function () {
-                                var interval_id = window.setInterval("", 9999); // Get a reference to the last
-                                // interval +1
-                                for (var i = 1; i < interval_id; i++)
-                                    window.clearInterval(i);
+                                for (var i = 1; i < 99999; i++)
+                                    clearInterval(i);
                                 $('#sms_sent_btn').val("发送验证码");
                                 $('#sms_sent_btn').removeAttr('disabled');
                             }
