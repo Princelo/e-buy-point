@@ -34,6 +34,8 @@ function sms_send($template = 1, $mobile, $content_arr)
         $content = str_replace('{store}', $content_arr['store'], $content);
     if (isset($content_arr['reward']))
         $content = str_replace('{reward}', $content_arr['reward'], $content);
+    if (isset($content_arr['total']))
+        $content = str_replace('{total}', $content_arr['total'], $content);
     $api_url = "http://api.smsbao.com/sms?u=chezone&p=PASSWORD&m=".$mobile."&c=".$content;
     $ch = curl_init();
 
@@ -90,12 +92,14 @@ function sms_quick_send($template = 1, $mobile, $content_arr)
         $content = str_replace('{store}', $content_arr['store'], $content);
     if (isset($content_arr['reward']))
         $content = str_replace('{reward}', $content_arr['reward'], $content);
+    if (isset($content_arr['total']))
+        $content = str_replace('{total}', $content_arr['total'], $content);
     $api_url = "http://api.smsbao.com/sms?u=chezone&p=PASSWORD&m=".$mobile."&c=".$content;
     $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_URL,$api_url);
     curl_setopt($ch, CURLOPT_NOSIGNAL, 1);
-    curl_setopt($ch, CURLOPT_TIMEOUT_MS, 1);
+    curl_setopt($ch, CURLOPT_TIMEOUT_MS, 100);
     /*curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS,
         "postvar1=value1&postvar2=value2&postvar3=value3");*/
