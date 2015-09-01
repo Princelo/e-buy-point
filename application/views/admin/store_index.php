@@ -94,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     if (json.state != 'success') {
                                         alert(json.message);
                                     } else {
-                                        if (json.is_m_access = '1') {
+                                        if (json.is_m_access == '1') {
                                             $('#link'+id).html('禁用');
                                             $('#state'+id).html('通过');
                                             $('#state'+id).css('color', '#41cc4a');
