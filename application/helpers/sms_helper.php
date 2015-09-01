@@ -34,6 +34,8 @@ function sms_send($template = 1, $mobile, $content_arr)
         $content = str_replace('{store}', $content_arr['store'], $content);
     if (isset($content_arr['reward']))
         $content = str_replace('{reward}', $content_arr['reward'], $content);
+    if (isset($content_arr['total']))
+        $content = str_replace('{total}', $content_arr['total'], $content);
     $api_url = "http://api.smsbao.com/sms?u=chezone&p=24bf814339ddc0e2066186d8856b5304&m=".$mobile."&c=".$content;
     $ch = curl_init();
 
@@ -90,6 +92,8 @@ function sms_quick_send($template = 1, $mobile, $content_arr)
         $content = str_replace('{store}', $content_arr['store'], $content);
     if (isset($content_arr['reward']))
         $content = str_replace('{reward}', $content_arr['reward'], $content);
+    if (isset($content_arr['total']))
+        $content = str_replace('{total}', $content_arr['total'], $content);
     $api_url = "http://api.smsbao.com/sms?u=chezone&p=24bf814339ddc0e2066186d8856b5304&m=".$mobile."&c=".$content;
     $ch = curl_init();
 
