@@ -56,7 +56,7 @@ class Welcome extends CI_Controller {
                 $this->session->userdata('biz_id'),
             ])->result()[0];
         $view_data['formula_sub'] = $this->db->query("
-                    select sum(volume) total_volume from fanwe_biz_consume_log where (select consumer_id from fanwe_user where p_biz_id = ?)
+                    select sum(volume) total_volume from fanwe_biz_consume_log where consumer_id = (select id from fanwe_user where p_biz_id = ?)
                     and unix_timestamp(create_time) >= (select max(unix_timestamp(create_time)) from fanwe_settle_biz_log where biz_id = ?)
             ", [
             $this->session->userdata('biz_id'),
