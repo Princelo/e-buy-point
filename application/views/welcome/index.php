@@ -150,7 +150,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             当前积分：<label style="color: #aa3e05;"><?=$auth_data->return_profit?> (<?=bcmul($auth_data->return_profit, 0.01, 2)?>元)</label>
                         </h2>
                         <h4>
-                            本店所得积分(<label style="color: #aa3e05;"><?=bcadd($formula_local->total_score, $formula_sub->total_volume, 0)?>分</label>) - 本店返点积分(<label style="color: #aa3e05;"><?=bcmul($formula_local->total_volume, 1)?>分</label>) = <label style="color:#aa3e05"><?=$auth_data->return_profit?>分</label>
+                            本店所得积分(<label style="color: #aa3e05;"><?=bcadd($formula_local_score->total_score, $formula_sub->total_volume, 0)?>分</label>) - 本店返点积分(<label style="color: #aa3e05;"><?=bcmul($formula_local_volume->total_volume, 1)?>分</label>) = <label style="color:#aa3e05"><?=$auth_data->return_profit?>分</label>
                         </h4>
                         <h4>
                             <?=$auth_data->name?>
