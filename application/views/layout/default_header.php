@@ -37,6 +37,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="<?=JS_URL?>html5shiv.js"></script>
     <script src="<?=JS_URL?>respond.min.js"></script>
     <![endif]-->
+    <style type="text/css">
+        th {background: #A5C1FF !important;}
+    </style>
 
     <!-- jQuery -->
     <script src="<?=ASSETS_BOWER?>jquery/dist/jquery.min.js"></script>
