@@ -115,7 +115,7 @@ class Consumption extends CI_Controller {
             if($this->input->post('exchange_type') === '1'){
                 $result = $this->Consumption_model->addScoreConsumptionLog($this->input->post());
                 $arr = [
-                    "title" => 'M网',
+                    "title" => 'M-ebuy',
                     "volume" => $this->input->post('score')."分",
                     "store" => $this->session->userdata('display_name'),
                     "total" => $this->db->query("
@@ -125,7 +125,7 @@ class Consumption extends CI_Controller {
             } else {
                 $result = $this->Consumption_model->addConsumptionLog($this->input->post());
                 $arr = [
-                    "title" => 'M网',
+                    "title" => 'M-ebuy',
                     "volume" => $this->input->post('volume')."元",
                     "reward" => $this->input->post('volume')."分",
                     "store" => $this->session->userdata('display_name'),

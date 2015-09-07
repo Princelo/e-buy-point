@@ -352,14 +352,14 @@ table.dataTable thead .sorting:after {
 .panel-yellow a:hover {
     color: #df8a13;
 }
-th {background: #A5C1FF !important;}
+th {background: #D9C5E5 !important;}
 h1 {
     font-weight: bold;
-    color: #5581DB;
+    color: #a790b0;
 }
 .navbar-static-top {
     margin-bottom: 0;
-    background: #a5c1ff;
+    background: #D9C5E5;
     color: #000 !important;
 }
 .navbar-static-top a{color:#000 !important;}

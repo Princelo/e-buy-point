@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?=ASSETS_DIST?>css/timeline.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="<?=ASSETS_DIST?>css/sb-admin-2.css" rel="stylesheet">
+    <link href="<?=ASSETS_DIST?>css/sb-admin-2-2.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
     <link href="<?=ASSETS_BOWER?>morrisjs/morris.css" rel="stylesheet">

@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="<?=JS_URL?>respond.min.js"></script>
     <![endif]-->
     <style type="text/css">
-        th {background: #A5C1FF !important;}
+        th {background:#A5C1FF !important;}
     </style>
 
     <!-- jQuery -->
