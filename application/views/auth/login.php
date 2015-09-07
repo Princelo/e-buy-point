@@ -58,16 +58,15 @@
     <div class="login-main">
         <div class="login-top">
             <form action="<?=site_url('auth/login')?>" method="post">
-            <img src="<?=IMAGES_URL?>head-img.png" alt=""/>
+                <ul style="margin-top: 0">
+                    <!--<li><a class="fa" href="#"> </a></li>
+                    <li><a class="tw" href="#"> </a></li>
+                    <li><a class="g" href="#"> </a></li>-->
+                    <li><a class="logo-change"></a></li>
+                </ul>
             <h1><span class="anc-color">欢迎登录</span> M平台 <span class="anc-color">商家管理系统</span> </h1>
-            <h2>&nbsp;M平台&nbsp;</h2>
-            <ul>
-                <!--<li><a class="fa" href="#"> </a></li>
-                <li><a class="tw" href="#"> </a></li>
-                <li><a class="g" href="#"> </a></li>-->
-                <li><a class="logo-change"></a></li>
-            </ul>
-            <h3>&nbsp;登录&nbsp;</h3>
+                <img src="<?=IMAGES_URL?>house.png" alt=""/>
+            <h3 style="margin-top:16px;">&nbsp;登录&nbsp;</h3>
             <input type="text" name="user_name" placeholder="登入帐号" required="">
             <input type="password" name="user_pwd" placeholder="密码" required="">
             <div class="login-bottom">
