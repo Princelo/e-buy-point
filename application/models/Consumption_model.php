@@ -84,7 +84,8 @@ class Consumption_model extends CI_Model {
         $sql_update_biz = "
                     update " . DB_PREFIX . "supplier_location set return_profit = return_profit
                         + ?
-                    where id = ?;
+                    where id = ?
+                    and (select score from ".DB_PREFIX."user where mobile = ? limit 1) >= ?;
                     ";
         $sql_update_user = "
                     update " . DB_PREFIX . "user set score = score
@@ -93,7 +94,7 @@ class Consumption_model extends CI_Model {
         ";
         $this->db->trans_begin();
         $this->db->query($sql_insert, $sql_insert_binds);
-        $this->db->query($sql_update_biz, [$data['score'], $this->session->userdata('biz_id')]);
+        $this->db->query($sql_update_biz, [$data['score'], $this->session->userdata('biz_id'), $data['mobile'], $data['score']]);
         $this->db->query($sql_update_user, [$data['score'], $data['mobile'], $data['score']]);
         $result = $this->db->trans_status();
         if ($this->db->affected_rows() < 1) {
