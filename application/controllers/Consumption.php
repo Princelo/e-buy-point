@@ -138,9 +138,9 @@ class Consumption extends CI_Controller {
             if($result === true) {
                 $this->session->set_flashdata('flash_data', [ 'message' => '消费纪录录入成功', 'type' => 'success' ]);
                 if($this->input->post('exchange_type') === '1')
-                    sms_quick_send(2, $this->input->post('mobile'), $arr);
+                    sms_send(2, $this->input->post('mobile'), $arr);
                 else
-                    sms_quick_send(3, $this->input->post('mobile'), $arr);
+                    sms_send(3, $this->input->post('mobile'), $arr);
             }
             if($result === false)
                 $this->session->set_flashdata('flash_data', [ 'message' => '消费纪录录入失败，请资讯平台管理员', 'type' => 'error' ]);
