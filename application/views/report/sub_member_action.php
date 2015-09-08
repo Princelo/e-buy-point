@@ -79,9 +79,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?=$l->consumer_name?></td>
                                 <td><?=($l->type=='1')?'扣除积分':'现金消费'?></td>
                                 <td>￥<?=$l->volume?>元</td>
-                                <td><?=intval($l->type)>0?"-".$l->score:bcmul($l->volume, 1)?></td>
+                                <td><?=$l->uscore?></td>
                                 <td><?=$l->name?></td>
-                                <td><?=intval($l->type) == 0?$l->volume:0;?></td>
+                                <td><?=$l->lscore;?></td>
                             </tr>
                         <?}?>
                         </tbody>

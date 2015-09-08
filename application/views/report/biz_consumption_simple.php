@@ -65,10 +65,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?=$l->remark?></td>
                                 <td><?=$l->consumer_name?></td>
                                 <td>￥<?=$l->volume?>元</td>
-                                <td>￥<?=$l->type=='0'?bcmul(bcmul($l->volume, bcsub($l->ratio, 2.5, 1), 2), 0.01, 2):0?>元</td>
-                                <td><?=$l->type=='0'?bcmul($l->volume, 0.5, 2):0?>分</td>
-                                <td><?=$l->type=='0'?bcmul($l->volume, 1, 2):"-".$l->score?>分</td>
-                                <td><?=$l->type=='0'?bcmul($l->volume, 1, 2):0?>分</td>
+                                <td>￥<?=$l->mscore?>元</td>
+                                <td><?=$l->sscore?>分</td>
+                                <td><?=$l->uscore?>分</td>
+                                <td><?=$l->pscore?>分</td>
                             </tr>
                         <?}?>
                         </tbody>

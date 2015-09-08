@@ -15,10 +15,24 @@ class Report_model extends CI_Model {
         $sql .= "
             select
                 l.create_time time,
-                l.title, l.remark, l.consumer_name, l.consumer_id, l.volume, l.ratio
-                ,s.name, u.user_name, l.score, l.type
+                l.title,
+                l.remark,
+                l.consumer_name,
+                l.consumer_id,
+                l.volume,
+                l.ratio,
+                s.name,
+                u.user_name,
+                l.score,
+                l.type,
+                l.lscore,
+                l.pscore,
+                l.mscore,
+                l.sscore,
+                l.uscore
             from ".DB_PREFIX."biz_consume_log l,".DB_PREFIX."user u,".DB_PREFIX."supplier_location s
-            where u.p_biz_id = ?
+            where l.pid = ?
+            u.p_biz_id = l.pid
             and s.id = l.biz_id
             and l.consumer_id = u.id
             order by l.id desc limit ?
@@ -37,9 +51,24 @@ class Report_model extends CI_Model {
         $sql .= "
             select
                 l.create_time time,
-                l.title, l.remark, l.consumer_name, l.consumer_id, l.volume, l.ratio
-                ,s.name, u.user_name, l.score, l.type
-            from ".DB_PREFIX."biz_consume_log l,".DB_PREFIX."user u,".DB_PREFIX."supplier_location s
+                l.title,
+                l.remark,
+                l.consumer_name,
+                l.consumer_id,
+                l.volume,
+                l.ratio,
+                s.name,
+                u.user_name,
+                l.score,
+                l.type,
+                l.pscore,
+                l.uscore,
+                l.lscore,
+                l.mscore,
+                l.sscore
+            from ".DB_PREFIX."biz_consume_log l,
+                 ".DB_PREFIX."user u,
+                 ".DB_PREFIX."supplier_location s
             where 1 = 1
             and s.id = l.biz_id
             and l.consumer_id = u.id order by l.id desc limit ?
@@ -59,7 +88,8 @@ class Report_model extends CI_Model {
                 l.create_time time,
                 l.title, l.remark, l.consumer_name, l.consumer_id, l.volume, l.ratio
                 ,s.name, u.user_name, l.score, l.type,
-                (select name from ".DB_PREFIX."supplier_location where id = u.p_biz_id) as invited
+                (select name from ".DB_PREFIX."supplier_location where id = u.p_biz_id) as invited,
+                l.pscore,l.uscore,l.sscore,l.mscore,l.lscore
             from ".DB_PREFIX."biz_consume_log l,".DB_PREFIX."user u,".DB_PREFIX."supplier_location s
             where 1 = 1
             and s.id = l.biz_id

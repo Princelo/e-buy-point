@@ -31,12 +31,12 @@ class Consumption_model extends CI_Model {
                 ";
         if($is_self === true)
             $sql_insert_binds = [$this->session->userdata('biz_id'), $data['title'], $data['remark'], $data['mobile'],
-                $data['mobile'], $data['volume'], $ratio, 0, $data['volume'], 0, bcmul($data['volume'], ($ratio - 1.5), 1),
+                $data['mobile'], $data['volume'], $ratio, 0, $data['volume'], "-".$delta, bcmul($data['volume'], ($ratio - 1.5), 1),
                 bcmul($data['volume'], 0.5, 0), $pid, $pid,
             ];
         else
             $sql_insert_binds = [$this->session->userdata('biz_id'), $data['title'], $data['remark'], $data['mobile'],
-                $data['mobile'], $data['volume'], $ratio, $data['volume'], $data['volume'], 0, bcmul($data['volume'], ($ratio - 2.5), 1),
+                $data['mobile'], $data['volume'], $ratio, $data['volume'], $data['volume'], "-".$delta, bcmul($data['volume'], ($ratio - 2.5), 1),
                 bcmul($data['volume'], 0.5, 0), $pid, $pid,
             ];
         $sql_update_biz = "
@@ -132,7 +132,8 @@ class Consumption_model extends CI_Model {
             select
                 l.create_time time,
                 l.title, l.remark, l.consumer_name, l.consumer_id, l.volume, l.ratio
-                ,s.name, u.user_name, l.score, l.type, ps.name as pname
+                ,s.name, u.user_name, l.score, l.type, ps.name as pname,
+                l.pscore, l.uscore, l.lscore, l.mscore, l.sscore
             from ".DB_PREFIX."biz_consume_log l,".DB_PREFIX."user u,".DB_PREFIX."supplier_location s,".DB_PREFIX."supplier_location ps
             where 1 = 1
             and ps.id = u.p_biz_id
