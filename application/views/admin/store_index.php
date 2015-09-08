@@ -53,6 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <thead>
                         <tr>
                             <th>商家名称</th>
+                            <th>行业类型</th>
                             <th>管理帐号</th>
                             <th>所属业务员</th>
                             <th>当前积分</th>
