@@ -49,7 +49,7 @@ class Welcome extends CI_Controller {
             [$this->session->userdata('biz_id')]);
         $auth_data = $query->result()[0];
         $view_data['formula_local_score'] = $this->db->query("
-                    select sum(score) total_score from fanwe_biz_consume_log where biz_id = ?
+                    select sum(lscore) total_score from fanwe_biz_consume_log where biz_id = ?
                     and unix_timestamp(create_time) >=
                         case when (select max(unix_timestamp(create_time)) from fanwe_settle_biz_log where biz_id = ?)
                         is null then 0 else (select max(unix_timestamp(create_time)) from fanwe_settle_biz_log where biz_id = ?)
@@ -71,7 +71,7 @@ class Welcome extends CI_Controller {
             $this->session->userdata('biz_id'),
         ])->result()[0];
         $view_data['formula_sub'] = $this->db->query("
-                    select sum(volume) total_volume from fanwe_biz_consume_log where consumer_id = (select id from fanwe_user where p_biz_id = ?)
+                    select sum(pscore) total_volume from fanwe_biz_consume_log where pid = ?
                     and unix_timestamp(create_time) >=
                         case when (select max(unix_timestamp(create_time)) from fanwe_settle_biz_log where biz_id = ?)
                         is null then 0 else (select max(unix_timestamp(create_time)) from fanwe_settle_biz_log where biz_id = ?)

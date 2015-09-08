@@ -14,49 +14,64 @@ class Consumption_model extends CI_Model {
         $query = $this->db->query('select consumption_ratio from '.DB_PREFIX.'supplier_location where id = ?', [$this->session->userdata('biz_id')]);
         $ratio = $query->result()[0]->consumption_ratio;
         $delta = bcmul($data['volume'], $ratio);
+        $pid = intval($this->db
+                ->query("select p_biz_id from ".DB_PREFIX."user where mobile = ? limit 1", [$data['mobile']])
+                ->result()[0]->p_biz_id);
+        $is_self = ($pid === $this->session->userdata('biz_id'));
 
         $sql_insert = "
-                insert into " . DB_PREFIX . "biz_consume_log (biz_id, title, remark, consumer_name, consumer_id, volume, ratio)
+                insert into " . DB_PREFIX . "biz_consume_log (biz_id, title, remark, consumer_name, consumer_id, volume
+                , ratio, pscore, uscore, lscore, mscore, sscore, pid, sid)
                 values (
                     ?, ?, ?, (select user_name from ".DB_PREFIX."user where mobile = ?),
-                     ( select id from ".DB_PREFIX."user where mobile = ? limit 1), ?, ?
+                     ( select id from ".DB_PREFIX."user where mobile = ? limit 1), ?, ?,
+                     ?, ?, ?, ?, ?, ?
+                         (select p_seller_id from ".DB_PREFIX."supplier_location where id = ? )
                 );
                 ";
-        $sql_insert_binds = [$this->session->userdata('biz_id'), $data['title'], $data['remark'], $data['mobile'],
-            $data['mobile'], $data['volume'], $ratio];
+        if($is_self === true)
+            $sql_insert_binds = [$this->session->userdata('biz_id'), $data['title'], $data['remark'], $data['mobile'],
+                $data['mobile'], $data['volume'], $ratio, 0, $data['volume'], 0, bcmul($data['volume'], ($ratio - 1.5), 1),
+                bcmul($data['volume'], 0.5, 0), $pid, $pid,
+            ];
+        else
+            $sql_insert_binds = [$this->session->userdata('biz_id'), $data['title'], $data['remark'], $data['mobile'],
+                $data['mobile'], $data['volume'], $ratio, $data['volume'], $data['volume'], 0, bcmul($data['volume'], ($ratio - 2.5), 1),
+                bcmul($data['volume'], 0.5, 0), $pid, $pid,
+            ];
         $sql_update_biz = "
                     update " . DB_PREFIX . "supplier_location set return_profit = return_profit
                         + ?
-                    where id = (
-                        select case when p_biz_id is null then 1 else p_biz_id end from " . DB_PREFIX . "user where mobile = ? limit 1
-                    ) limit 1;
+                    where id = ? limit 1;
                     ";
+        $sql_update_biz_binds = [$data['volume'], $pid];
         $sql_update_user = "
                     update " . DB_PREFIX . "user set score = score
                         + ?
                         where mobile = ? limit 1;
         ";
-        $sql_update_binds = [
+        $sql_update_user_binds = [
             $data['volume'], $data['mobile'],
         ];
         $sql_update_seller = "
-            update ".DB_PREFIX."seller set return_profit = return_profit + (?/2) where id =
+            update ".DB_PREFIX."seller set return_profit = return_profit + ? where id =
             (
-                select p_seller_id from ".DB_PREFIX."supplier_location where id =
-                (
-                    select p_biz_id from ".DB_PREFIX."user where mobile = ? limit 1
-                )
+                select p_seller_id from ".DB_PREFIX."supplier_location where id = ?
             )
         ";
+        $sql_update_seller_binds = [
+            bcmul($data['volume'], 0.5, 0), $pid,
+        ];
         $sql_update_local_biz = "
             update ".DB_PREFIX."supplier_location set return_profit = return_profit - ? where id = ?
         ";
         $sql_update_local_biz_binds = [$delta, $this->session->userdata('biz_id')];
         $this->db->trans_begin();
         $this->db->query($sql_insert, $sql_insert_binds);
-        $this->db->query($sql_update_biz, $sql_update_binds);
-        $this->db->query($sql_update_user, $sql_update_binds);
-        $this->db->query($sql_update_seller, $sql_update_binds);
+        if(!$is_self)
+            $this->db->query($sql_update_biz, $sql_update_biz_binds);
+        $this->db->query($sql_update_user, $sql_update_user_binds);
+        $this->db->query($sql_update_seller, $sql_update_seller_binds);
         $this->db->query($sql_update_local_biz, $sql_update_local_biz_binds);
         $result = $this->db->trans_status();
         if($result === true){
@@ -72,15 +87,18 @@ class Consumption_model extends CI_Model {
     {
         $sql_insert = "
             insert into ".DB_PREFIX."biz_consume_log (biz_id, title, remark, consumer_name, consumer_id, volume, ratio,
-            score, type)
+            score, type, pscore, uscore, lscore, mscore, sscore, pid, sid)
             values (
                 ?, ?, ?, (select user_name from ".DB_PREFIX."user where mobile = ?),
                  ( select id from ".DB_PREFIX."user where mobile = ? limit 1), 0, 0,
-                 ?, 1
+                 ?, 1, 0, ?, ?, 0, 0, (select p_biz_id from ".DB_PREFIX."user where mobile = ? limit 1),
+                 (select p_seller_id from ".DB_PREFIX."supplier_location where id =
+                     (select p_biz_id from ".DB_PREFIX."user where mobile = ? limit 1)
+                 )
             );
         ";
         $sql_insert_binds = [$this->session->userdata('biz_id'), $data['title'], $data['remark'], $data['mobile'],
-            $data['mobile'], $data['score']];
+            $data['mobile'], $data['score'], '-'.$data['score'], $data['score'], $data['mobile'], $data['mobile']];
         $sql_update_biz = "
                     update " . DB_PREFIX . "supplier_location set return_profit = return_profit
                         + ?
@@ -133,9 +151,20 @@ class Consumption_model extends CI_Model {
         $sql .= "
             select
                 l.create_time time,
-                l.title, l.remark, l.consumer_name, l.consumer_id, l.volume, l.ratio
-                ,s.name, u.user_name, l.score, l.type, (select name from ".DB_PREFIX."supplier_location where id = u.p_biz_id) as pname
-            from ".DB_PREFIX."biz_consume_log l,".DB_PREFIX."user u,".DB_PREFIX."supplier_location s
+                l.title,
+                l.remark,
+                l.consumer_name,
+                l.consumer_id,
+                l.volume,
+                l.ratio,
+                s.name,
+                u.user_name,
+                l.score,
+                l.type,
+                (select name from ".DB_PREFIX."supplier_location where id = u.p_biz_id) as pname
+            from ".DB_PREFIX."biz_consume_log l,
+                 ".DB_PREFIX."user u,
+                 ".DB_PREFIX."supplier_location s
             where 1 = 1
             and s.id = l.biz_id
             and l.consumer_id = u.id
