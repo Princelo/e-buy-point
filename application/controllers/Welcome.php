@@ -62,6 +62,7 @@ class Welcome extends CI_Controller {
             ])->result()[0];
         $view_data['formula_local_volume'] = $this->db->query("
                     select sum(volume * ratio) total_volume from fanwe_biz_consume_log where biz_id = ?
+                    and biz_id != pid
                     and unix_timestamp(create_time) >=
                         case when (select max(unix_timestamp(create_time)) from fanwe_settle_biz_log where biz_id = ?)
                         is null then 0 else (select max(unix_timestamp(create_time)) from fanwe_settle_biz_log where biz_id = ?)
