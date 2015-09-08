@@ -126,9 +126,9 @@ class Member extends CI_Controller {
             $this->load->model('member_model', 'Member_model');
             $result = $this->Member_model->addSubMember($this->input->post());
             if($result === true)
-                $this->session->set_flashdata('flash_data', [ 'message' => '添加下级会员成功', 'type' => 'success' ]);
+                $this->session->set_flashdata('flash_data', [ 'message' => '添加会员成功', 'type' => 'success' ]);
             else
-                $this->session->set_flashdata('flash_data', [ 'message' => '添加下级会员出现问题，请资讯平台管理员', 'type' => 'error' ]);
+                $this->session->set_flashdata('flash_data', [ 'message' => '添加会员出现问题，请资讯平台管理员', 'type' => 'error' ]);
             redirect('member/index');
         }
     }
