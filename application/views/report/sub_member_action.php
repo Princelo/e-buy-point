@@ -44,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="pull-right">
                         <?php $total_volume = 0;?>
                         <?php foreach($list as $v) {?>
-                            <?$total_volume += $v->volume;?>
+                            <?$total_volume += $v->pscore;?>
                         <?php } ?>
                         本店收益积分汇总: <a><?=count($list)>0?$total_volume:"0";?>分</a>
                     </div>
@@ -81,7 +81,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td>￥<?=$l->volume?>元</td>
                                 <td><?=$l->uscore?></td>
                                 <td><?=$l->name?></td>
-                                <td><?=$l->lscore;?></td>
+                                <td><?=$l->pscore;?></td>
                             </tr>
                         <?}?>
                         </tbody>
