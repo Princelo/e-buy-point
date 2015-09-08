@@ -79,7 +79,8 @@ class Admin extends CI_Controller {
                    u.email,
                    u.score,
                    u.p_biz_id,
-                   l.name
+                   l.name,
+                   l.deal_cate_match_row
             from fanwe_user u
             left join fanwe_supplier_location l
             on l.id = u.p_biz_id
