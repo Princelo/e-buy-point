@@ -42,7 +42,8 @@ class Admin extends CI_Controller {
                       Count(u.id)    sub_count,
                       a.account_name account,
                       (select name from ".DB_PREFIX."seller where id = s.p_seller_id) as seller_name,
-                      s.is_m_access
+                      s.is_m_access,
+                      s.deal_cate_match_row
             FROM      fanwe_supplier_location s
             LEFT JOIN fanwe_user u
             ON        u.p_biz_id = s.id
@@ -79,8 +80,7 @@ class Admin extends CI_Controller {
                    u.email,
                    u.score,
                    u.p_biz_id,
-                   l.name,
-                   l.deal_cate_match_row
+                   l.name
             from fanwe_user u
             left join fanwe_supplier_location l
             on l.id = u.p_biz_id
