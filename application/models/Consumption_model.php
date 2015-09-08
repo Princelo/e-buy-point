@@ -25,7 +25,7 @@ class Consumption_model extends CI_Model {
                 values (
                     ?, ?, ?, (select user_name from ".DB_PREFIX."user where mobile = ?),
                      ( select id from ".DB_PREFIX."user where mobile = ? limit 1), ?, ?,
-                     ?, ?, ?, ?, ?, ?
+                     ?, ?, ?, ?, ?, ?,
                          (select p_seller_id from ".DB_PREFIX."supplier_location where id = ? )
                 );
                 ";
