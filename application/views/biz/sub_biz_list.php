@@ -53,6 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <thead>
                         <tr>
                             <th>商家名称</th>
+                            <th>行业类型</th>
                             <th>门店地址</th>
                             <th>返点率</th>
                             <th>商家电话</th>
@@ -64,6 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <? foreach ($list as $l) { ?>
                             <tr>
                                 <td><?=$l->name?></td>
+                                <td><?=$l->deal_cate_match_row?></td>
                                 <td><?=$l->address?></td>
                                 <td><?=$l->ratio?>%</td>
                                 <td><?=$l->tel?></td>

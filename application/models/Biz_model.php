@@ -19,6 +19,12 @@ class Biz_model extends CI_Model {
         $name_match = '';
         foreach($name_arr as $v)
             $name_match .= 'ux'.utf8_to_unicode($v);
+        $cate = $this->db->query("select * from ".DB_PREFIX."deal_cate where id = ?", [$data['biz_type']])
+            ->result()[0]->name;
+        $cate_arr = str_split($name, 3);
+        $cate_match = '';
+        foreach($cate_arr as $v)
+            $cate_match .= 'ux'.utf8_to_unicode($v);
 
         $sql_insert_supplier = "
             insert into ".DB_PREFIX."supplier
@@ -39,14 +45,14 @@ class Biz_model extends CI_Model {
             shop_count, mobile_brief, sort, dp_group_point, tuan_youhui_cache, is_recommend)
             values
             (?, ?, ?, ?, last_insert_id(), ?, ?, ?, ?,
-            '', '', '', '', '', 1, '', 1, '', '',
-            '', '', 0, '', 0, '', '', '', '0.0000',
+            '', '', '', '', '', 1, '', 1, ?, ?,
+            '', '', ?, '', 0, '', '', '', '0.0000',
             0, 0, 0, 0, 0, 0, '0.0000', '0.0000', '0.0000', '', '', 0, 0, 0, 0, '',
             '', '', 0, '', '', 0, 0, 0, '', 0, '', '', 0);
             ";
         $sql_insert_location_binds = [
             $name, $data['address'], $data['tel'], $data['address'], $name_match, $name,
-            $this->session->userdata('seller_id'), $data['consumption_ratio']
+            $this->session->userdata('seller_id'), $data['consumption_ratio'], $cate_match, $cate, $data['biz_type']
         ];
         $sql_insert_account = "
             insert into ".DB_PREFIX."supplier_account ( account_name, account_password, supplier_id, is_effect,is_delete
@@ -90,7 +96,8 @@ class Biz_model extends CI_Model {
                 s.contact,
                 s.address,
                 s.consumption_ratio ratio,
-                s.return_profit
+                s.return_profit,
+                s.deal_cate_match_row
             from
                 ".DB_PREFIX."supplier_account a, ".DB_PREFIX."supplier_account_location_link l, ".DB_PREFIX."supplier_location s
             where

@@ -28,6 +28,10 @@ class Biz extends CI_Controller {
         $view_data['mobile_validate_url'] = site_url('validator/check_biz_unique_mobile');
         $view_data['bizname_validate_url'] = site_url('validator/check_biz_unique_name');
         $view_data['sms_url'] = site_url('sms/sent_sms_for_register_sub_biz');
+        $this->load->database();
+        $view_data['biz_type_list'] = $query = $this->db->query("select * from ".DB_PREFIX."deal_cate
+        where pid = 0 and is_delete = 0 and is_effect = 1
+        order by recommend desc, sort")->result();
         $this->load->view('layout/seller_header');
         $this->load->view('biz/index', $view_data);
         $this->load->view('layout/seller_footer');
@@ -102,6 +106,11 @@ class Biz extends CI_Controller {
                 'field' => 'user_pwd_confirm',
                 'label' => '确认密码',
                 'rules' => 'required|trim',
+            ),
+            array(
+                'field' => 'biz_type',
+                'label' => '行业类型',
+                'rules' => 'required|trim|is_natural',
             ),
         );
 

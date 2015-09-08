@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?=$l->remark?></td>
                                 <td><?=$l->consumer_name?></td>
                                 <td>￥<?=$l->volume?>元</td>
-                                <td><?=$l->type=='0'?bcmul($l->volume, 1, 0):0?>分</td>
+                                <td><?=$l->type=='0'?bcmul($l->volume, 1, 0):"-".$l->score?>分</td>
                                 <td><?=$l->name?></td>
                                 <td><?=$l->pname?></td>
                             </tr>

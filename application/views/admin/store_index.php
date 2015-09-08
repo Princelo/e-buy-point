@@ -70,6 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <? foreach ($store_list as $l) { ?>
                             <tr>
                                 <td><?=$l->name?></td>
+                                <td><?=$l->deal_cate_match_row?></td>
                                 <td><?=$l->account?></td>
                                 <td><?=$l->seller_name?></td>
                                 <td><?=$l->return_profit?>分</td>

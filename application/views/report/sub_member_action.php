@@ -63,6 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>消费项目</th>
                             <th>备注</th>
                             <th>会员帐号</th>
+                            <th>消费类型</th>
                             <th>消费金额</th>
                             <th>会员积分</th>
                             <th>消费店舖</th>
@@ -76,10 +77,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?=$l->title?></td>
                                 <td><?=$l->remark?></td>
                                 <td><?=$l->consumer_name?></td>
+                                <td><?=($l->type=='1')?'扣除积分':'现金消费'?></td>
                                 <td>￥<?=$l->volume?>元</td>
                                 <td><?=intval($l->type)>0?"-".$l->score:bcmul($l->volume, 1)?></td>
                                 <td><?=$l->name?></td>
-                                <td><?=intval($l->type) == 0?$l->volume:"0";?></td>
+                                <td><?=intval($l->type) == 0?$l->volume:0;?></td>
                             </tr>
                         <?}?>
                         </tbody>

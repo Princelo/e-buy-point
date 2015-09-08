@@ -58,6 +58,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <p class="help-block">例：金城广场苹果销售</p>
                         </div>
                         <div class="form-group">
+                            <label>行业类型</label>
+                            <select name="biz_type" class="form-control">
+                                <?php foreach($biz_type_list as $v) {?>
+                                    <option value="<?=$v->id?>"><?=$v->name?></option>
+                                <?php } ?>
+                            </select>
+                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                            <span class="help-block with-errors"></span>
+                            <span><?=form_error('biz_type')?></span>
+                            <p class="help-block">请选择行业类型</p>
+                        </div>
+                        <div class="form-group">
                             <label>商家固话</label>
                             <input class="form-control" name="tel"  data-error="" type="text" data-maxlength="20" maxlength="20" required>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>

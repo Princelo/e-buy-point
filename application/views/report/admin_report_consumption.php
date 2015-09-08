@@ -60,7 +60,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>会员积分</th>
                             <th>消费店舖</th>
                             <th>所属商家</th>
-                            <th>商家积分</th>
+                            <th>消费商家积分</th>
+                            <th>所属商家积分</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -71,9 +72,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?=$l->remark?></td>
                                 <td><?=$l->consumer_name?></td>
                                 <td>￥<?=$l->volume?>元</td>
-                                <td><?=$l->type=='0'?bcmul($l->volume, 1, 0):0?>分</td>
+                                <td><?=$l->type=='0'?bcmul($l->volume, 1, 0):"-".$l->score?>分</td>
                                 <td><?=$l->name?></td>
                                 <td><?=$l->pname?></td>
+                                <td><?=$l->type=='0'?0:$l->score?>分</td>
                                 <td><?=$l->type=='0'?bcmul($l->volume, 1, 0):0?>分</td>
                             </tr>
                         <?}?>

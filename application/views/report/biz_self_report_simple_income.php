@@ -69,7 +69,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <td>￥<?=$l->volume?>元</td>
                             <td><?=intval($l->type)>0?"-".$l->score:bcmul($l->volume, 1)?></td>
                             <!--<td>￥<?=intval($l->type) == '0'?bcdiv($l->volume, 100, 2):"0";?>元</td>-->
-                            <td><?=bcmul($l->volume, 1, 0)?>分</td>
+                            <td><?=($l->type=='0')?bcmul($l->volume, 1, 0):0?>分</td>
                             <td><?=bcmul($l->volume, 0.5, 0)?>分</td>
                         </tr>
                     <?}?>
