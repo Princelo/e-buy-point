@@ -32,7 +32,7 @@ class Report_model extends CI_Model {
                 l.uscore
             from ".DB_PREFIX."biz_consume_log l,".DB_PREFIX."user u,".DB_PREFIX."supplier_location s
             where l.pid = ?
-            u.p_biz_id = l.pid
+            and u.p_biz_id = l.pid
             and s.id = l.biz_id
             and l.consumer_id = u.id
             order by l.id desc limit ?
