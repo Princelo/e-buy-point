@@ -69,7 +69,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <td>￥<?=$l->volume?>元</td>
                             <td><?=$l->uscore?></td>
                             <!--<td>￥<?=intval($l->type) == '0'?bcdiv($l->volume, 100, 2):"0";?>元</td>-->
-                            <td><?=$l->lscore?>分</td>
+                            <td><?=$l->pscore?>分</td>
                             <td><?=$l->sscore?>分</td>
                         </tr>
                     <?}?>
