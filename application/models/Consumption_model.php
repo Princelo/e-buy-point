@@ -17,7 +17,7 @@ class Consumption_model extends CI_Model {
         $pid = intval($this->db
                 ->query("select p_biz_id from ".DB_PREFIX."user where mobile = ? limit 1", [$data['mobile']])
                 ->result()[0]->p_biz_id);
-        $is_self = ($pid === $this->session->userdata('biz_id'));
+        $is_self = ($pid === intval($this->session->userdata('biz_id')));
 
         $sql_insert = "
                 insert into " . DB_PREFIX . "biz_consume_log (biz_id, title, remark, consumer_name, consumer_id, volume
