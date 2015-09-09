@@ -57,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <?php foreach($list as $v) {?>
                             <?$total_score += $v->score;?>
                         <?php } ?>
-                        本店消费积分汇总: <a><?=count($list)>0?$total_score:"";?>分&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                        本店收纳积分汇总: <a><?=count($list)>0?$total_score:"";?>分&nbsp;&nbsp;&nbsp;&nbsp;</a>
                     </div>
                 </div>
                 <!-- /.panel-heading -->
@@ -75,7 +75,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>备注</th>
                             <th>会员帐号</th>
                             <th>消费金额</th>
-                            <th>消费积分</th>
+                            <th>积分消费</th>
+                            <th>应支付M网金额</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -87,6 +88,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?=$l->consumer_name?></td>
                                 <td>￥<?=$l->volume?>元</td>
                                 <td><?=$l->score?>分</td>
+                                <td><?=$l->mscore?>分(<?=bcdiv($l->mscore, 100, 2)?>元)</td>
                             </tr>
                         <?}?>
                         </tbody>

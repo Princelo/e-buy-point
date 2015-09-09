@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="pull-right">
                     <?php $total_score = 0;?>
                     <?php foreach($list as $v) {?>
-                        <?$total_score += intval(bcmul($v->volume, 0.5, 0));?>
+                        <?$total_score += intval($v->sscore);?>
                     <?php } ?>
                     我收益积分汇总: <a><?=count($list)>0?$total_score:"";?>分&nbsp;&nbsp;&nbsp;&nbsp;</a>
                 </div>
