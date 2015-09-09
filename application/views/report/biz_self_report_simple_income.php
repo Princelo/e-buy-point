@@ -36,7 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <?php foreach($list as $v) {?>
                         <?$total_volume += $v->pscore;?>
                     <?php } ?>
-                    会员跨界收益汇总: <a><?=count($list)>0?$total_volume:"0";?>分(<?=bcdiv($total_volume, 100, 2)?>元</a>
+                    会员跨界收益汇总: <a><?=count($list)>0?$total_volume:"0";?>分(<?=bcdiv($total_volume, 100, 2)?>元)</a>
                 </div>
             </div>
             <!-- /.panel-heading -->

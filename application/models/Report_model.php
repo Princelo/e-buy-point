@@ -169,7 +169,7 @@ class Report_model extends CI_Model {
             select
                 l.create_time time,
                 l.title, l.remark, l.consumer_name, l.consumer_id, l.volume, l.ratio
-                ,s.name, u.user_name, l.score, l.type
+                ,s.name, u.user_name, l.score, l.type, l.*
             from ".DB_PREFIX."biz_consume_log l,".DB_PREFIX."user u,".DB_PREFIX."supplier_location s
             where l.biz_id = ?
             and l.biz_id = s.id
