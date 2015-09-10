@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <tr>
                         <th>消费录入日期</th>
                         <th>消费项目</th>
+                        <th>消费店舖</th>
                         <th>备注</th>
                         <th>会员帐号</th>
                         <th>消费金额</th>
@@ -63,6 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <tr>
                             <td><?=$l->time?></td>
                             <td><?=$l->title?></td>
+                            <td><?=$l->name?></td>
                             <td><?=$l->remark?></td>
                             <td><?=$l->consumer_name?></td>
                             <td>￥<?=$l->volume?>元</td>
