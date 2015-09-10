@@ -113,7 +113,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <label>交易类型</label>
                         <select name="exchange_type" class="form-control">
                             <option value="0" selected>现金交易</option>
-                            <option value="1">扣除积分</option>
+                            <option value="1">积分消费</option>
                         </select>
                         <div class="alert alert-warning" id="exchange_type_tip" style="display: none;">
                             注意：100积分等价于1元人民币

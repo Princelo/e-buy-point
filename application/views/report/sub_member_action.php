@@ -66,9 +66,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>消费类型</th>
                             <th>消费金额</th>
                             <th>会员收益积分</th>
-                            <th>会员收益金额</th>
                             <th>消费店舖</th>
-                            <th>本店积分</th>
+                            <th>本店收益积分</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -78,10 +77,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?=$l->title?></td>
                                 <td><?=$l->remark?></td>
                                 <td><?=$l->consumer_name?></td>
-                                <td><?=($l->type=='1')?'扣除积分':'现金消费'?></td>
+                                <td><?=($l->type=='1')?'积分消费':'现金消费'?></td>
                                 <td>￥<?=$l->volume?>元</td>
                                 <td><?=$l->uscore?></td>
-                                <td><?=bcdiv($l->uscore, 100, 2)?>元</td>
                                 <td><?=$l->name?></td>
                                 <td><?=$l->pscore;?></td>
                             </tr>

@@ -55,9 +55,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <th>会员帐号</th>
                         <th>消费金额</th>
                         <th>会员收益积分</th>
-                        <th>会员收益金额</th>
-                        <th>本店积分</th>
-                        <th>业务员积分</th>
+                        <th>本店收益积分</th>
+                        <th>业务员收益积分</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -69,7 +68,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <td><?=$l->consumer_name?></td>
                             <td>￥<?=$l->volume?>元</td>
                             <td><?=$l->uscore?></td>
-                            <td><?=bcdiv($l->uscore, 100, 2)?>元</td>
                             <!--<td>￥<?=intval($l->type) == '0'?bcdiv($l->volume, 100, 2):"0";?>元</td>-->
                             <td><?=$l->pscore?>分</td>
                             <td><?=$l->sscore?>分</td>
