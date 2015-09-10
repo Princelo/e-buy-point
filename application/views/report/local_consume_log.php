@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <?php foreach($list as $v) {?>
                             <?$total_volume += ($v->volume * $v->ratio);?>
                         <?php } ?>
-                        本店消费支付积分汇总: <a><?=count($list)>0?$total_volume:"0";?>元&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                        本店消费支付积分汇总: <a><?=count($list)>0?$total_volume:"0";?>分&nbsp;&nbsp;&nbsp;&nbsp;</a>
                     </div>
                     <div class="pull-right">
                         <?php $total_score = 0;?>
@@ -76,7 +76,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>会员帐号</th>
                             <th>消费金额</th>
                             <th>积分消费</th>
-                            <th>本次消费支付M网积分</th>
+                            <th>本次消费支付积分</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -88,7 +88,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?=$l->consumer_name?></td>
                                 <td>￥<?=$l->volume?>元</td>
                                 <td><?=$l->score?>分</td>
-                                <td><?=$l->volume * $l->ratio?>分(<?=bcdiv(bcmul($l->volume, $l->ratio), 100, 2)?>元)</td>
+                                <td><?=$l->volume * $l->ratio?>分</td>
                             </tr>
                         <?}?>
                         </tbody>
