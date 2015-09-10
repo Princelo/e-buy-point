@@ -162,6 +162,9 @@ class Consumption_model extends CI_Model {
                 u.user_name,
                 l.score,
                 l.type,
+                l.sscore,
+                l.*,
+                (select name from ".DB_PREFIX."seller where id = l.sid) as sname,
                 (select name from ".DB_PREFIX."supplier_location where id = u.p_biz_id) as pname
             from ".DB_PREFIX."biz_consume_log l,
                  ".DB_PREFIX."user u,

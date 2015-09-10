@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <? endif ?>
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">本月会员消费纪录</h1>
+            <h1 class="page-header">本月消费纪录</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-edit fa-fw"></i> 本月会员消费纪录
+                    <i class="fa fa-edit fa-fw"></i> 本月消费纪录
                     <div class="pull-right" style="display: none;">
                         <div class="btn-group">
                             <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -55,13 +55,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>消费录入日期</th>
                             <th>消费项目</th>
                             <th>备注</th>
-                            <th>会员帐号</th>
                             <th>消费金额</th>
-                            <th>会员积分</th>
+                            <th>会员帐号</th>
+                            <th>会员收益积分</th>
                             <th>消费店舖</th>
-                            <th>所属商家</th>
                             <th>消费商家积分</th>
-                            <th>所属商家积分</th>
+                            <th>所属商家</th>
+                            <th>所属商家收益积分</th>
+                            <th>业务员</th>
+                            <th>业务员收益积分</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -70,13 +72,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?=$l->time?></td>
                                 <td><?=$l->title?></td>
                                 <td><?=$l->remark?></td>
-                                <td><?=$l->consumer_name?></td>
                                 <td>￥<?=$l->volume?>元</td>
+                                <td><?=$l->consumer_name?></td>
                                 <td><?=$l->uscore?>分</td>
                                 <td><?=$l->name?></td>
-                                <td><?=$l->pname?></td>
                                 <td><?=$l->lscore?>分</td>
+                                <td><?=$l->pname?></td>
                                 <td><?=$l->pscore?>分</td>
+                                <td><?=$l->sname?>分</td>
+                                <td><?=$l->sscore?>分</td>
                             </tr>
                         <?}?>
                         </tbody>
