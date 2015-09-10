@@ -133,7 +133,8 @@ class Consumption_model extends CI_Model {
                 l.create_time time,
                 l.title, l.remark, l.consumer_name, l.consumer_id, l.volume, l.ratio
                 ,s.name, u.user_name, l.score, l.type, ps.name as pname,
-                l.pscore, l.uscore, l.lscore, l.mscore, l.sscore
+                l.pscore, l.uscore, l.lscore, l.mscore, l.sscore,
+                (select name from ".DB_PREFIX."seller where id = l.sid) as sname
             from ".DB_PREFIX."biz_consume_log l,".DB_PREFIX."user u,".DB_PREFIX."supplier_location s,".DB_PREFIX."supplier_location ps
             where 1 = 1
             and ps.id = u.p_biz_id
@@ -164,7 +165,6 @@ class Consumption_model extends CI_Model {
                 l.type,
                 l.sscore,
                 l.*,
-                (select name from ".DB_PREFIX."seller where id = l.sid) as sname,
                 (select name from ".DB_PREFIX."supplier_location where id = u.p_biz_id) as pname
             from ".DB_PREFIX."biz_consume_log l,
                  ".DB_PREFIX."user u,
