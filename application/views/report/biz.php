@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="form-group">
                             <label>报表类型</label>
                             <select class="form-control" name="type" id="type">
-                                <option value="income_report">会员消费(本店收入)报表</option>
+                                <option value="income_report">会员跨界消费报表</option>
                                 <option value="consumption_report">本店消费报表</option>
                                 <option value="settle_report">结算纪录</option>
                             </select>
