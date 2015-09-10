@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </script>
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">本店消费录入纪录</h1>
+        <h1 class="page-header">消费纪录</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-edit fa-fw"></i> 本店消费录入纪录
+                <i class="fa fa-edit fa-fw"></i> 消费纪录
                 <div class="pull-right" style="display: none;">
                     <div class="btn-group">
                         <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -60,6 +60,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <th>会员帐号</th>
                         <th>消费金额</th>
                         <th>会员积分</th>
+                        <th>消费店舖</th>
+                        <th>所属商家</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -72,6 +74,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <td><?=$l->consumer_name?></td>
                             <td>￥<?=$l->volume?>元</td>
                             <td><?=$l->uscore?>分</td>
+                            <td><?=$l->name?></td>
+                            <td><?=$l->pname?></td>
                         </tr>
                     <?}?>
                     </tbody>

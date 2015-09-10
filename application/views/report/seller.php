@@ -55,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <!--<option value="income_report">业务收入报表</option>
                                 <option value="biz_report">邀请商家收入报表</option>
                                 <option value="invite_report">邀请量走势</option>-->
-                                <option value="income_report">业务员收入(相关消费)纪录</option>
+                                <option value="income_report">消费纪录</option>
                                 <option value="settle_report">结算纪录</option>
                             </select>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
