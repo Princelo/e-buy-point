@@ -337,7 +337,7 @@ class Report extends CI_Controller {
         $view_data = [];
         $view_data['csrf'] = $csrf;
         $view_data['csrf_cookie_name'] = $csrf_cookie_name;
-        $this->load->view('layout/simple_header');
+        $this->load->view('layout/simple_header2');
         switch(strval($type)) {
             case 'income_report':
                 $where = " and ps.p_seller_id = ".$this->session->userdata('seller_id')
