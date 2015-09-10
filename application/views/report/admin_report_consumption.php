@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?=$l->lscore?>分</td>
                                 <td><?=$l->pname?></td>
                                 <td><?=$l->pscore?>分</td>
-                                <td><?=$l->sname?>分</td>
+                                <td><?=$l->sname?></td>
                                 <td><?=$l->sscore?>分</td>
                             </tr>
                         <?}?>
