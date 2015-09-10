@@ -64,7 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <tr>
                             <td><?=$l->time?></td>
                             <td><?=$l->title?></td>
-                            <td><?=$l->name?></td>
+                            <td><?=$l->pname?></td>
                             <td><?=$l->remark?></td>
                             <td><?=$l->consumer_name?></td>
                             <td>￥<?=$l->volume?>元</td>
