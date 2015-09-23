@@ -42,17 +42,18 @@ class Biz_model extends CI_Model {
             good_dp_count, bad_dp_count, common_dp_count, total_point, dp_count, image_count, ref_avg_price, good_rate,
             common_rate, sms_content, index_img, tuan_count, event_count, youhui_count, daijin_count, seo_title,
             seo_keyword, seo_description, is_effect, biz_license, biz_other_license, new_dp_count, new_dp_count_time,
-            shop_count, mobile_brief, sort, dp_group_point, tuan_youhui_cache, is_recommend)
+            shop_count, mobile_brief, sort, dp_group_point, tuan_youhui_cache, is_recommend, remark)
             values
             (?, ?, ?, ?, last_insert_id(), ?, ?, ?, ?,
             '', '', '', '', '', 1, '', 1, ?, ?,
             '', '', ?, '', 0, '', '', '', '0.0000',
             0, 0, 0, 0, 0, 0, '0.0000', '0.0000', '0.0000', '', '', 0, 0, 0, 0, '',
-            '', '', 0, '', '', 0, 0, 0, '', 0, '', '', 0);
+            '', '', 0, '', '', 0, 0, 0, '', 0, '', '', 0, ?);
             ";
         $sql_insert_location_binds = [
             $name, $data['address'], $data['tel'], $data['address'], $name_match, $name,
-            $this->session->userdata('seller_id'), $data['consumption_ratio'], $cate_match, $cate, $data['biz_type']
+            $this->session->userdata('seller_id'), $data['consumption_ratio'], $cate_match, $cate, $data['biz_type'],
+            $data['remark']
         ];
         $sql_insert_account = "
             insert into ".DB_PREFIX."supplier_account ( account_name, account_password, supplier_id, is_effect,is_delete
