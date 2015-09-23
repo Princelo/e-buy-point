@@ -97,7 +97,8 @@ class Biz_model extends CI_Model {
                 s.address,
                 s.consumption_ratio ratio,
                 s.return_profit,
-                s.deal_cate_match_row
+                s.deal_cate_match_row,
+                s.remark
             from
                 ".DB_PREFIX."supplier_account a, ".DB_PREFIX."supplier_account_location_link l, ".DB_PREFIX."supplier_location s
             where

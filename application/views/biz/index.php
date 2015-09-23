@@ -148,6 +148,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input class="form-control" name="verify_code" data-error="请填写手机验证码" required/>
                             <input class="btn btn-default" value="发送验证码" id="sms_sent_btn" onclick="sms_sent();" />
                         </div>
+                        <div class="form-group">
+                            <label>备注</label>
+                            <input class="form-control" name="remark" data-error="" maxlength="50" />
+                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                            <span class="help-block with-errors"></span>
+                            <span><?=form_error('remark')?></span>
+                        </div>
                         <script>
                             var sms_sent = function () {
                                 var sms_url = "<?=$sms_url?>";

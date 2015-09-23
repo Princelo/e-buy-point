@@ -61,6 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>消费录入纪录(当月)</th>
                             <th>商家会员消费纪录(当月)</th>
                             <th>返点比率</th>
+                            <th>备注</th>
                             <th>结算</th>
                             <th>结算日志</th>
                             <th>审核</th>
@@ -79,6 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><a href="<?=site_url('report/biz_consumption_simple')?>?id=<?=$l->id?>" class="fancybox">查看</a></td>
                                 <td><a href="<?=site_url('report/biz_sub_consumption_simple')?>?id=<?=$l->id?>" class="fancybox">查看</a></td>
                                 <td><?=$l->consumption_ratio?>%</td>
+                                <td><?=$l->remark?></td>
                                 <td><a href="<?=site_url('admin/settle_simple')?>?id=<?=$l->id?>" class="fancybox">结算</a></td>
                                 <td><a href="<?=site_url('admin/settle_biz_log_simple')?>?id=<?=$l->id?>" class="fancybox">查看</a></td>
                                 <td id="state<?=$l->id?>" style="color:#<?=$l->is_m_access == '1'?'41cc4a':'cc2a24'?>"><?=$l->is_m_access == '1'?'通过':'未通过'?></td>

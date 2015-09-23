@@ -43,7 +43,8 @@ class Admin extends CI_Controller {
                       a.account_name account,
                       (select name from ".DB_PREFIX."seller where id = s.p_seller_id) as seller_name,
                       s.is_m_access,
-                      s.deal_cate_match_row
+                      s.deal_cate_match_row,
+                      s.remark
             FROM      fanwe_supplier_location s
             LEFT JOIN fanwe_user u
             ON        u.p_biz_id = s.id

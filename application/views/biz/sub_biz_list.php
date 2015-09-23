@@ -61,6 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>管理员用户名</th>
                             <th>管理员手机</th>
                             <th>管理员邮箱</th>
+                            <th>备注</th>
                         <tbody>
                         <? foreach ($list as $l) { ?>
                             <tr>
@@ -73,6 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?=$l->account?></td>
                                 <td><?=$l->mobile?></td>
                                 <td><?=$l->email?></td>
+                                <td><?=$l->remark?></td>
                             </tr>
                         <?}?>
                         </tbody>
