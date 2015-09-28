@@ -51,7 +51,7 @@ class Biz_model extends CI_Model {
             '', '', 0, '', '', 0, 0, 0, '', 0, '', '', 0, ?);
             ";
         $sql_insert_location_binds = [
-            $name, $data['address'], $data['tel'], $data['address'], $name_match, $name,
+            $name, $data['address'], $data['tel'], $data['contact'], $name_match, $name,
             $this->session->userdata('seller_id'), $data['consumption_ratio'], $cate_match, $cate, $data['biz_type'],
             $data['remark']
         ];
