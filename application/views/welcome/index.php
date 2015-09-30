@@ -146,6 +146,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                     </div>
                     <div class="panel-body">
+                        <img src="<?=$qrcode?>" width="200" height="200" style="float: left;"/>
+                        <div class="qrcode-detail" style="float:left;">
+                            <span style="    margin-top: 168px;
+    float: left;
+    margin-bottom: 10px;">扫描本二维码注册即可成为您的会员！</span>
+                            <div class="qrcode-btn" style="margin-left: -148px;
+    margin-top: 10px;
+">
+                                <a href="<?=site_url('welcome/download_qrcode')?>" class="btn btn-primary">下载二维码</a>
+                                <!--<a href="<?//=$qrcode_share?>" class="fancybox btn btn-primary">分享到微信</a>-->
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
                         <h2>
                             当前积分：<label style="color: #aa3e05;"><?=$auth_data->return_profit?> (<?=bcmul($auth_data->return_profit, 0.01, 2)?>元)</label>
                         </h2>

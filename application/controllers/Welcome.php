@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+use PHPImageWorkshop\ImageWorkshop;
 
 class Welcome extends CI_Controller {
 
@@ -83,8 +84,98 @@ class Welcome extends CI_Controller {
             $this->session->userdata('biz_id'),
         ])->result()[0];
         $view_data['auth_data'] = $auth_data;
+        if (!file_exists(__DIR__.'/../../assets/qrcode/'.$this->session->userdata('biz_id').'qrcode.png')) {
+            $this->__generate_qrcode();
+        }
+        if (!file_exists(__DIR__.'/../../assets/qrcode/'.$this->session->userdata('biz_id').'qrcode_share.png')) {
+            $this->__generate_share_qrcode();
+        }
+        $view_data['qrcode_share'] = '/assets/'.$this->session->userdata('biz_id').'qrcode_share.png';
+        $view_data['qrcode'] = '/assets/qrcode/'.$this->session->userdata('biz_id').'qrcode.png';
 		$this->load->view('layout/default_header');
 		$this->load->view('welcome/index', $view_data);
 		$this->load->view('layout/default_footer');
 	}
+
+    public function sharing()
+    {
+        $this->load->view('welcome/sharing');
+    }
+
+    private function __generate_qrcode() {
+        require('application/third_party/phpqrcode/qrlib.php');
+        $codeContents = 'http://m-ebuy.com/index.php?ctl=user&act=register?p_biz_id='.$this->session->userdata('biz_id');
+        $tempDir = __DIR__.'/../../assets/qrcode/';
+        $fileName = $this->session->userdata('biz_id').'qrcode.jpg';
+        $outerFrame = 4;
+        $pixelPerPoint = 5;
+        $jpegQuality = 100;
+
+        // generating frame
+        $frame = QRcode::text($codeContents, false, QR_ECLEVEL_H);
+
+        // rendering frame with GD2 (that should be function by real impl.!!!)
+        $h = count($frame);
+        $w = strlen($frame[0]);
+
+        $imgW = $w + 2*$outerFrame;
+        $imgH = $h + 2*$outerFrame;
+
+        $base_image = imagecreate($imgW, $imgH);
+
+        $col[0] = imagecolorallocate($base_image,255,255,255); // BG, white
+        //$col[1] = imagecolorallocate($base_image,0,0,255);     // FG, blue
+        $col[1] = imagecolorallocate($base_image,0,0,0);     // FG, blue
+
+        imagefill($base_image, 0, 0, $col[0]);
+
+        for($y=0; $y<$h; $y++) {
+            for($x=0; $x<$w; $x++) {
+                if ($frame[$y][$x] == '1') {
+                    imagesetpixel($base_image,$x+$outerFrame,$y+$outerFrame,$col[1]);
+                }
+            }
+        }
+
+        // saving to file
+        $target_image = imagecreate($imgW * $pixelPerPoint, $imgH * $pixelPerPoint);
+        imagecopyresized(
+            $target_image,
+            $base_image,
+            0, 0, 0, 0,
+            $imgW * $pixelPerPoint, $imgH * $pixelPerPoint, $imgW, $imgH
+        );
+        imagedestroy($base_image);
+        imagejpeg($target_image, $tempDir.$fileName, $jpegQuality);
+        imagedestroy($target_image);
+
+        $QRcodeLayer = ImageWorkshop::initFromPath('assets/qrcode/'.$this->session->userdata('biz_id').'qrcode.jpg');
+        $QRcodeLayer->resize($QRcodeLayer::UNIT_PIXEL, $QRcodeLayer->getWidth()*2, $QRcodeLayer->getHeight()*2);
+        $logoLayer = ImageWorkshop::initFromPath('assets/qrcode/logo.png');
+        //$logoLayer->resize($logoLayer::UNIT_PIXEL, 150, 60);
+        $QrcodeWidth = $QRcodeLayer->getWidth();
+        $QrcodeHeight = $QRcodeLayer->getHeight();
+        $logoWidth = $logoLayer->getWidth();
+        $logoHeight = $logoLayer->getHeight();
+        $x = $QrcodeWidth/2 - $logoWidth/2;
+        $y = $QrcodeHeight/2 - $logoHeight/2;
+        $QRcodeLayer->addLayer(0, $logoLayer, $x, $y);
+        $QRcodeLayer->save('assets/qrcode/', $this->session->userdata('biz_id').'qrcode.png', true, null, 10);
+    }
+
+    private function __generate_share_qrcode()
+    {
+        require('application/third_party/phpqrcode/qrlib.php');
+        QRcode::png('http://m-ebuy.com/index.php?ctl=user&act=register?p_biz_id='.$this->session->userdata('biz_id').'&sharing=1',
+            'assets/qrcode/'.$this->session->userdata('biz_id').'qrcode_share.png', 'H', 10, 2);
+    }
+
+    public function download_qrcode()
+    {
+        $this->load->helper('download');
+        $data = file_get_contents(__DIR__.'/../../assets/qrcode/'.$this->session->userdata('biz_id').'qrcode.png'); // Read the file's contents
+        $name = '我的二维码.png';
+
+        force_download($name, $data);
+    }
 }
