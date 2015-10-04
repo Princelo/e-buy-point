@@ -64,7 +64,7 @@ class Biz extends CI_Controller {
             array(
                 'field' => 'consumption_ratio',
                 'label' => '返点率',
-                'rules' => 'required|is_natural|trim|greater_than[4]|less_than[101]',
+                'rules' => 'required|is_natural|trim|greater_than[2]|less_than[101]',
                 'errors' => [
                     'required' => '返点率不能为空',
                 ]

@@ -88,7 +88,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="form-group">
                             <label>返点率</label>
                             <div class="input-group">
-                                <input class="form-control" name="consumption_ratio" data-error="无效返点率，取值为5%到100%，且为半角数字" type="number" min="5" max="100" required>
+                                <input class="form-control" name="consumption_ratio" data-error="无效返点率，取值为3%到100%，且为半角数字" type="number" min="3" max="100" required>
                                 <span class="input-group-addon">%</span>
                             </div>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
