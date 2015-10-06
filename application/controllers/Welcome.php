@@ -23,6 +23,7 @@ class Welcome extends CI_Controller {
     {
         parent::__construct();
         check_access_right('login', $this->session);
+        require('application/third_party/phpqrcode/qrlib.php');
         if($this->session->userdata('is_admin') == 1)
             redirect('admin/index');
     }
@@ -103,8 +104,7 @@ class Welcome extends CI_Controller {
     }
 
     private function __generate_qrcode() {
-        require('application/third_party/phpqrcode/qrlib.php');
-        $codeContents = 'http://m-ebuy.com/index.php?ctl=user&act=register?p_biz_id='.$this->session->userdata('biz_id');
+        $codeContents = 'http://m-ebuy.com/index.php?ctl=user&act=register&p_biz_id='.$this->session->userdata('biz_id');
         $tempDir = __DIR__.'/../../assets/qrcode/';
         $fileName = $this->session->userdata('biz_id').'qrcode.jpg';
         $outerFrame = 4;
@@ -165,8 +165,7 @@ class Welcome extends CI_Controller {
 
     private function __generate_share_qrcode()
     {
-        require('application/third_party/phpqrcode/qrlib.php');
-        QRcode::png('http://m-ebuy.com/index.php?ctl=user&act=register?p_biz_id='.$this->session->userdata('biz_id').'&sharing=1',
+        QRcode::png('http://m-ebuy.com/index.php?ctl=user&act=register&p_biz_id='.$this->session->userdata('biz_id').'&sharing=1',
             'assets/qrcode/'.$this->session->userdata('biz_id').'qrcode_share.png', 'H', 10, 2);
     }
 
