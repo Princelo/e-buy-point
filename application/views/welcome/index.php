@@ -141,7 +141,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         我的信息
                         <div class="pull-right" style="display: ;">
                             <div class="btn-group">
-                                <!--<a href="<?=site_url('setting/index')?>">修改信息</a>-->
+                                <a href="<?=site_url('setting/index')?>">修改信息</a>
                             </div>
                         </div>
                     </div>
@@ -168,7 +168,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <h4>
                             <?=$auth_data->name?>
                         </h4>
-                        <!--<h4>联系信息</h4>
+                        <h4>联系信息</h4>
                         <address>
                             <?=$auth_data->address?>
                             <br>
@@ -176,7 +176,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </address>
                         <address>
                             <strong><?=$auth_data->contact?></strong>
-                        </address>-->
+                        </address>
                         <label>我的返点率：<?=$auth_data->consumption_ratio?>%</label>
                     </div>
                     <!-- /.panel-body -->
