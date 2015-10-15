@@ -135,7 +135,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </div>
         <div class="row" style="display: block;">
-            <div class="col-lg-6">
+            <div class="col-lg-6" style="display:none;">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         我的信息
