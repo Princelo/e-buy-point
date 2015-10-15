@@ -46,15 +46,16 @@ class Member_model extends CI_Model {
             return false;
     }
 
-    public function updateMemberInfo($data)
+    public function updateMemberInfo($data, $biz_id)
     {
         $sql = "";
         $sql .= "update ".DB_PREFIX."supplier_location set address = ?,
-            tel = ?, contact = ?;";
+            tel = ?, contact = ? where id = ?;";
         $this->db->query($sql, [
             $data['address'],
             $data['tel'],
-            $data['contact']
+            $data['contact'],
+            $biz_id
         ]);
         if($this->db->affected_rows() > 0)
             return true;

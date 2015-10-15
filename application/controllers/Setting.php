@@ -81,7 +81,7 @@ class Setting extends CI_Controller {
             $this->load->view('layout/default_footer');
         } else {
             $this->load->model('member_model', 'Member_model');
-            $result = $this->Member_model->updateMemberInfo($this->input->post());
+            $result = $this->Member_model->updateMemberInfo($this->input->post(), $this->session->userdata('biz_id'));
             if($result === true)
                 $this->session->set_flashdata('flash_data', [ 'message' => '修改信息成功', 'type' => 'success' ]);
             else
