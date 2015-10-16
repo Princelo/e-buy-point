@@ -52,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <table class="table table-striped table-bordered table-hover dataTable no-footer" <?if(count($list)==0){?>style="display:none;"<?}?>>
                         <thead>
                         <tr>
+                            <th>序号</th>
                             <th>商家名称</th>
                             <th>行业类型</th>
                             <th>门店地址</th>
@@ -63,8 +64,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>管理员邮箱</th>
                             <th>备注</th>
                         <tbody>
-                        <? foreach ($list as $l) { ?>
+                        <? foreach ($list as $i => $l) { ?>
                             <tr>
+                                <td><?=$i?></td>
                                 <td><?=$l->name?></td>
                                 <td><?=$l->deal_cate_match_row?></td>
                                 <td><?=$l->address?></td>

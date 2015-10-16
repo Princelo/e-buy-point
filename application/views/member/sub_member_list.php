@@ -56,6 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <table class="table table-striped table-bordered table-hover dataTable no-footer" <?if(count($list)==0){?>style="display:none;"<?}?>>
                         <thead>
                         <tr>
+                            <th>序号</th>
                             <th>会员帐号</th>
                             <th>注册时间</th>
                             <th>电子邮箱</th>
@@ -66,8 +67,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </tr>
                         </thead>
                         <tbody>
-                        <? foreach ($list as $l) { ?>
+                        <? foreach ($list as $i => $l) { ?>
                             <tr>
+                                <td><?=$i?></td>
                                 <td><?=$l->user_name?></td>
                                 <td><?=date('Y-m-d H:i:s', $l->create_time)?></td>
                                 <td><?=$l->email?></td>
