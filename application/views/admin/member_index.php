@@ -52,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <table class="table table-striped table-bordered table-hover dataTable no-footer" <?if(count($member_list)==0){?>style="display:none;"<?}?>>
                         <thead>
                         <tr>
+                            <th>序号</th>
                             <th>会员帐号</th>
                             <th>积分</th>
                             <th>所属商家</th>
@@ -63,6 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <tbody>
                         <? foreach ($member_list as $l) { ?>
                             <tr>
+                                <td><?=$i?></td>
                                 <td><?=$l->user_name?></td>
                                 <td><?=$l->score?></td>
                                 <td><?=$l->name?></td>
