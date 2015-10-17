@@ -62,7 +62,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </tr>
                         </thead>
                         <tbody>
-                        <? foreach ($member_list as $l) { ?>
+                        <? foreach ($member_list as $i => $l) { ?>
                             <tr>
                                 <td><?=$i?></td>
                                 <td><?=$l->user_name?></td>
