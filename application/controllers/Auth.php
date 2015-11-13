@@ -236,7 +236,7 @@ class Auth extends CI_Controller {
                 return 'not_access';
             }
         } else {
-            $sql = "select id from ".DB_PREFIX."admin where adm_name = ? and adm_password = ? limit 1";
+            $sql = "select id from ".DB_PREFIX."admin where adm_name = ? and adm_password = ? and is_e_admin = 1 limit 1";
             $query = $this->db->query($sql, [$user, md5($password)]);
             if($query->num_rows() > 0) {
                 $this->session->set_userdata('is_login', 1);
