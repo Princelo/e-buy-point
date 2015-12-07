@@ -164,6 +164,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <li>
                                 <a href="<?=site_url('report/admin_report/consumption')?>">本月消费纪录</a>
                             </li>
+                            <li>
+                                <a href="<?=site_url('report/admin_report/all_consumption')?>">历史消费纪录</a>
+                            </li>
                             <!--<li>
                                 <a href="<?=site_url('report/admin')?>">本月门店新增走势</a>
                             </li>

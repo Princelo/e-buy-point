@@ -269,6 +269,12 @@ class Report extends CI_Controller {
                 $view_data['list'] = $this->Consumption_model->getConsumptions($where);
                 $this->load->view('report/admin_report_consumption', $view_data);
                 break;
+            case "all_consumption":
+                $where = "";
+                $this->load->Model('Consumption_model', 'Consumption_model');
+                $view_data['list'] = $this->Consumption_model->getConsumptions($where);
+                $this->load->view('report/admin_report_consumption', $view_data);
+                break;
         }
         $this->load->view('layout/admin_footer');
     }
