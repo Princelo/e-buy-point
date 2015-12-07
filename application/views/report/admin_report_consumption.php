@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <?php foreach($list as $v) {?>
                             <?$total_volume += $v->volume;?>
                         <?php } ?>
-                        累积消费: <a><?=count($list)>0?bcdiv($total_volume, 100, 2):''?>元</a>
+                        累积消费: <a><?=count($list)>0?bcdiv($total_volume, 1, 2):''?>元</a>
                     </div>
                 </div>
                 <!-- /.panel-heading -->
