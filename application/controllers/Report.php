@@ -267,11 +267,13 @@ class Report extends CI_Controller {
                     " and unix_timestamp(l.create_time) between ".$start_time." and ".$end_time;
                 $this->load->Model('Consumption_model', 'Consumption_model');
                 $view_data['list'] = $this->Consumption_model->getConsumptions($where);
+                $view_data['title'] = '本月消费纪录';
                 $this->load->view('report/admin_report_consumption', $view_data);
                 break;
             case "all_consumption":
                 $where = "";
                 $this->load->Model('Consumption_model', 'Consumption_model');
+                $view_data['title'] = '历史消费纪录';
                 $view_data['list'] = $this->Consumption_model->getConsumptions($where);
                 $this->load->view('report/admin_report_consumption', $view_data);
                 break;
